@@ -1,0 +1,34 @@
+<!-- index.html -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    </head>
+    <body>
+
+    <div ng-app="demo-app">
+      <div ng-controller="demo-controller">
+        <div ng-repeat="model in models">
+          {{ model }}
+        </div>
+      </div>
+    </div>
+
+    <script type="application/javascript">
+      var app = angular.module("demo-app", []);
+      app.controller("demo-controller", function($scope) {
+        $scope.models = ["car","representative","customer","reservation", "maintenance_cost", "corporation"];
+      });
+    </script>
+
+    <style type="text/css">
+
+    </style>
+
+</body>
+</html>
