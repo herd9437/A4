@@ -16,7 +16,7 @@
           <script src="mainApp.js"></script>
           <!--<script src="modules/displayModule.js"></script>-->
     </head>
-    <body ng-controller="kuWorkController">
+    <body ng-controller="kuWorkController as KUCtrl">
 
         <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -53,7 +53,9 @@
         </nav>
 
         <ul class="nav nav-pills nav-justified">
-          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#activities"><a href="#">Activities</a></li>
+          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#activities">
+            <a href="#" ng-click="KUCtrl.retrieveActivities()">Activities</a>  
+          </li>
           <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Companies"><a href="#">Companies</a></li>
         </ul>
 
