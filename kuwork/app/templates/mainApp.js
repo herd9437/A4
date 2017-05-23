@@ -6,68 +6,68 @@ kuWork.controller('kuWorkController', ['$scope', '$rootScope', '$http', function
 
     var kuCtrl = this;
 
-    this.activityList = [];
-    this.studentList = [];
-    this.companyList = [];
-    this.resienceList = [];
+    kuCtrl.activityList = [];
+    kuCtrl.studentList = [];
+    kuCtrl.companyList = [];
+    kuCtrl.resienceList = [];
 
-    this.retrieveActivities = function () {
+    kuCtrl.retrieveActivities = function () {
             console.log("retrieving activitiy list");
             $http({
                 method: 'GET',
                 url: '/app/activities'               
             }).then(function successCallback(response) {
-                this.activityList = response.data;
+                kuCtrl.activityList = response.data;
                 console.log("success!");
             }, function errorCallbac(response) {
                 console.log("Error, could not retrieve activities");
             });
     };
 
-    updateStudentList = function (sample) {
-                this.studentList = sample;
+    $scope.updateStudentList = function (sample) {
+                kuCtrl.studentList = sample;
                 //Array.prototype.push.apply(this.studentList, sample);
-                console.log(this.studentList);
+                console.log(kuCtrl.studentList);
     };
 
-    this.retrieveStudents = function () {
+    kuCtrl.retrieveStudents = function () {
             console.log("retrieving student list");
             $http({
                 method: 'GET',
                 url: '/app/students'               
             }).then(function successCallback(response) {
-                this.studentList = response.data;
+                kuCtrl.studentList = response.data;
                 console.log("success!");
             }, function errorCallbac(response) {
                 console.log("Error, could not retrieve students");
                 
                 var sample =[{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
 
-                updateStudentList(sample);
+                $scope.updateStudentList(sample);
                 
             });
     };
 
-    this.retrieveCompanies = function () {
+    kuCtrl.retrieveCompanies = function () {
             console.log("retrieving company list");
             $http({
                 method: 'GET',
                 url: '/app/companies'               
             }).then(function successCallback(response) {
-                this.companyList = response.data;
+                kuCtrl.companyList = response.data;
                 console.log("success!");
             }, function errorCallbac(response) {
                 console.log("Error, could not retrieve companies");
             });
     };
 
-    this.retrieveResidencies = function () {
+    kuCtrl.retrieveResidencies = function () {
             console.log("retrieving residence list");
             $http({
                 method: 'GET',
                 url: '/app/residencies'               
             }).then(function successCallback(response) {
-                this.resienceList = response.data;
+                kuCtrl.resienceList = response.data;
                 console.log("success!");
             }, function errorCallbac(response) {
                 console.log("Error, could not retrieve residencies");
