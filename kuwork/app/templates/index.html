@@ -56,12 +56,18 @@
           <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#activities">
             <a href="#" ng-click="KUCtrl.retrieveActivities()">Activities</a>  
           </li>
-          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Companies"><a href="#">Companies</a></li>
+          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Companies">
+            <a href="#" ng-click="KUCtrl.retrieveCompanies()">Companies</a>
+          </li>
         </ul>
 
         <ul class="nav nav-pills nav-justified">
-          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Residencies"><a href="#"> Residencies</a></li>
-          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#student"><a href="#"> Students</a></li>
+          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Residencies">
+            <a href="#" ng-click="KUCtrl.retrieveResidencies()"> Residencies</a>
+          </li>
+          <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#student">
+            <a href="#" ng-click="KUCtrl.retrieveStudents()"> Students</a>
+          </li>
         </ul>
 
         <!-- Search Modal -->
@@ -102,8 +108,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Companies</h4>
               </div>
-              <div class="modal-body">
-                ...
+              <div class="modal-body" ng-model="KUCtrl.companyList">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,8 +126,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Residencies</h4>
               </div>
-              <div class="modal-body">
-                ...
+              <div class="modal-body" ng-model="KUCtrl.residenceList">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -140,8 +144,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Activities</h4>
               </div>
-              <div class="modal-body">
-                ...
+              <div class="modal-body" ng-model="KUCtrl.activityList">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -160,7 +163,9 @@
                 <h4 class="modal-title" id="myModalLabel">Students</h4>
               </div>
               <div class="modal-body">
-                ...
+                <div ng-repeat="student in KUCtrl.studenList">
+                    {{student}}
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
