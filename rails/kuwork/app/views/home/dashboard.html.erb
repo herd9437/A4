@@ -1,2 +1,217 @@
-<h1>Home#dashboard</h1>
-<p>Find me in app/views/home/dashboard.html.erb</p>
+<!--
+
+    <ul class="nav nav-pills nav-justified">
+      <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#activities">
+        <a href="#" ng-click="KUCtrl.retrieveActivities()">Activities</a>
+      </li>
+      <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Companies">
+        <a href="#" ng-click="KUCtrl.retrieveCompanies()">Companies</a>
+      </li>
+    </ul>
+
+    <ul class="nav nav-pills nav-justified">
+      <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Residencies">
+        <a href="#" ng-click="KUCtrl.retrieveResidencies()"> Residencies</a>
+      </li>
+      <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#student">
+        <a href="#" ng-click="KUCtrl.retrieveStudents()"> Students</a>
+      </li>
+    </ul>
+
+
+    <div class="modal fade" id="results" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Results</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>Name</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="Companies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Companies</h4>
+          </div>
+          <div class="modal-body" ng-model="KUCtrl.companyList">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="Residencies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Residencies</h4>
+          </div>
+          <div class="modal-body" ng-model="KUCtrl.residenceList">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="activities" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Activities</h4>
+          </div>
+          <div class="modal-body" ng-model="KUCtrl.activityList">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="student" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Students</h4>
+          </div>
+          <div class="modal-body">
+            <li ng-repeat="student in KUCtrl.studentList track by $index">
+              {{student}}
+            </li>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script>
+
+    //This file serves as the main controller for the whole application.
+    var kuWork = angular.module('kuWorkApp', []);
+
+    (function() {
+    kuWork.controller('kuWorkController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+
+        var kuCtrl = this;
+
+        kuCtrl.activityList = [];
+        kuCtrl.studentList = [];
+        kuCtrl.companyList = [];
+        kuCtrl.resienceList = [];
+
+        kuCtrl.retrieveActivities = function () {
+                console.log("retrieving activitiy list");
+                $http({
+                    method: 'GET',
+                    url: '/app/activities'
+                }).then(function successCallback(response) {
+                    kuCtrl.activityList = response.data;
+                    console.log("success!");
+                }, function errorCallbac(response) {
+                    console.log("Error, could not retrieve activities");
+                });
+        };
+
+        $scope.updateStudentList = function (sample) {
+                    kuCtrl.studentList = sample;
+                    //Array.prototype.push.apply(this.studentList, sample);
+                    console.log(kuCtrl.studentList);
+        };
+
+        kuCtrl.retrieveStudents = function () {
+                console.log("retrieving student list");
+                $http({
+                    method: 'GET',
+                    url: '/app/students'
+                }).then(function successCallback(response) {
+                  console.log(response.data["data"]);
+                  var sample = [{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
+//                     kuCtrl.studentList = angular.copy(kuCtrl.studentList);
+                  $scope.updateStudentList(sample);
+//                      var sample =[];
+//                      kuCtrl.studentList.push();
+//                      $scope.$apply();
+//                      $scope.$apply();
+//                        kuCtrl.studentList = response.data;
+                    console.log("success!");
+                }, function errorCallback(response) {
+                    console.log("Error, could not retrieve students");
+
+                    var sample =[{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
+
+                    $scope.updateStudentList(sample);
+
+                });
+        };
+
+        kuCtrl.retrieveCompanies = function () {
+                console.log("retrieving company list");
+                $http({
+                    method: 'GET',
+                    url: '/app/companies'
+                }).then(function successCallback(response) {
+                    kuCtrl.companyList = response.data;
+                    console.log("success!");
+                }, function errorCallbac(response) {
+                    console.log("Error, could not retrieve companies");
+                });
+        };
+
+        kuCtrl.retrieveResidencies = function () {
+                console.log("retrieving residence list");
+                $http({
+                    method: 'GET',
+                    url: '/app/residencies'
+                }).then(function successCallback(response) {
+                    kuCtrl.resienceList = response.data;
+                    console.log("success!");
+                }, function errorCallbac(response) {
+                    console.log("Error, could not retrieve residencies");
+                });
+        };
+    }]);
+
+    })();
+    </script>
+-->
