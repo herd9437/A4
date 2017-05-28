@@ -8,29 +8,30 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC"); // usin
 ?>
 
 <html>
-<head>	
-	<title>Homepage</title>
+<head>
+	<title>Maintenance Homepage</title>
 </head>
 
 <body>
-<a href="add.html">Add New Data</a><br/><br/>
+<a href="main_add.html">Add New Maintenance</a><br/><br/>
 
 	<table width='80%' border=0>
 
 	<tr bgcolor='#CCCCCC'>
-		<td>Name</td>
-		<td>Age</td>
-		<td>Email</td>
-		<td>Update</td>
+		<td>Street Address</td>
+		<td>City</td>
+		<td>Zip</td>
+		<td>Cost</td>
 	</tr>
-	<?php 
-	//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-	while($res = mysqli_fetch_array($result)) { 		
+	<?php
+	//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array
+	while($res = mysqli_fetch_array($result)) {
 		echo "<tr>";
-		echo "<td>".$res['name']."</td>";
-		echo "<td>".$res['age']."</td>";
-		echo "<td>".$res['email']."</td>";	
-		echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";		
+		echo "<td>".$res['street_address']."</td>";
+		echo "<td>".$res['city']."</td>";
+		echo "<td>".$res['zip']."</td>";
+		echo "<td>".$res['cost']."</td>";
+		echo "<td><a href=\"main_edit.php?id=$res[maintenance_id]\">Edit</a> | <a href=\"main_delete.php?id=$res[maintenance_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
