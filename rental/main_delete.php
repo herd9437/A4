@@ -3,12 +3,11 @@
 include("config.php");
 
 //getting id of the data from url
-$id = $_GET['id'];
+$maintenance_id = $_GET['maintenance_id'];
 
 //deleting the row from table
-$result = mysqli_query($mysqli, "DELETE FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "DELETE FROM maintenance WHERE maintenance_id=$maintenance_id");
 
 //redirecting to the display page (index.php in our case)
 header("Location:index.php");
 ?>
-

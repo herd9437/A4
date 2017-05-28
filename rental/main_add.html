@@ -1,27 +1,31 @@
 <html>
 <head>
-	<title>Add Data</title>
+	<title>Add Maintenance</title>
 </head>
 
 <body>
-	<a href="index.php">Home</a>
+	<a href="main_index.php">Maintenance Home</a>
 	<br/><br/>
 
-	<form action="add.php" method="post" name="form1">
+	<form action="main_add.php" method="post" name="form1">
 		<table width="25%" border="0">
-			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name"></td>
+			<tr>
+				<td>Street Address</td>
+				<td><input type="text" name="street_address"></td>
 			</tr>
-			<tr> 
-				<td>Age</td>
-				<td><input type="text" name="age"></td>
+			<tr>
+				<td>City</td>
+				<td><input type="text" name="city"></td>
 			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email"></td>
+			<tr>
+				<td>Zip</td>
+				<td><input type="text" name="zip"></td>
 			</tr>
-			<tr> 
+			<tr>
+				<td>Cost</td>
+				<td><input type="text" name="cost"></td>
+			</tr>
+			<tr>
 				<td></td>
 				<td><input type="submit" name="Submit" value="Add"></td>
 			</tr>
@@ -29,4 +33,3 @@
 	</form>
 </body>
 </html>
-
