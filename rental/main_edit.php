@@ -2,36 +2,43 @@
 // including the database connection file
 include_once("config.php");
 
-if(isset($_POST['update']))
-{	
+if(isset($_POST['update'])){
+$street_address = mysqli_real_escape_string($mysqli, $_POST['street_address']);
+$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+$zip = mysqli_real_escape_string($mysqli, $_POST['zip']);
+$cost = mysqli_real_escape_string($mysqli, $_POST['cost']);
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-	
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);	
-	
-	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {	
-			
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
-		}
-		
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
-		}
-		
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}		
-	} else {	
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
-		
-		//redirectig to the display page. In our case, it is index.php
-		header("Location: index.php");
+// checking empty fields
+if(empty($street_address) || empty($city) || empty($zip) || empty($cost)) {
+
+	if(empty($street_address)) {
+		echo "<font color='red'>Street Address field is empty.</font><br/>";
 	}
+
+	if(empty($city)) {
+		echo "<font color='red'>City field is empty.</font><br/>";
+	}
+
+	if(empty($zip)) {
+		echo "<font color='red'>Zip field is empty.</font><br/>";
+	}
+
+	if(empty($cost)) {
+		echo "<font color='red'>Cost field is empty.</font><br/>";
+	}
+
+	//link to the previous page
+	echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+} else {
+	// if all the fields are filled (not empty)
+
+	//insert data to database
+	$result = mysqli_query($mysqli, "INSERT INTO maintenance_cost (street_address, city, zip, cost) VALUES ('$street_address','$city','$zip','$cost')");
+
+	//display success message
+	echo "<font color='green'>Maintenance added successfully.";
+	echo "<br/><a href='main_index.php'>View Result</a>";
+}
 }
 ?>
 <?php
@@ -43,33 +50,38 @@ $result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	$street_address = $res['street_address'];
+	$city = $res['city'];
+	$zip = $res['zip'];
+	$cost = $res['cost'];
 }
 ?>
 <html>
-<head>	
-	<title>Edit Data</title>
+<head>
+	<title>Edit Maintenance</title>
 </head>
 
 <body>
-	<a href="index.php">Home</a>
+	<a href="main_index.php">Maintenance Home</a>
 	<br/><br/>
-	
+
 	<form name="form1" method="post" action="edit.php">
 		<table border="0">
-			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
+			<tr>
+				<td>Street Address</td>
+				<td><input type="text" name="street_address" value="<?php echo $street_address ?>"></td>
 			</tr>
-			<tr> 
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
+			<tr>
+				<td>City</td>
+				<td><input type="text" name="city" value="<?php echo $city ?>"></td>
 			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
+			<tr>
+				<td>Zip</td>
+				<td><input type="text" name="zip" value="<?php echo $zip ?>"></td>
+			</tr>
+			<tr>
+				<td>Cost</td>
+				<td><input type="text" name="cost" value="<?php echo $cost ?>"></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
