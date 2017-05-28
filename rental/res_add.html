@@ -1,27 +1,79 @@
 <html>
 <head>
-	<title>Add Data</title>
+	<title>Add Reservation</title>
 </head>
 
 <body>
-	<a href="index.php">Home</a>
+	<a href="res_ndex.php">Reservation Home</a>
 	<br/><br/>
 
-	<form action="add.php" method="post" name="form1">
+	<form action="res_add.php" method="post" name="form1">
 		<table width="25%" border="0">
-			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name"></td>
+			<tr>
+				<td>Rate Period</td>
+				<td><input type="text" name="rate_period"></td>
 			</tr>
-			<tr> 
-				<td>Age</td>
-				<td><input type="text" name="age"></td>
+			<tr>
+				<td>Discount</td>
+				<td><input type="text" name="discount"></td>
 			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email"></td>
+			<tr>
+				<td>Estimated Rental Duration</td>
+				<td><input type="text" name="estimated_rental_duration"></td>
 			</tr>
-			<tr> 
+			<tr>
+				<td>Credit Card Number</td>
+				<td><input type="text" name="credit_card_number"></td>
+			</tr>
+			<tr>
+				<td>Credit Card Type</td>
+				<td><input type="text" name="credit_card_type"></td>
+			</tr>
+			<tr>
+				<td>Base Charge</td>
+				<td><input type="text" name="base_charge"></td>
+			</tr>
+			<tr>
+				<td>Tax</td>
+				<td><input type="text" name="tax"></td>
+			</tr>
+			<tr>
+				<td>Gas Level</td>
+				<td><input type="text" name="gas_level"></td>
+			</tr>
+			<tr>
+				<td>Date Rented</td>
+				<td><input type="text" name="date_rented"></td>
+			</tr>
+			<tr>
+				<td>Time Rented</td>
+				<td><input type="text" name="time_rented"></td>
+			</tr>
+			<tr>
+				<td>Date Returned</td>
+				<td><input type="text" name="date_returned"></td>
+			</tr>
+			<tr>
+				<td>Time Returned</td>
+				<td><input type="text" name="time_returned"></td>
+			</tr>
+			<tr>
+				<td>Insurance Charge</td>
+				<td><input type="text" name="insurance_charge"></td>
+			</tr>
+			<tr>
+				<td>Mileage Charge</td>
+				<td><input type="text" name="mileage_charge"></td>
+			</tr>
+			<tr>
+				<td>Start Miles</td>
+				<td><input type="text" name="start_miles"></td>
+			</tr>
+			<tr>
+				<td>End Miles</td>
+				<td><input type="text" name="end_miles"></td>
+			</tr>
+			<tr>
 				<td></td>
 				<td><input type="submit" name="Submit" value="Add"></td>
 			</tr>
@@ -29,4 +81,3 @@
 	</form>
 </body>
 </html>
-
