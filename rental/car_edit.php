@@ -5,47 +5,77 @@ include_once("config.php");
 if(isset($_POST['update']))
 {
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$make = mysqli_real_escape_string($mysqli, $_POST['make']);
+	$model = mysqli_real_escape_string($mysqli, $_POST['model']);
+	$location = mysqli_real_escape_string($mysqli, $_POST['location']);
+	$color = mysqli_real_escape_string($mysqli, $_POST['color']);
+	$license_number = mysqli_real_escape_string($mysqli, $_POST['license_number']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
+	$mileage = mysqli_real_escape_string($mysqli, $_POST['mileage']);
+	$vin = mysqli_real_escape_string($mysqli, $_POST['vin']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($make) || empty($model) || empty($location) || empty($color) || empty($license_number) || empty($state) || empty($mileage) || empty($vin)) {
 
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($make)) {
+			echo "<font color='red'>Make field is empty.</font><br/>";
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+		if(empty($model)) {
+			echo "<font color='red'>Model field is empty.</font><br/>";
 		}
 
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
+		if(empty($location)) {
+			echo "<font color='red'>Location field is empty.</font><br/>";
 		}
+
+		if(empty($color)) {
+			echo "<font color='red'>Color field is empty.</font><br/>";
+		}
+
+		if(empty($license_number)) {
+			echo "<font color='red'>License Number field is empty.</font><br/>";
+		}
+
+		if(empty($state)) {
+			echo "<font color='red'>State field is empty.</font><br/>";
+		}
+
+		if(empty($mileage)) {
+			echo "<font color='red'>Mileage field is empty.</font><br/>";
+		}
+
+		//link to the previous page
+		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else {
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+		// if all the fields are filled (not empty)
 
-		//redirectig to the display page. In our case, it is index.php
-		header("Location: index.php");
+		//insert data to database
+		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin')");
+
+		//display success message
+		echo "<font color='green'>Data added successfully.";
+		echo "<br/><a href='index.php'>View Result</a>";
 	}
 }
 ?>
 <?php
 //getting id from url
-$id = $_GET['id'];
+$vin = $_GET['vin'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM car WHERE vin=$vin");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	$make = $res['make'];
+	$model = $res['model'];
+	$location = $res['location'];
+	$color = $res['color'];
+	$license_number = $res['license_number'];
+	$state = $res['state'];
+	$mileage = $res['mileage'];
+	$vin = $res['vin'];
 }
 ?>
 <html>

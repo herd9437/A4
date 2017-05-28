@@ -3,34 +3,49 @@
 include_once("config.php");
 
 if(isset($_POST['update']))
-{	
+{
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-	
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);	
-	
+	$account_number = mysqli_real_escape_string($mysqli, $_POST['account_number']);
+	$street_address = mysqli_real_escape_string($mysqli, $_POST['street_address']);
+	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$zip = mysqli_real_escape_string($mysqli, $_POST['zip']);
+	$phone_number = mysqli_real_escape_string($mysqli, $_POST['phone_number']);
+
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {	
-			
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+	if(empty($account_number) || empty($street_address) || empty($city) || empty($zip) || empty($phone_number)) {
+
+		if(empty($account_number)) {
+			echo "<font color='red'>Account Number field is empty.</font><br/>";
 		}
-		
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+
+		if(empty($street_address)) {
+			echo "<font color='red'>Street Address field is empty.</font><br/>";
 		}
-		
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}		
-	} else {	
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
-		
-		//redirectig to the display page. In our case, it is index.php
-		header("Location: index.php");
+
+		if(empty($city)) {
+			echo "<font color='red'>City field is empty.</font><br/>";
+		}
+
+		if(empty($zip)) {
+			echo "<font color='red'>Zip field is empty.</font><br/>";
+		}
+
+		if(empty($phone_number)) {
+			echo "<font color='red'>Phone Number field is empty.</font><br/>";
+		}
+
+		//link to the previous page
+		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+	} else {
+		// if all the fields are filled (not empty)
+
+		//insert data to database
+		;
+		$result = mysqli_query($mysqli, "INSERT INTO corporation (account_number, street_address, city, zip, phone_number) VALUES ( '$account_number', '$street_address', '$city', '$zip', '$phone_number')");
+
+		//display success message
+		echo "<font color='green'>Corporation added successfully.";
+		echo "<br/><a href='corp_index.php'>View Result</a>";
 	}
 }
 ?>
@@ -43,33 +58,44 @@ $result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
+	$account_number = $res['account_number'];
+	$street_address = $res['street_address'];
+	$city = $res['city'];
+	$zip = $res['zip'];
 	$age = $res['age'];
-	$email = $res['email'];
+	$phone_number = $res['phone_number'];
 }
 ?>
 <html>
-<head>	
-	<title>Edit Data</title>
+<head>
+	<title>Edit Corporation</title>
 </head>
 
 <body>
-	<a href="index.php">Home</a>
+	<a href="corp_index.php">Corporation Home</a>
 	<br/><br/>
-	
+
 	<form name="form1" method="post" action="edit.php">
 		<table border="0">
-			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
+			<tr>
+				<td>Account Number</td>
+				<td><input type="text" name="account_number" value="<?php echo $account_number;?>"></td>
 			</tr>
-			<tr> 
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
+			<tr>
+				<td>Street Address</td>
+				<td><input type="text" name="street_address" value="<?php echo $street_address;?>"></td>
 			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
+			<tr>
+				<td>City</td>
+				<td><input type="text" name="city" value="<?php echo $city;?>"></td>
+			</tr>
+			<tr>
+				<td>Zip</td>
+				<td><input type="text" name="zip" value="<?php echo $zip;?>"></td>
+			</tr>
+			<tr>
+				<td>Phone Number</td>
+				<td><input type="text" name="phone_number" value="<?php echo $phone_number;?>"></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>

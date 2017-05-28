@@ -7,22 +7,22 @@ CREATE TABLE car (
   color varchar(255),
   license_number varchar(255),
   state varchar(255),
-  mileage INT,
+  mileage varchar(255),
   vin varchar(255) NOT NULL UNIQUE,
   PRIMARY KEY (vin)
 );
 
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'jeep', 'wrangler', '', 'blue', '3UWA7G', 'florida', 7841, 'QJX968ND1X');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'jeep', 'cherokee', '', 'white', 'HKY591', 'michigan', 3351, '546UYISMCU');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'chrysler', '200', '', 'black', 'ZKWAA3', 'colorado', 1502, 'NBD3WO54AG');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'taurus', '', 'tan', 'ED3D4F', 'new york', 658, 'PR6NSWDBVY');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'fiesta', '', 'orange', 'KJC35C', 'kansas', 1509, 'W51B9UDW23');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'mustang', '', 'green', 'CN589J', 'georgia', 1754, 'QK995MY4AR');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'mustang', '', 'red', 'RJK2QU', 'alabama', 3318, '2A6U1PY7RZ');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'gmc', 'sierra', '', 'white', 'F80YT5', 'ohio', 9829, 'GT25ZS0ICD');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'gmc', 'yukon', '', 'blue', 'GDDGZ8', 'maryland', 3202, 'HEO3LNA7BS');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'dodge', 'charger', '', 'yellow', 'KBC0LI', 'virginia', 2609, 'BGPHQS1HO6');
-INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'dodge', 'avenger', '', 'green', 'WI87PT', 'california', 4669, 'PNUABRRPDX');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'jeep', 'wrangler', '', 'blue', '3UWA7G', 'florida', '7841', 'QJX968ND1X');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'jeep', 'cherokee', '', 'white', 'HKY591', 'michigan', '3351', '546UYISMCU');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'chrysler', '200', '', 'black', 'ZKWAA3', 'colorado', '1502', 'NBD3WO54AG');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'taurus', '', 'tan', 'ED3D4F', 'new york', '658', 'PR6NSWDBVY');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'fiesta', '', 'orange', 'KJC35C', 'kansas', '1509', 'W51B9UDW23');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'mustang', '', 'green', 'CN589J', 'georgia', '1754', 'QK995MY4AR');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'ford', 'mustang', '', 'red', 'RJK2QU', 'alabama', '3318', '2A6U1PY7RZ');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'gmc', 'sierra', '', 'white', 'F80YT5', 'ohio', '9829', 'GT25ZS0ICD');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'gmc', 'yukon', '', 'blue', 'GDDGZ8', 'maryland', '3202', 'HEO3LNA7BS');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'dodge', 'charger', '', 'yellow', 'KBC0LI', 'virginia', '2609', 'BGPHQS1HO6');
+INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( 'dodge', 'avenger', '', 'green', 'WI87PT', 'california', '4669', 'PNUABRRPDX');
 
 CREATE TABLE representative (
   first_name varchar(255),
