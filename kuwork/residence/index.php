@@ -4,7 +4,7 @@ include_once("../config.php");
 
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
-$result = mysqli_query($mysqli, "SELECT * FROM address"); // using mysqli_query instead
+$result = mysqli_query($mysqli, "SELECT * FROM residence"); // using mysqli_query instead
 ?>
 
 
@@ -32,10 +32,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM address"); // using mysqli_query 
 
 	while($res = mysqli_fetch_array($result)) {
 		echo "{";
-		echo "\"street\":\"".$res['street']."\",";
-		echo "\"city\":\"".$res['city']."\",";
-		echo "\"state\":\"".$res['state']."\",";
-		echo "\"zip_code\":\"".$res['zip_code']."\"";
+		echo "\"residence_id\":\"".$res['residence_id']."\",";
+		echo "\"landlord_email\":\"".$res['landlord_email']."\",";
+		echo "\"landlord_phone_num\":\"".$res['landlord_phone_num']."\",";
+		echo "\"rent\":\"".$res['rent']."\",";
+		echo "\"address_id\":\"".$res['address_id']."\",";
+		echo "\"residence_reviews\":\"".$res['residence_reviews']."\",";
+		echo "\"residence_image\":\"".$res['residence_image']."\",";
 		echo "}";
 //		echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}

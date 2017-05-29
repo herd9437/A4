@@ -4,7 +4,7 @@ include_once("../config.php");
 
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
-$result = mysqli_query($mysqli, "SELECT * FROM address"); // using mysqli_query instead
+$result = mysqli_query($mysqli, "SELECT * FROM company"); // using mysqli_query instead
 ?>
 
 
@@ -32,10 +32,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM address"); // using mysqli_query 
 
 	while($res = mysqli_fetch_array($result)) {
 		echo "{";
-		echo "\"street\":\"".$res['street']."\",";
-		echo "\"city\":\"".$res['city']."\",";
-		echo "\"state\":\"".$res['state']."\",";
-		echo "\"zip_code\":\"".$res['zip_code']."\"";
+		echo "\"comp_name\":\"".$res['comp_name']."\",";		
+		echo "\"description\":\"".$res['description']."\",";
+		echo "\"address_id\":\"".$res['address_id']."\",";
 		echo "}";
 //		echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
