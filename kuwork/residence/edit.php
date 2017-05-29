@@ -5,76 +5,44 @@ include_once("config.php");
 if(isset($_POST['update']))
 {
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
+	$residence_id = mysqli_real_escape_string($mysqli, $_POST['residence_id']);
 
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$landlord_email = mysqli_real_escape_string($mysqli, $_POST['landlord_email']);
+	$landlord_phone_num = mysqli_real_escape_string($mysqli, $_POST['landlord_phone_num']);
+	$rent = mysqli_real_escape_string($mysqli, $_POST['rent']);
+	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
+	$residence_reviews = mysqli_real_escape_string($mysqli, $_POST['residence_reviews']);
+	$residence_image = mysqli_real_escape_string($mysqli, $_POST['residence_image']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($residence_id)) {
 
-		if(empty($name)) {
+		if(empty($residence_id)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
-		}
-
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}
 	} else {
 		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+		$result = mysqli_query($mysqli, "UPDATE residence SET landlord_email='$landlord_email',landlord_phone_num='$landlord_phone_num',rent='$rent',address_id='$address_id',residence_reviews='$residence_reviews',residence_image='$residence_image' WHERE residence_id=$residence_id");
 		echo "{'status':'success','message':'Residence updated successfully'}";
 
 	}
 }
 ?>
 <?php
-//getting id from url
-$id = $_GET['id'];
+//getting residence_id from url
+$residence_id = $_GET['residence_id'];
 
-//selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+//selecting data associated with this particular residence_id
+$result = mysqli_query($mysqli, "SELECT * FROM residence WHERE residence_id=$residence_id");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	$landlord_email = $res['landlord_email'];
+	$landlord_phone_num = $res['landlord_phone_num'];
+	$rent = $res['rent'];
+	$address_id = $res['address_id'];
+	$residence_reviews = $res['residence_reviews'];
+	$residence_image = $res['residence_image'];
 }
 ?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
-
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
-</html>
