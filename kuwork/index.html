@@ -51,11 +51,6 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
-              <li><a href="/activities">Activities</a></li>
-              <li><a href="/companies">Companies</a></li>
-              <li><a href="/residencies">Residencies</a></li>
-              <li><a href="/students">Students</a></li>
-
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
@@ -205,28 +200,37 @@
             kuCtrl.companyList = [];
             kuCtrl.resienceList = [];
 
+            $scope.updateActivityList = function (activityInfo) {
+                kuCtrl.activityList = activityInfo.data;
+                console.log(kuCtrl.activityList);
+            };
+
+            $scope.updateStudentList = function (studentInfo) {
+                kuCtrl.studentList = studentInfo.data;
+                console.log(kuCtrl.studentList);
+            };
+
+            $scope.updateCompanyList = function (companyInfo) {
+                kuCtrl.companyList = companInfo.data;
+                console.log(kuCtrl.companyList);
+            };
+            
+            $scope.updateResidenceList = function (residenceInfo) {
+                kuCtrl.residenceList = residenceInfo.data;
+                console.log(kuCtrl.residenceList);
+            };
+
             kuCtrl.retrieveActivities = function () {
                     console.log("retrieving activitiy list");
                     $http({
                         method: 'GET',
                         url: '/app/activities'
                     }).then(function successCallback(response) {
-                        kuCtrl.activityList = response.data;
                         console.log("success!");
+                        $scope.updateActivityList(response);
                     }, function errorCallbac(response) {
                         console.log("Error, could not retrieve activities");
                     });
-            };
-
-            $scope.updateStudentList = function (sample) {
-                        kuCtrl.studentList = sample;
-                        //Array.prototype.push.apply(this.studentList, sample);
-                        console.log(kuCtrl.studentList);
-            };
-            
-            $scope.updateResidenceList = function (residenceInfo) {
-                kuCtrl.residenceList = residenceInfo.data;
-                console.log(kuCtrl.residenceList);
             };
 
             kuCtrl.retrieveStudents = function () {
@@ -235,23 +239,10 @@
                         method: 'GET',
                         url: '/app/students'
                     }).then(function successCallback(response) {
-                      console.log(response.data["data"]);
-                      var sample = [{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
-//                     kuCtrl.studentList = angular.copy(kuCtrl.studentList);
-                      $scope.updateStudentList(sample);
-//                      var sample =[];
-//                      kuCtrl.studentList.push();
-//                      $scope.$apply();
-//                      $scope.$apply();
-//                        kuCtrl.studentList = response.data;
                         console.log("success!");
+                        $scope.updateStudentList(response);
                     }, function errorCallback(response) {
                         console.log("Error, could not retrieve students");
-
-                        var sample =[{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
-
-                        $scope.updateStudentList(sample);
-
                     });
             };
 
@@ -261,28 +252,14 @@
                         method: 'GET',
                         url: '/app/companies'
                     }).then(function successCallback(response) {
-                        kuCtrl.companyList = response.data;
                         console.log("success!");
+                        $scope.updateCompanyList(response);
                     }, function errorCallbac(response) {
                         console.log("Error, could not retrieve companies");
                     });
             };
 
-        //     kuCtrl.retrieveResidencies = function () {
-        //             console.log("retrieving residence list");
-        //             $http({
-        //                 method: 'GET',
-        //                 url: '/app/residencies'
-        //             }).then(function successCallback(response) {
-        //                 kuCtrl.resienceList = response.data;
-        //                 console.log("success!");
-        //             }, function errorCallbac(response) {
-        //                 console.log("Error, could not retrieve residencies");
-        //             });
-        //     };
-        // }]);
-
-          kuCtrl.retrieveResidencies = function () {
+            kuCtrl.retrieveResidencies = function () {
                     console.log("retrieving residence list");
                     $http({
                         method: 'GET',
