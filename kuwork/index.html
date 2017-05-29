@@ -74,7 +74,7 @@
         </ul>
 
         <!-- Search Modal -->
-        <div class="modal fade" id="results" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!--<div class="modal fade" id="results" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -101,7 +101,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
         <!-- Modal -->
         <div class="modal fade" id="Companies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -111,11 +111,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Companies</h4>
               </div>
-              <div class="modal-body" ng-model="KUCtrl.companyList">
+              <div class="modal-body">
+                <!-- item as item.label for item in items track by item.id -->
+                <li ng-repeat="company in KUCtrl.companyList track by $index">
+                  {{company}}
+                </li>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-primary">ADD</button>
+                <button type="button" class="btn btn-primary">UPDATE</button>
+                <button type="button" class="btn btn-primary">DELETE</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -130,14 +136,15 @@
                 <h4 class="modal-title" id="myModalLabel">Residencies</h4>
               </div>
               <div class="modal-body">
-                <!-- item as item.label for item in items track by item.id -->
                 <li ng-repeat="residence in KUCtrl.residenceList track by $index">
                   {{residence}}
                 </li>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-primary">ADD</button>
+                <button type="button" class="btn btn-primary">UPDATE</button>
+                <button type="button" class="btn btn-primary">DELETE</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -151,11 +158,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Activities</h4>
               </div>
-              <div class="modal-body" ng-model="KUCtrl.activityList">
+              <div class="modal-body">
+                <li ng-repeat="activity in KUCtrl.activityList track by $index">
+                  {{activity}}
+                </li>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-primary">ADD</button>
+                <button type="button" class="btn btn-primary">UPDATE</button>
+                <button type="button" class="btn btn-primary">DELETE</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -170,14 +182,15 @@
                 <h4 class="modal-title" id="myModalLabel">Students</h4>
               </div>
               <div class="modal-body">
-                <!-- item as item.label for item in items track by item.id -->
                 <li ng-repeat="student in KUCtrl.studentList track by $index">
                   {{student}}
                 </li>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-primary">ADD</button>
+                <button type="button" class="btn btn-primary">UPDATE</button>
+                <button type="button" class="btn btn-primary">DELETE</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
