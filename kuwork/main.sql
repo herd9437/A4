@@ -7,7 +7,7 @@ CREATE TABLE activity (
   end_time TIME,
   end_date DATE,
   activity_id integer AUTO_INCREMENT UNIQUE,
-  address_id int,
+  address_id integer,
   FOREIGN KEY(address_id) REFERENCES address(address_id),
   FOREIGN KEY(coordinator_email) REFERENCES student(email),
   PRIMARY KEY (activity_id)
@@ -25,7 +25,7 @@ CREATE TABLE address (
 CREATE TABLE company (
   comp_name varchar(255),
   description varchar(1023),
-  address_id int,
+  address_id integer AUTO_INCREMENT,
   PRIMARY KEY (comp_name),
   FOREIGN KEY(address_id) REFERENCES address(address_id)
 );
@@ -45,7 +45,7 @@ CREATE TABLE student (
 );
 
 CREATE TABLE residence (
-  residence_id integer UNIQUE,
+  residence_id integer UNIQUE AUTO_INCREMENT,
   PRIMARY KEY (residence_id),
   landlord_email varchar(255),
   landlord_phone_num varchar(255),
@@ -57,10 +57,10 @@ CREATE TABLE residence (
 );
 
 CREATE TABLE vehicle (
-  vin_number int,
+  vin_number varchar (255) NOT NULL UNIQUE,
   make varchar(255) NOT NULL,
   model varchar(255) NOT NULL,
-  capacity int,
+  capacity integer,
   owner_email varchar(255) NOT NULL,
   FOREIGN KEY (owner_email) REFERENCES student(email),
   PRIMARY KEY (vin_number)
