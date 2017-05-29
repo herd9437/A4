@@ -40,9 +40,7 @@
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Company</a></li>
                     <li><a href="#">Residence</a></li>
-                    <!-- <li role="separator" class="divider"></li> -->
                     <li><a href="#">Student</a></li>
-                    <!--<li role="separator" class="divider"></li>-->
                   </ul>
                 </li>
               </ul>
@@ -57,8 +55,8 @@
               <li><a href="/residencies">Residencies</a></li>
               <li><a href="/students">Students</a></li>
 
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+            </div>
+          </div>
         </nav>
 
         <ul class="nav nav-pills nav-justified">
@@ -135,15 +133,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Residencies</h4>
               </div>
-<<<<<<< HEAD
+
               <div class="modal-body">
                 <!-- item as item.label for item in items track by item.id -->
                 <li ng-repeat="residence in KUCtrl.residenceList track by $index">
                   {{residence}}
                 </li>
-=======
               <div class="modal-body" ng-model="residenceList">
->>>>>>> bf52543f03f0d38f9d742dff2f7b96d85a88e1e5
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -201,7 +198,7 @@
       </div>
     </div>
 
-<<<<<<< HEAD
+
         <script>
 
         //This file serves as the main controller for the whole application.
@@ -252,15 +249,9 @@
                       var sample = [{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
 //                     kuCtrl.studentList = angular.copy(kuCtrl.studentList);
                       $scope.updateStudentList(sample);
-=======
-    <script type="application/javascript">
+        });
 
-    var kuWork = angular.module('kuWorkApp', []);
-    kuWork.controller('kuWorkController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
-      $scope.activityList = [];
-      $scope.studentList = [];
-      $scope.companyList = [];
-      $scope.resienceList = [];
+        };   
 
       $scope.retrieveActivities = function () {
               console.log("retrieving activitiy list");
@@ -270,34 +261,12 @@
               }).then(function successCallback(response) {
                 console.log(response.data);
                   $scope.activityList = response.data;
-                  timeout(function() {
-                    $scope.$apply();
-//                      console.log($scope.testValue++);
-                  }, 500);
                   console.log("success!");
               }, function errorCallbac(response) {
                   console.log("Error, could not retrieve activities");
               });
 
       };
-
-
-    }]);
-
-    kuWork.filter('prettyJSON', function () {
-      function prettyPrintJson(json) {
-        return JSON ? JSON.stringify(json, null, '  ') : 'your browser doesnt support JSON so cant pretty print';
-      }
-      return prettyPrintJson;
-    });
-
-
-/*
-    //This file serves as the main controller for the whole application.
-
-    (function() {
-
-        var kuCtrl = this;
 
 
 
@@ -309,7 +278,7 @@
         };
 
         retrieveStudents = function () {
-                console.log("retrieving student list");
+  
                 $http({
                     method: 'GET',
                     url: '/app/students'
@@ -318,13 +287,6 @@
                   var sample = [{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
 //                     studentList = angular.copy(studentList);
                   $scope.updateStudentList(sample);
->>>>>>> bf52543f03f0d38f9d742dff2f7b96d85a88e1e5
-//                      var sample =[];
-//                      studentList.push();
-//                      $scope.$apply();
-//                      $scope.$apply();
-<<<<<<< HEAD
-//                        kuCtrl.studentList = response.data;
                         console.log("success!");
                     }, function errorCallback(response) {
                         console.log("Error, could not retrieve students");
@@ -375,53 +337,10 @@
                         console.log("Error, could not retrieve residencies");
                     });
             };
-        }]);
-
-        })();
-        </script>
-=======
-//                        studentList = response.data;
-                    console.log("success!");
-                }, function errorCallback(response) {
-                    console.log("Error, could not retrieve students");
-
-                    var sample =[{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
-
-                    $scope.updateStudentList(sample);
-
-                });
-        };
-
-        retrieveCompanies = function () {
-                console.log("retrieving company list");
-                $http({
-                    method: 'GET',
-                    url: '/app/companies'
-                }).then(function successCallback(response) {
-                    companyList = response.data;
-                    console.log("success!");
-                }, function errorCallbac(response) {
-                    console.log("Error, could not retrieve companies");
-                });
-        };
-
-        retrieveResidencies = function () {
-                console.log("retrieving residence list");
-                $http({
-                    method: 'GET',
-                    url: '/app/residencies'
-                }).then(function successCallback(response) {
-                    resienceList = response.data;
-                    console.log("success!");
-                }, function errorCallbac(response) {
-                    console.log("Error, could not retrieve residencies");
-                });
-        };
     }]);
 
     })();
-*/
+
     </script>
->>>>>>> bf52543f03f0d38f9d742dff2f7b96d85a88e1e5
    </body>
 </html>
