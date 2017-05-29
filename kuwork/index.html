@@ -20,7 +20,8 @@
           <!--<script src="modules/displayModule.js"></script>-->
     </head>
     <body>
-      <div ng-app="kuWorkApp"><div ng-controller="kuWorkController as KUCtrl">
+      <div ng-app="kuWorkApp">
+        <div ng-controller="kuWorkController">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,19 +63,19 @@
 
         <ul class="nav nav-pills nav-justified">
           <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#activities">
-            <a href="#" ng-click="KUCtrl.retrieveActivities()">Activities</a>
+            <a href="#" ng-click="retrieveActivities()">Activities</a>
           </li>
           <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Companies">
-            <a href="#" ng-click="KUCtrl.retrieveCompanies()">Companies</a>
+            <a href="#" ng-click="retrieveCompanies()">Companies</a>
           </li>
         </ul>
 
         <ul class="nav nav-pills nav-justified">
           <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#Residencies">
-            <a href="#" ng-click="KUCtrl.retrieveResidencies()"> Residencies</a>
+            <a href="#" ng-click="retrieveResidencies()"> Residencies</a>
           </li>
           <li role="presentation" class="btn btn-lg" data-toggle="modal" data-target="#student">
-            <a href="#" ng-click="KUCtrl.retrieveStudents()"> Students</a>
+            <a href="#" ng-click="retrieveStudents()"> Students</a>
           </li>
         </ul>
 
@@ -116,7 +117,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Companies</h4>
               </div>
-              <div class="modal-body" ng-model="KUCtrl.companyList">
+              <div class="modal-body" ng-model="companyList">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -134,7 +135,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Residencies</h4>
               </div>
-              <div class="modal-body" ng-model="KUCtrl.residenceList">
+              <div class="modal-body" ng-model="residenceList">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -152,7 +153,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Activities</h4>
               </div>
-              <div class="modal-body" ng-model="KUCtrl.activityList">
+              <div class="modal-body" ng-model="activityList">
+                <ul>
+                  <li ng-repeat"address in activityList track by $index">
+                    {{ address.city }}
+                    {{ $index }}
+                  </li>
+                </ul>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -172,7 +179,7 @@
               </div>
               <div class="modal-body">
                 <!-- item as item.label for item in items track by item.id -->
-                <li ng-repeat="student in KUCtrl.studentList track by $index">
+                <li ng-repeat="student in studentList track by $index">
                   {{student}}
                 </li>
               </div>
@@ -186,94 +193,116 @@
       </div>
     </div>
 
-        <script>
+    <script type="application/javascript">
 
-        //This file serves as the main controller for the whole application.
-        var kuWork = angular.module('kuWorkApp', []);
+    var kuWork = angular.module('kuWorkApp', []);
+    kuWork.controller('kuWorkController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+      $scope.activityList = [];
+      $scope.studentList = [];
+      $scope.companyList = [];
+      $scope.resienceList = [];
 
-        (function() {
-        kuWork.controller('kuWorkController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+      $scope.retrieveActivities = function () {
+              console.log("retrieving activitiy list");
+              $http({
+                  method: 'GET',
+                  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/address/index.php'
+              }).then(function successCallback(response) {
+                console.log(response.data);
+                  $scope.activityList = response.data;
+                  timeout(function() {
+                    $scope.$apply();
+//                      console.log($scope.testValue++);
+                  }, 500);
+                  console.log("success!");
+              }, function errorCallbac(response) {
+                  console.log("Error, could not retrieve activities");
+              });
 
-            var kuCtrl = this;
+      };
 
-            kuCtrl.activityList = [];
-            kuCtrl.studentList = [];
-            kuCtrl.companyList = [];
-            kuCtrl.resienceList = [];
 
-            kuCtrl.retrieveActivities = function () {
-                    console.log("retrieving activitiy list");
-                    $http({
-                        method: 'GET',
-                        url: '/app/activities'
-                    }).then(function successCallback(response) {
-                        kuCtrl.activityList = response.data;
-                        console.log("success!");
-                    }, function errorCallbac(response) {
-                        console.log("Error, could not retrieve activities");
-                    });
-            };
+    }]);
 
-            $scope.updateStudentList = function (sample) {
-                        kuCtrl.studentList = sample;
-                        //Array.prototype.push.apply(this.studentList, sample);
-                        console.log(kuCtrl.studentList);
-            };
+    kuWork.filter('prettyJSON', function () {
+      function prettyPrintJson(json) {
+        return JSON ? JSON.stringify(json, null, '  ') : 'your browser doesnt support JSON so cant pretty print';
+      }
+      return prettyPrintJson;
+    });
 
-            kuCtrl.retrieveStudents = function () {
-                    console.log("retrieving student list");
-                    $http({
-                        method: 'GET',
-                        url: '/app/students'
-                    }).then(function successCallback(response) {
-                      console.log(response.data["data"]);
-                      var sample = [{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
-//                     kuCtrl.studentList = angular.copy(kuCtrl.studentList);
-                      $scope.updateStudentList(sample);
+
+/*
+    //This file serves as the main controller for the whole application.
+
+    (function() {
+
+        var kuCtrl = this;
+
+
+
+
+        $scope.updateStudentList = function (sample) {
+                    studentList = sample;
+                    //Array.prototype.push.apply(this.studentList, sample);
+                    console.log(studentList);
+        };
+
+        retrieveStudents = function () {
+                console.log("retrieving student list");
+                $http({
+                    method: 'GET',
+                    url: '/app/students'
+                }).then(function successCallback(response) {
+                  console.log(response.data["data"]);
+                  var sample = [{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
+//                     studentList = angular.copy(studentList);
+                  $scope.updateStudentList(sample);
 //                      var sample =[];
-//                      kuCtrl.studentList.push();
+//                      studentList.push();
 //                      $scope.$apply();
 //                      $scope.$apply();
-//                        kuCtrl.studentList = response.data;
-                        console.log("success!");
-                    }, function errorCallback(response) {
-                        console.log("Error, could not retrieve students");
+//                        studentList = response.data;
+                    console.log("success!");
+                }, function errorCallback(response) {
+                    console.log("Error, could not retrieve students");
 
-                        var sample =[{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
+                    var sample =[{"phone_number": "2722523418", "email": "au.vecchio@gmail.com", "class": "Senior", "degree": "BS", "name": "Austin Vecchio", "major": "Computer Science"}];
 
-                        $scope.updateStudentList(sample);
+                    $scope.updateStudentList(sample);
 
-                    });
-            };
+                });
+        };
 
-            kuCtrl.retrieveCompanies = function () {
-                    console.log("retrieving company list");
-                    $http({
-                        method: 'GET',
-                        url: '/app/companies'
-                    }).then(function successCallback(response) {
-                        kuCtrl.companyList = response.data;
-                        console.log("success!");
-                    }, function errorCallbac(response) {
-                        console.log("Error, could not retrieve companies");
-                    });
-            };
+        retrieveCompanies = function () {
+                console.log("retrieving company list");
+                $http({
+                    method: 'GET',
+                    url: '/app/companies'
+                }).then(function successCallback(response) {
+                    companyList = response.data;
+                    console.log("success!");
+                }, function errorCallbac(response) {
+                    console.log("Error, could not retrieve companies");
+                });
+        };
 
-            kuCtrl.retrieveResidencies = function () {
-                    console.log("retrieving residence list");
-                    $http({
-                        method: 'GET',
-                        url: '/app/residencies'
-                    }).then(function successCallback(response) {
-                        kuCtrl.resienceList = response.data;
-                        console.log("success!");
-                    }, function errorCallbac(response) {
-                        console.log("Error, could not retrieve residencies");
-                    });
-            };
-        }]);
+        retrieveResidencies = function () {
+                console.log("retrieving residence list");
+                $http({
+                    method: 'GET',
+                    url: '/app/residencies'
+                }).then(function successCallback(response) {
+                    resienceList = response.data;
+                    console.log("success!");
+                }, function errorCallbac(response) {
+                    console.log("Error, could not retrieve residencies");
+                });
+        };
+    }]);
 
-        })();
-        </script>
+    })();
+*/
+    </script>
    </body>
 </html>
