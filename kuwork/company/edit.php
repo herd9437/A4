@@ -3,77 +3,39 @@
 include_once("config.php");
 
 if(isset($_POST['update']))
-{
+{	
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
-
+	$comp_name = mysqli_real_escape_string($mysqli, $_POST['comp_name']);
+	
+	$description = mysqli_real_escape_string($mysqli, $_POST['description']);
+	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
+	
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
-
-		if(empty($name)) {
+	if(empty($name) || empty($age) || empty($email)) {	
+			
+		if(empty($comp_name)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
-		}
-
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}
-	} else {
+	} else {	
 		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
-		echo "{'status':'success','message':'Company updated successfully'}";
+		$result = mysqli_query($mysqli, "UPDATE company SET description='$description',address_id='$address_id', WHERE address_id=$address_id");
+		
+		//redirectig to the display page. In our case, it is index.php
+		header("Location: index.php");
 	}
 }
 ?>
 <?php
-//getting id from url
-$id = $_GET['id'];
+//getting company_name from url
+$comp_name = $_GET['comp_name'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM company WHERE comp_name=$comp_name");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	$description = $res['description'];
+	$address_id = $res['address_id'];
 }
 ?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
-
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
-</html>
