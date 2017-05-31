@@ -13,11 +13,10 @@
           <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<!--
+          <!--
           <script src="angular.min.js"></script>
           <script src="mainApp.js"></script>
--->
-          <!--<script src="modules/displayModule.js"></script>-->
+          <script src="modules/displayModule.js"></script>-->
     </head>
     <body>
       <div ng-app="kuWorkApp"><div ng-controller="kuWorkController as KUCtrl">
@@ -220,7 +219,7 @@
             };
 
             $scope.updateCompanyList = function (companyInfo) {
-                kuCtrl.companyList = companInfo.data;
+                kuCtrl.companyList = companyInfo.data;
                 console.log(kuCtrl.companyList);
             };
             
@@ -233,7 +232,7 @@
                     console.log("retrieving activitiy list");
                     $http({
                         method: 'GET',
-                        url: '/app/activities'
+                        url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/index.php'
                     }).then(function successCallback(response) {
                         console.log("success!");
                         $scope.updateActivityList(response);
@@ -246,7 +245,7 @@
                     console.log("retrieving student list");
                     $http({
                         method: 'GET',
-                        url: '/app/students'
+                        url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/index.php'
                     }).then(function successCallback(response) {
                         console.log("success!");
                         $scope.updateStudentList(response);
@@ -259,7 +258,7 @@
                     console.log("retrieving company list");
                     $http({
                         method: 'GET',
-                        url: '/app/companies'
+                        url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/company/index.php'
                     }).then(function successCallback(response) {
                         console.log("success!");
                         $scope.updateCompanyList(response);
@@ -272,7 +271,7 @@
                     console.log("retrieving residence list");
                     $http({
                         method: 'GET',
-                        url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/address/index.php'
+                        url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/residence/index.php'
                     }).then(function successCallback(response) {
                         console.log("success!");
                         $scope.updateResidenceList(response);
