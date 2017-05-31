@@ -17,7 +17,7 @@ while($res = mysqli_fetch_array($result)) {
 	$entry = $entry . "\"rent\":\"".$res['rent']."\",";
 	$entry = $entry . "\"address_id\":\"".$res['address_id']."\",";
 	$entry = $entry . "\"residence_reviews\":\"".$res['residence_reviews']."\",";
-	$entry = $entry . "\"residence_image\":\"".$res['residence_image']."\",";
+	$entry = $entry . "\"residence_image\":\"".$res['residence_image']."\"";
 	$entry = $entry . "}";
 	array_push($data, $entry);
 }

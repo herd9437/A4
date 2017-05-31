@@ -13,7 +13,7 @@ while($res = mysqli_fetch_array($result)) {
 	$entry = $entry . "{";
 	$entry = $entry . "\"comp_name\":\"".$res['comp_name']."\",";
 	$entry = $entry . "\"description\":\"".$res['description']."\",";
-	$entry = $entry . "\"address_id\":\"".$res['address_id']."\",";
+	$entry = $entry . "\"address_id\":\"".$res['address_id']."\"";
 	$entry = $entry . "}";
 	array_push($data, $entry);
 }

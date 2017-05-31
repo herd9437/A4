@@ -19,7 +19,7 @@ while($res = mysqli_fetch_array($result)) {
 	$entry = $entry . "\"end_time\":\"".$res['end_time']."\",";
 	$entry = $entry . "\"end_date\":\"".$res['end_date']."\",";
 	$entry = $entry . "\"activity_id\":\"".$res['activity_id']."\",";
-	$entry = $entry . "\"address_id\":\"".$res['address_id']."\",";
+	$entry = $entry . "\"address_id\":\"".$res['address_id']."\"";
 	$entry = $entry . "}";
 	array_push($data, $entry);
 }

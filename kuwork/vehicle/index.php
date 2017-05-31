@@ -15,7 +15,7 @@ while($res = mysqli_fetch_array($result)) {
 	$entry = $entry . "\"make\":\"".$res['make']."\",";
 	$entry = $entry . "\"model\":\"".$res['model']."\",";
 	$entry = $entry . "\"capacity\":\"".$res['capacity']."\",";
-	$entry = $entry . "\"owner_email\":\"".$res['owner_email']."\",";
+	$entry = $entry . "\"owner_email\":\"".$res['owner_email']."\"";
 	$entry = $entry . "}";
 	array_push($data, $entry);
 }
