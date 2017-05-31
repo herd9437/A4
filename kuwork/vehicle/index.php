@@ -6,19 +6,19 @@ include_once("../config.php");
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
 $result = mysqli_query($mysqli, "SELECT * FROM vehicle"); // using mysqli_query instead
 
-//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array
-echo "[";
+$data = array();
 
 while($res = mysqli_fetch_array($result)) {
-	echo "{";
-	echo "\"vin_number\":\"".$res['vin_number']."\",";
-	echo "\"make\":\"".$res['make']."\",";
-	echo "\"model\":\"".$res['model']."\",";
-	echo "\"capacity\":\"".$res['capacity']."\",";
-	echo "\"owner_email\":\"".$res['owner_email']."\",";
-	echo "}";
-//		echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+	$entry = "";
+	$entry = $entry . "{";
+	$entry = $entry . "\"vin_number\":\"".$res['vin_number']."\",";
+	$entry = $entry . "\"make\":\"".$res['make']."\",";
+	$entry = $entry . "\"model\":\"".$res['model']."\",";
+	$entry = $entry . "\"capacity\":\"".$res['capacity']."\",";
+	$entry = $entry . "\"owner_email\":\"".$res['owner_email']."\",";
+	$entry = $entry . "}";
+	array_push($data, $entry);
 }
 
-echo "]";
+echo '[' . implode(',', $data) . ']';
 ?>
