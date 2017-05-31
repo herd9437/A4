@@ -1,46 +1,38 @@
-<html>
-<head>
-	<title>Add Data</title>
-</head>
-
-<body>
 <?php
 //including the database connection file
 include_once("../config.php");
 
 //if(isset($_POST['Submit'])) {
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$street = mysqli_real_escape_string($mysqli, $_POST['street']);
+	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
+	$zip_code = mysqli_real_escape_string($mysqli, $_POST['zip_code']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($street) || empty($city) || empty($state) || empty($zip_code)) {
+		$errors = array();
 
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($street)) {
+			array_push($errors,"{'status':'error','message':'Street field is empty.'}");
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+		if(empty($city)) {
+			array_push($errors,"{'status':'error','message':'City field is empty.'}");
 		}
 
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
+		if(empty($state)) {
+			array_push($errors,"{'status':'error','message':'State field is empty.'}");
 		}
 
-		//link to the previous page
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+		if(empty($zip_code)) {
+			array_push($errors,"{'status':'error','message':'Zip Code field is empty.'}");
+		}
+
+		echo '[' . implode(',', $errors) . ']';
 	} else {
-		// if all the fields are filled (not empty)
 
-		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO users(name,age,email) VALUES('$name','$age','$email')");
+		$result = mysqli_query($mysqli, "INSERT INTO Address (street,city,state,zip_code) VALUES('$street','$city','$state','$zip_code')");
+		echo "{'status':'success','message':'Address successfully created.'}";
 
-		//display success message
-//		echo "<font color='green'>Data added successfully.";
-//		echo "<br/><a href='index.php'>View Result</a>";
 	}
-//}
 ?>
-</body>
-</html>

@@ -37,13 +37,13 @@ include_once("../config.php");
 			echo "<font color='red'>Major field is empty.</font><br/>";
 		}
 
-		//link to the previous page
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+		echo '[' . implode(',', $errors) . ']';
 	} else {
 		// if all the fields are filled (not empty)
 
 		//insert data to database
 		$result = mysqli_query($mysqli, "INSERT INTO student(email,phone_number,name,degree,major,class_standing,company_name,residence_id) VALUES('$email','$phone_number','$name','$degree','$major','$class_standing','$company_name','$residence_id')");
+		echo "{'status':'success','message':'Student successfully created.'}";
 
 		//display success message
 //		echo "<font color='green'>Data added successfully.";

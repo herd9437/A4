@@ -15,6 +15,7 @@ include_once("../config.php");
 
 	// checking empty fields
 	if(empty($name) || empty($age) || empty($email)) {
+		$errors = array();
 
 		if(empty($name)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
@@ -28,13 +29,13 @@ include_once("../config.php");
 			echo "<font color='red'>Email field is empty.</font><br/>";
 		}
 
-		//link to the previous page
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+		echo '[' . implode(',', $errors) . ']';
 	} else {
 		// if all the fields are filled (not empty)
 
 		//insert data to database
 		$result = mysqli_query($mysqli, "INSERT INTO users(name,age,email) VALUES('$name','$age','$email')");
+		echo "{'status':'success','message':'Vehicle successfully created.'}";
 
 		//display success message
 //		echo "<font color='green'>Data added successfully.";

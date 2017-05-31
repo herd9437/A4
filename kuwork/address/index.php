@@ -15,7 +15,6 @@ while($res = mysqli_fetch_array($result)) {
 	echo "\"state\":\"".$res['state']."\",";
 	echo "\"zip_code\":\"".$res['zip_code']."\"";
 	echo "}";
-//		echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 }
 
 echo "]";

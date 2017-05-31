@@ -24,13 +24,13 @@ include_once("../config.php");
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
 
-		//link to the previous page
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+		echo '[' . implode(',', $errors) . ']';
 	} else {
 		// if all the fields are filled (not empty)
 
 		//insert data to database
 		$result = mysqli_query($mysqli, "INSERT INTO residence(residence_id,landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES('$residence_id','$landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
+		echo "{'status':'success','message':'Residence successfully created.'}";
 
 		//display success message
 //		echo "<font color='green'>Data added successfully.";

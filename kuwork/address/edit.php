@@ -1,36 +1,44 @@
 <?php
 // including the database connection file
-include_once("config.php");
+include_once("../config.php");
 
 if(isset($_POST['update']))
 {
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
+	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
 
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$street = mysqli_real_escape_string($mysqli, $_POST['street']);
+	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
+	$zip_code = mysqli_real_escape_string($mysqli, $_POST['zip_code']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($street) || empty($city) || empty($state) || empty($zip_code)) {
+		$errors = array();
 
-		if(empty($name)) {
-			echo "{'message':'Name field is empty.</font><br/>";
+		if(empty($street)) {
+			array_push($errors,"{'status':'error','message':'Street field is empty.'}");
 		}
 
-		if(empty($age)) {
-			echo "{'message':'Age field is empty.</font><br/>";
+		if(empty($city)) {
+			array_push($errors,"{'status':'error','message':'City field is empty.'}");
 		}
 
-		if(empty($email)) {
-			echo "{'message':'Email field is empty.'}'";
+		if(empty($state)) {
+			array_push($errors,"{'status':'error','message':'State field is empty.'}");
 		}
+
+		if(empty($zip_code)) {
+			array_push($errors,"{'status':'error','message':'Zip Code field is empty.'}");
+		}
+
+		echo '[' . implode(',', $errors) . ']';
 	} else {
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
-		echo "{'status':'success','message':'Address updated successfully'}";
+
+		$result = mysqli_query($mysqli, "INSERT INTO Address (street,city,state,zip_code) VALUES('$street','$city','$state','$zip_code')");
+		echo "{'status':'success','message':'Address successfully created.'}";
+
 	}
-}
 ?>
 <?php
 //getting id from url
@@ -46,34 +54,3 @@ while($res = mysqli_fetch_array($result))
 	$email = $res['email'];
 }
 ?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
-
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
-</html>

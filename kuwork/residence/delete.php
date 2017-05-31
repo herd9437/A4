@@ -3,12 +3,10 @@
 include("config.php");
 
 //getting residence_id of the data from url
-$id = $_GET['residence_id'];
+$residence_id = $_GET['residence_id'];
 
 //deleting the row from table
 $result = mysqli_query($mysqli, "DELETE FROM residence WHERE residence_id=$residence_id");
 
-//redirecting to the display page (index.php in our case)
-header("Location:index.php");
+echo "{'status':'success','message':'Activity deleted successfully'}";
 ?>
-

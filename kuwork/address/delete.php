@@ -1,14 +1,12 @@
 <?php
 //including the database connection file
-include("config.php");
+include("../config.php");
 
 //getting id of the data from url
-$id = $_GET['id'];
+$address_id = $_GET['address_id'];
 
 //deleting the row from table
-$result = mysqli_query($mysqli, "DELETE FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "DELETE FROM address WHERE address_id=$address_id");
 
-//redirecting to the display page (index.php in our case)
-header("Location:index.php");
+echo "{'status':'success','message':'Activity deleted successfully'}";
 ?>
-
