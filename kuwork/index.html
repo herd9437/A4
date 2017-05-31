@@ -184,6 +184,28 @@
             kuCtrl.companyList = [];
             kuCtrl.resienceList = [];
 
+            kuCtrl.selectedModel = 'company';
+
+            kuCtrl.modelFields = [
+ 	        {
+    		    'table' : 'company',
+    		    'fields' : [
+      			{
+        		    'name' : 'comp_name',
+        		    'type' : 'text'
+      			},
+      			{
+        		    'name' : 'description',
+        		    'type' : 'text'
+      			},
+      			{
+        		    'name' : 'address_id',
+        		    'type' : 'integer'
+      			}
+    		    ]
+  		}
+	    ];
+
             vex.defaultOptions.className = 'vex-theme-os';
 
             kuCtrl.modifyObject = function(){
