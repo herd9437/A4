@@ -39,18 +39,22 @@ if(isset($_POST['update']))
 		echo "{'status':'success','message':'Address successfully created.'}";
 
 	}
-?>
-<?php
-//getting id from url
-$id = $_GET['id'];
 
-//selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+if(isset($_GET['address_id'])){
+	//getting id from url
+	$address_id = $_GET['address_id'];
 
-while($res = mysqli_fetch_array($result))
-{
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	//selecting data associated with this particular id
+	$result = mysqli_query($mysqli, "SELECT * FROM address WHERE address_id=$address_id");
+
+	while($res = mysqli_fetch_array($result))
+	{
+		echo "{";
+		echo "\"street\":\"".$res['street']."\",";
+		echo "\"city\":\"".$res['city']."\",";
+		echo "\"state\":\"".$res['state']."\",";
+		echo "\"zip_code\":\"".$res['zip_code']."\"";
+		echo "}";
+	}
 }
 ?>

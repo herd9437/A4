@@ -7,42 +7,60 @@ if(isset($_POST['update']))
 
 	$residence_id = mysqli_real_escape_string($mysqli, $_POST['residence_id']);
 
-	$landlord_email = mysqli_real_escape_string($mysqli, $_POST['landlord_email']);
-	$landlord_phone_num = mysqli_real_escape_string($mysqli, $_POST['landlord_phone_num']);
-	$rent = mysqli_real_escape_string($mysqli, $_POST['rent']);
-	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
-	$residence_reviews = mysqli_real_escape_string($mysqli, $_POST['residence_reviews']);
-	$residence_image = mysqli_real_escape_string($mysqli, $_POST['residence_image']);
+	if(empty($lanlord_email) || empty($landlord_phone_num) || empty($rent) || empty($address_id) || empty($residence_reviews) || empty($residence_image)) {
+		$errors = array();
 
-	// checking empty fields
-	if(empty($residence_id)) {
-
-		if(empty($residence_id)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($lanlord_email)) {
+			array_push($errors,"{'status':'error','message':'Landlord Email field is empty.'}");
 		}
 
-	} else {
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE residence SET landlord_email='$landlord_email',landlord_phone_num='$landlord_phone_num',rent='$rent',address_id='$address_id',residence_reviews='$residence_reviews',residence_image='$residence_image' WHERE residence_id=$residence_id");
-		echo "{'status':'success','message':'Residence updated successfully'}";
+		if(empty($landlord_phone_num)) {
+			array_push($errors,"{'status':'error','message':'Landlord Phone Number field is empty.'}");
+		}
 
+		if(empty($rent)) {
+			array_push($errors,"{'status':'error','message':'Rent field is empty.'}");
+		}
+
+		if(empty($address_id)) {
+			array_push($errors,"{'status':'error','message':'Address Id field is empty.'}");
+		}
+
+		if(empty($residence_reviews)) {
+			array_push($errors,"{'status':'error','message':'Residence Review field is empty.'}");
+		}
+
+		if(empty($residence_image)) {
+			array_push($errors,"{'status':'error','message':'Residence Image field is empty.'}");
+		}
+
+		echo '[' . implode(',', $errors) . ']';
+	} else {
+
+		$result = mysqli_query($mysqli, "INSERT INTO residence(landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES($landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
+		echo "{'status':'success','message':'Residence successfully created.'}";
 	}
 }
-?>
-<?php
-//getting residence_id from url
-$residence_id = $_GET['residence_id'];
 
-//selecting data associated with this particular residence_id
-$result = mysqli_query($mysqli, "SELECT * FROM residence WHERE residence_id=$residence_id");
+if(isset($_GET['residence_id'])){
+	//getting residence_id from url
+	$residence_id = $_GET['residence_id'];
 
-while($res = mysqli_fetch_array($result))
-{
-	$landlord_email = $res['landlord_email'];
-	$landlord_phone_num = $res['landlord_phone_num'];
-	$rent = $res['rent'];
-	$address_id = $res['address_id'];
-	$residence_reviews = $res['residence_reviews'];
-	$residence_image = $res['residence_image'];
+	//selecting data associated with this particular residence_id
+	$result = mysqli_query($mysqli, "SELECT * FROM residence WHERE residence_id=$residence_id");
+
+	while($res = mysqli_fetch_array($result))
+	{
+		echo "{";
+		echo "\"residence_id\":\"".$res['residence_id']."\",";
+		echo "\"landlord_email\":\"".$res['landlord_email']."\",";
+		echo "\"landlord_phone_num\":\"".$res['landlord_phone_num']."\",";
+		echo "\"rent\":\"".$res['rent']."\",";
+		echo "\"address_id\":\"".$res['address_id']."\",";
+		echo "\"residence_reviews\":\"".$res['residence_reviews']."\",";
+		echo "\"residence_image\":\"".$res['residence_image']."\",";
+		echo "}";
+	}
 }
+
 ?>

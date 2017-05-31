@@ -61,13 +61,17 @@ if(isset($_GET['activity_id'])){
 
 	while($res = mysqli_fetch_array($result))
 	{
-		$coordinator_email = $res['coordinator_email'];
-		$description = $res['description'];
-		$start_time = $res['start_time'];
-		$start_date = $res['start_date'];
-		$end_time = $res['end_time'];
-		$end_date = $res['end_date'];
-		$address_id = $res['address_id'];
+		echo "{";
+		echo "\"name\":\"".$res['name']."\",";
+		echo "\"coordinator_email\":\"".$res['coordinator_email']."\",";
+		echo "\"description\":\"".$res['description']."\",";
+		echo "\"start_time\":\"".$res['start_time']."\",";
+		echo "\"start_date\":\"".$res['start_date']."\",";
+		echo "\"end_time\":\"".$res['end_time']."\",";
+		echo "\"end_date\":\"".$res['end_date']."\",";
+		echo "\"activity_id\":\"".$res['activity_id']."\",";
+		echo "\"address_id\":\"".$res['address_id']."\",";
+		echo "}";
 	}
 }
 

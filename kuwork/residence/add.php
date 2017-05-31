@@ -1,9 +1,3 @@
-<html>
-<head>
-	<title>Add Data</title>
-</head>
-
-<body>
 <?php
 //including the database connection file
 include_once("../config.php");
@@ -18,25 +12,39 @@ include_once("../config.php");
 	$residence_image = mysqli_real_escape_string($mysqli, $_POST['residence_image']);
 
 	// checking empty fields
-	if(empty($residence_id)) {
+	if(empty($lanlord_email) || empty($landlord_phone_num) || empty($rent) || empty($address_id) || empty($residence_reviews) || empty($residence_image)) {
+		$errors = array();
 
-		if(empty($residence_id)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($lanlord_email)) {
+			array_push($errors,"{'status':'error','message':'Landlord Email field is empty.'}");
+		}
+
+		if(empty($landlord_phone_num)) {
+			array_push($errors,"{'status':'error','message':'Landlord Phone Number field is empty.'}");
+		}
+
+		if(empty($rent)) {
+			array_push($errors,"{'status':'error','message':'Rent field is empty.'}");
+		}
+
+		if(empty($address_id)) {
+			array_push($errors,"{'status':'error','message':'Address Id field is empty.'}");
+		}
+
+		if(empty($residence_reviews)) {
+			array_push($errors,"{'status':'error','message':'Residence Review field is empty.'}");
+		}
+
+		if(empty($residence_image)) {
+			array_push($errors,"{'status':'error','message':'Residence Image field is empty.'}");
 		}
 
 		echo '[' . implode(',', $errors) . ']';
 	} else {
-		// if all the fields are filled (not empty)
 
-		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO residence(residence_id,landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES('$residence_id','$landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
+		$result = mysqli_query($mysqli, "INSERT INTO residence(landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES($landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
 		echo "{'status':'success','message':'Residence successfully created.'}";
 
-		//display success message
-//		echo "<font color='green'>Data added successfully.";
-//		echo "<br/><a href='index.php'>View Result</a>";
 	}
 //}
 ?>
-</body>
-</html>

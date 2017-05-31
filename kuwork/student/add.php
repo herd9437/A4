@@ -20,6 +20,7 @@ include_once("../config.php");
 
 	// checking empty fields
 	if(empty($email) || empty($name) || empty($degree) || empty($major)) {
+		$errors = array();
 
 		if(empty($email)) {
 			echo "<font color='red'>Email field is empty.</font><br/>";

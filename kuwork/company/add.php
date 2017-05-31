@@ -14,7 +14,8 @@ include_once("../config.php");
 	$address_id = mysqli_real_escape_string($mysqli, $_POST['email']);
 
 	// checking empty fields
-	if(empty($comp_name)) {
+	if(empty($comp_name) || empty($description)) {
+		$errors = array();
 
 		if(empty($comp_name)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
