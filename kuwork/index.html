@@ -72,36 +72,6 @@
           </li>
         </ul>
 
-        <!-- Search Modal -->
-        <!--<div class="modal fade" id="results" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Results</h4>
-              </div>
-              <div class="modal-body">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <td>Name</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>-->
-
         <!-- Modal -->
         <div class="modal fade" id="Companies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -114,7 +84,7 @@
                 <!-- item as item.label for item in items track by item.id -->
                 <li ng-repeat="company in KUCtrl.companyList track by $index">
                   {{company}}
-                  <button type="button" class="btn btn-primary">DELETE</button>
+                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteCompany()">DELETE</button>
                 </li>
               </div>
               <div class="modal-footer">
@@ -136,7 +106,7 @@
               <div class="modal-body">
                 <li ng-repeat="residence in KUCtrl.residenceList track by $index">
                   {{residence}}
-                <button type="button" class="btn btn-primary">DELETE</button>
+                <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteResidence()">DELETE</button>
                 </li>
               </div>
               <div class="modal-footer">
@@ -158,7 +128,7 @@
               <div class="modal-body">
                 <li ng-repeat="activity in KUCtrl.activityList track by $index">
                   {{activity}}
-                  <button type="button" class="btn btn-primary">DELETE</button>
+                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteActivity()">DELETE</button>
                 </li>
               </div>
               <div class="modal-footer">
@@ -180,7 +150,7 @@
               <div class="modal-body">
                 <li ng-repeat="student in KUCtrl.studentList track by $index">
                   {{student}}
-                  <button type="button" class="btn btn-primary">DELETE</button>
+                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteStudent()">DELETE</button>
                 </li>
               </div>
               <div class="modal-footer">
@@ -207,6 +177,23 @@
             kuCtrl.studentList = [];
             kuCtrl.companyList = [];
             kuCtrl.resienceList = [];
+
+
+            kuCtrl.deleteActivity = function (ID) {
+
+            };
+
+            kuCtrl.deleteCompany = function (ID) {
+
+            };
+
+            kuCtrl.deleteResidence = function (ID) {
+
+            };
+
+            kuCtrl.deleteStudent = function (ID) {
+
+            };
 
             $scope.updateActivityList = function (activityInfo) {
                 kuCtrl.activityList = activityInfo.data;
