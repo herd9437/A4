@@ -1,9 +1,3 @@
-<html>
-<head>
-	<title>Add Data</title>
-</head>
-
-<body>
 <?php
 //including the database connection file
 include_once("../config.php");
@@ -23,19 +17,27 @@ include_once("../config.php");
 		$errors = array();
 
 		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
+			array_push($errors,"{'status':'error','message':'Email field is empty.'}");
 		}
 
 		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+			array_push($errors,"{'status':'error','message':'Name field is empty.'}");
 		}
 
 		if(empty($degree)) {
-			echo "<font color='red'>Degree field is empty.</font><br/>";
+			array_push($errors,"{'status':'error','message':'Degree field is empty.'}");
 		}
 
 		if(empty($major)) {
-			echo "<font color='red'>Major field is empty.</font><br/>";
+			array_push($errors,"{'status':'error','message':'Major field is empty.'}");
+		}
+
+		if(empty($class_standing)) {
+			array_push($errors,"{'status':'error','message':'Class Standing field is empty.'}");
+		}
+
+		if(empty($company_name)) {
+			array_push($errors,"{'status':'error','message':'Company Name field is empty.'}");
 		}
 
 		echo '[' . implode(',', $errors) . ']';
@@ -46,11 +48,6 @@ include_once("../config.php");
 		$result = mysqli_query($mysqli, "INSERT INTO student(email,phone_number,name,degree,major,class_standing,company_name,residence_id) VALUES('$email','$phone_number','$name','$degree','$major','$class_standing','$company_name','$residence_id')");
 		echo "{'status':'success','message':'Student successfully created.'}";
 
-		//display success message
-//		echo "<font color='green'>Data added successfully.";
-//		echo "<br/><a href='index.php'>View Result</a>";
 	}
 //}
 ?>
-</body>
-</html>
