@@ -1,39 +1,43 @@
 <?php
-//including the database connection file
+
 include_once("../config.php");
 
 //if(isset($_POST['Submit'])) {
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$vin_number = mysqli_real_escape_string($mysqli, $_POST['vin_number']);
+	$make = mysqli_real_escape_string($mysqli, $_POST['make']);
+	$model = mysqli_real_escape_string($mysqli, $_POST['model']);
+	$capacity = mysqli_real_escape_string($mysqli, $_POST['capacity']);
+	$owner_email = mysqli_real_escape_string($mysqli, $_POST['owner_email']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($vin_number) || empty($make) || empty($model) || empty($capacity) || empty($owner_email)) {
 		$errors = array();
 
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($vin_number)) {
+			array_push($errors,"{'status':'error','message':'Vin Number field is empty.'}");
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+		if(empty($make)) {
+			array_push($errors,"{'status':'error','message':'Make field is empty.'}");
 		}
 
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
+		if(empty($model)) {
+			array_push($errors,"{'status':'error','message':'Model field is empty.'}");
+		}
+
+		if(empty($capacity)) {
+			array_push($errors,"{'status':'error','message':'Capacity field is empty.'}");
+		}
+
+		if(empty($owner_email)) {
+			array_push($errors,"{'status':'error','message':'Owner Email field is empty.'}");
 		}
 
 		echo '[' . implode(',', $errors) . ']';
 	} else {
-		// if all the fields are filled (not empty)
 
-		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO users(name,age,email) VALUES('$name','$age','$email')");
+		$result = mysqli_query($mysqli, "INSERT INTO vehicle(vin_number,make,model,capacity,owner_email) VALUES('$vin_number','$make','$model','$capacity','$owner_email')");
 		echo "{'status':'success','message':'Vehicle successfully created.'}";
 
-		//display success message
-//		echo "<font color='green'>Data added successfully.";
-//		echo "<br/><a href='index.php'>View Result</a>";
 	}
-//}
 ?>

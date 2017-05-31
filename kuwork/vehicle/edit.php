@@ -1,79 +1,65 @@
 <?php
 // including the database connection file
-include_once("config.php");
+include_once("../config.php");
 
 if(isset($_POST['update']))
 {
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$vin_number = mysqli_real_escape_string($mysqli, $_POST['vin_number']);
+	$make = mysqli_real_escape_string($mysqli, $_POST['make']);
+	$model = mysqli_real_escape_string($mysqli, $_POST['model']);
+	$capacity = mysqli_real_escape_string($mysqli, $_POST['capacity']);
+	$owner_email = mysqli_real_escape_string($mysqli, $_POST['owner_email']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($vin_number) || empty($make) || empty($model) || empty($capacity) || empty($owner_email)) {
+		$errors = array();
 
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($vin_number)) {
+			array_push($errors,"{'status':'error','message':'Vin Number field is empty.'}");
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+		if(empty($make)) {
+			array_push($errors,"{'status':'error','message':'Make field is empty.'}");
 		}
 
-		if(empty($email)) {
-			echo "{'status':'error','message':'Email field is empty'}";
+		if(empty($model)) {
+			array_push($errors,"{'status':'error','message':'Model field is empty.'}");
 		}
+
+		if(empty($capacity)) {
+			array_push($errors,"{'status':'error','message':'Capacity field is empty.'}");
+		}
+
+		if(empty($owner_email)) {
+			array_push($errors,"{'status':'error','message':'Owner Email field is empty.'}");
+		}
+
+		echo '[' . implode(',', $errors) . ']';
 	} else {
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
-		echo "{'status':'success','message':'Vehicle updated successfully'}";
+
+		$result = mysqli_query($mysqli, "INSERT INTO vehicle(vin_number,make,model,capacity,owner_email) VALUES('$vin_number','$make','$model','$capacity','$owner_email')");
+		echo "{'status':'success','message':'Vehicle updated successfully.'}";
+
+	}
+?>
+<?php
+if(isset($_GET['vin_number'])){
+	//getting id from url
+	$vin_number = $_GET['vin_number'];
+
+	//selecting data associated with this particular id
+	$result = mysqli_query($mysqli, "SELECT * FROM vehicle WHERE vin_number=$vin_number");
+
+	while($res = mysqli_fetch_array($result))
+	{
+		echo "{";
+		echo "\"vin_number\":\"".$res['vin_number']."\",";
+		echo "\"make\":\"".$res['make']."\",";
+		echo "\"model\":\"".$res['model']."\",";
+		echo "\"capacity\":\"".$res['capacity']."\",";
+		echo "\"owner_email\":\"".$res['owner_email']."\",";
+		echo "}";
 	}
 }
 ?>
-<?php
-//getting id from url
-$id = $_GET['id'];
-
-//selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
-
-while($res = mysqli_fetch_array($result))
-{
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
-}
-?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
-
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
-</html>
