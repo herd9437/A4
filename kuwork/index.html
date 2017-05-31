@@ -82,10 +82,12 @@
               </div>
               <div class="modal-body">
                 <!-- item as item.label for item in items track by item.id -->
-                <li ng-repeat="company in KUCtrl.companyList track by $index">
-                  {{company}}
-                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteCompany()">DELETE</button>
-                </li>
+                <div ng-repeat="company in KUCtrl.companyList track by $index">
+                  <div> Name: {{company.comp_name}} </div>
+                  <div> Address ID: {{company.address_id}},</div>
+                  <div> Description: {{company.description}}</div>
+                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteCompany(company.comp_name)">DELETE</button>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary">ADD</button>
@@ -104,10 +106,13 @@
                 <h4 class="modal-title" id="myModalLabel">Residencies</h4>
               </div>
               <div class="modal-body">
-                <li ng-repeat="residence in KUCtrl.residenceList track by $index">
-                  {{residence}}
+                <div ng-repeat="residence in KUCtrl.residenceList track by $index">
+                  <div>Residence ID: {{residence.residence_id}}</div>
+                  <div>Email: {{residence.landlord_email}}</div>
+                  <div>Phone: {{residence.landlord_phone_num}}</div>
+                  <div>Rent: {{residence.rent | currency}}</div>
                 <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteResidence()">DELETE</button>
-                </li>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary">ADD</button>
@@ -184,7 +189,13 @@
             };
 
             kuCtrl.deleteCompany = function (ID) {
-
+              //Get index
+              var index;
+              index = kuCtrl.companyList.findIndex(x => x.comp_name==ID);
+              console.log("deleting company" + ID);
+              console.log(index);
+              //remove company from array
+              kuCtrl.companyList.splice(index, 1);
             };
 
             kuCtrl.deleteResidence = function (ID) {
