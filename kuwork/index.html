@@ -8,19 +8,16 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
         <link rel="stylesheet" href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/css/vex.css"/>
         <link rel="stylesheet" href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/css/vex-theme-os.css"/>
+ 
           <!-- Latest compiled and minified JavaScript -->
           <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
           <script src="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/js/vex.min.js"></script>
           <script src="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/js/vex.combined.min.js"></script>
-          <!--
-          <script src="angular.min.js"></script>
-          <script src="mainApp.js"></script>
-          <script src="modules/displayModule.js"></script>-->
+ 
     </head>
     <body>
       <div ng-app="kuWorkApp"><div ng-controller="kuWorkController as KUCtrl">
@@ -187,24 +184,29 @@
             kuCtrl.companyList = [];
             kuCtrl.resienceList = [];
 
-            vex.dialog.open({
-                message: 'Enter your username and password:',
-                input: [
-                    '<input name="username" type="text" placeholder="Username" required />',
-                    '<input name="password" type="password" placeholder="Password" required />'
-                ].join(''),
-                buttons: [
-                    $.extend({}, vex.dialog.buttons.YES, { text: 'Login' }),
-                    $.extend({}, vex.dialog.buttons.NO, { text: 'Back' })
-                ],
-                callback: function (data) {
-                    if (!data) {
-                        console.log('Cancelled')
-                    } else {
-                        console.log('Username', data.username, 'Password', data.password)
-                    }
-                }
-            });
+            vex.defaultOptions.className = 'vex-theme-os';
+
+            kuCtrl.modifyObject = function(){
+                vex.dialog.open({
+                    message: 'Enter your username and password:',
+                    input: [
+                        '<input name="username" type="text" placeholder="Username" required />',
+                        '<input name="password" type="password" placeholder="Password" required />'
+                    ].join(''),
+                    buttons: [
+                        $.extend({}, vex.dialog.buttons.YES, { text: 'Login' }),
+                        $.extend({}, vex.dialog.buttons.NO, { text: 'Back' })
+                    ],
+                    callback: function (data) {
+                        if (!data) {
+                            console.log('Cancelled')
+                        } else {
+                            console.log(data); 
+                           //console.log('Username', data.username, 'Password', data.password)
+                        }
+            	    }
+                });
+	    }
 
 
             kuCtrl.deleteActivity = function (ID) {
