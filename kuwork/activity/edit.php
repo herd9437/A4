@@ -5,76 +5,50 @@ include_once("config.php");
 if(isset($_POST['update']))
 {
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
+	$activity_id = mysqli_real_escape_string($mysqli, $_POST['activity_id']);
 
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$coordinator_email = mysqli_real_escape_string($mysqli, $_POST['coordinator_email']);
+	$description = mysqli_real_escape_string($mysqli, $_POST['description']);
+	$start_time = mysqli_real_escape_string($mysqli, $_POST['start_time']);
+	$start_date = mysqli_real_escape_string($mysqli, $_POST['start_date']);
+	$end_time = mysqli_real_escape_string($mysqli, $_POST['end_time']);
+	$end_date = mysqli_real_escape_string($mysqli, $_POST['end_date']);
+	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($coordinator_email) || empty($address_id)) {
 
-		if(empty($name)) {
+		if(empty($coordinator_email)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
 
-		if(empty($age)) {
+		if(empty($address_id)) {
 			echo "<font color='red'>Age field is empty.</font><br/>";
 		}
 
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}
 	} else {
 		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+		$result = mysqli_query($mysqli, "UPDATE activity SET coordinator_email='$coordinator_email',description='$description',start_time='$start_time',start_date='$start_date',end_time='$end_time',end_date='$end_date',address_id='$address_id' WHERE activity_id=$activity_id");
 		echo "{'status':'success','message':'Activity updated successfully'}";
 
 	}
 }
 ?>
 <?php
-//getting id from url
-$id = $_GET['id'];
+//getting activity_id from url
+$activity_id = $_GET['activity_id'];
 
-//selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+//selecting data associated with this particular activity_id
+$result = mysqli_query($mysqli, "SELECT * FROM activity WHERE activity_id=$activity_id");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	$coordinator_email = $res['coordinator_email'];
+	$description = $res['description'];
+	$start_time = $res['start_time'];
+	$start_date = $res['start_date'];
+	$end_time = $res['end_time'];
+	$end_date = $res['end_date'];
+	$address_id = $res['address_id'];
 }
 ?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
-
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
-</html>
