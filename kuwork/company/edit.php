@@ -1,6 +1,6 @@
 <?php
 // including the database connection file
-include_once("config.php");
+include_once("../config.php");
 
 if(isset($_POST['update']))
 {
@@ -28,21 +28,19 @@ if(isset($_POST['update']))
 
 	}
 }
-?>
-<?php
 
 if(isset($_GET['comp_name'])){
 	//getting company_name from url
 	$comp_name = $_GET['comp_name'];
 
 	//selecting data associated with this particular id
-	$result = mysqli_query($mysqli, "SELECT * FROM company WHERE comp_name=$comp_name");
+	$result = mysqli_query($mysqli, "SELECT * FROM company  WHERE name='$comp_name'");
 
 	while($res = mysqli_fetch_array($result))
 	{
 		echo "{";
-		echo "\"comp_name\":\"".$res['comp_name']."\",";
-		echo "\"description\":\"".$res['description']."\",";
+		echo "\"comp_name\":\"".$res['name']."\",";
+		echo "\"description\":\"".$res['description']."\"";
 		echo "}";
 	}
 }

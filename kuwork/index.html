@@ -224,11 +224,35 @@
 
             kuCtrl.modifyObject = function(selectedModel){
 
+		var mode = 'edit';
+		var key = 'id';
+		var identifier = 'KunzLeigh';
+		switch(selectedModel) {
+		  case 'company':
+		    key = 'comp_name';
+		    break;
+		  default:
+		    key = 'id';
+		}
+		var data_store = null;
+		if(mode == 'edit'){
+			$http({
+  				method: 'GET',
+  				url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/'+selectedModel+'/edit.php?'+key+'='+identifier
+			}).then(function successCallback(response) {
+				data_store = response.data;
+				//console.log(response.data);
+	//		}, function errorCallback(response) {
+	//		});
+
+	//	}
+
 		var fields = [];
 
 		var modelFieldsLength = kuCtrl.modelFields.length;
 		var tableFields = [];
 		var tableFieldsLength = 0;
+
 		for(var i=0; i<modelFieldsLength; i++){
 			
 			if(kuCtrl.modelFields[i]["table"] == selectedModel){
@@ -239,7 +263,7 @@
 
 		for(j=0; j<tableFieldsLength; j++){
 			var field_name = tableFields[j]["name"];
-			var placeholder = kuCtrl.varToSentence(field_name);
+			var placeholder = (mode == 'edit') ? data_store[field_name] : kuCtrl.varToSentence(field_name);
 			var field_type = tableFields[j]["type"];
 			fields.push('<input name="'+field_name+'" type="'+field_type+'" placeholder="'+placeholder+'" />');
 		}
@@ -260,7 +284,12 @@
                         }
             	    }
                 });
-	    }
+				}, function errorCallback(response) {
+			});
+
+		}
+
+    }
 
 
             kuCtrl.deleteActivity = function (ID) {

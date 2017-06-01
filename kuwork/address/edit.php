@@ -39,7 +39,7 @@ if(isset($_POST['update']))
 		echo "{'status':'success','message':'Address successfully created.'}";
 
 	}
-
+}
 if(isset($_GET['address_id'])){
 	//getting id from url
 	$address_id = $_GET['address_id'];
