@@ -1,6 +1,6 @@
 <?php
 //including the database connection file
-include("config.php");
+include("../config.php");
 
 //getting residence_id of the data from url
 $residence_id = $_GET['residence_id'];
