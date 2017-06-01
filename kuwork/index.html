@@ -91,7 +91,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">ADD</button>
+                <button type="button" class="btn btn-primary" ng-click="KUCtrl.modifyObject('company')">ADD</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -184,8 +184,6 @@
             kuCtrl.companyList = [];
             kuCtrl.resienceList = [];
 
-            kuCtrl.selectedModel = 'company';
-
             kuCtrl.modelFields = [
  	        {
     		    'table' : 'company',
@@ -208,13 +206,47 @@
 
             vex.defaultOptions.className = 'vex-theme-os';
 
-            kuCtrl.modifyObject = function(){
+	    kuCtrl.capitalizeFirstLetter = function(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	    }
+
+
+	    kuCtrl.varToSentence = function(name){
+		var words = [];
+		names = name.split("_");
+		var names_length = names.length;
+		for(var i=0; i<names_length; i++){
+		    words.push(kuCtrl.capitalizeFirstLetter(names[i]));
+		}
+
+		return words.join(" ");
+	    }
+
+            kuCtrl.modifyObject = function(selectedModel){
+
+		var fields = [];
+
+		var modelFieldsLength = kuCtrl.modelFields.length;
+		var tableFields = [];
+		var tableFieldsLength = 0;
+		for(var i=0; i<modelFieldsLength; i++){
+			
+			if(kuCtrl.modelFields[i]["table"] == selectedModel){
+				tableFields = kuCtrl.modelFields[i]["fields"];
+				tableFieldsLength = tableFields.length;
+			}
+		}
+
+		for(j=0; j<tableFieldsLength; j++){
+			var field_name = tableFields[j]["name"];
+			var placeholder = kuCtrl.varToSentence(field_name);
+			var field_type = tableFields[j]["type"];
+			fields.push('<input name="'+field_name+'" type="'+field_type+'" placeholder="'+placeholder+'" />');
+		}
+
                 vex.dialog.open({
                     message: 'Enter your username and password:',
-                    input: [
-                        '<input name="username" type="text" placeholder="Username" required />',
-                        '<input name="password" type="password" placeholder="Password" required />'
-                    ].join(''),
+                    input: fields.join(''),
                     buttons: [
                         $.extend({}, vex.dialog.buttons.YES, { text: 'Login' }),
                         $.extend({}, vex.dialog.buttons.NO, { text: 'Back' })
