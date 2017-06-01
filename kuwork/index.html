@@ -112,7 +112,7 @@
                   <div>Email: {{residence.landlord_email}}</div>
                   <div>Phone: {{residence.landlord_phone_num}}</div>
                   <div>Rent: {{residence.rent | currency}}</div>
-                <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteResidence()">DELETE</button>
+                <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteResidence(residence.residence_id)">DELETE</button>
                 </div>
               </div>
               <div class="modal-footer">
@@ -311,14 +311,48 @@
               //Get index
               var index;
               index = kuCtrl.companyList.findIndex(x => x.comp_name==ID);
+
               console.log("deleting company" + ID);
               console.log(index);
+
               //remove company from array
               kuCtrl.companyList.splice(index, 1);
+
+              console.log("attempting to delete company");
+
+              $http({
+                  method: 'GET',
+                  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/company/delete.php?comp_name=' + ID
+              }).then(function successCallback(response) {
+                  console.log("successfully deleted company" + ID);
+              }, function errorCallbac(response) {
+                  console.log("Error, could not delete company " + ID);
+              });
             };
 
-            kuCtrl.deleteResidence = function (ID) {
 
+
+            kuCtrl.deleteResidence = function (ID) {
+              //Get index
+              var index;
+              index = kuCtrl.residenceList.findIndex(x => x.residence_id==ID);
+
+              console.log("deleting residence " + ID);
+              console.log(index);
+
+              //remove company from array
+              kuCtrl.residenceList.splice(index, 1);
+
+              console.log("attempting to delete residence");
+
+              $http({
+                  method: 'GET',
+                  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/residence/delete.php?residence_id=' + ID
+              }).then(function successCallback(response) {
+                  console.log("successfully deleted residence" + ID);
+              }, function errorCallbac(response) {
+                  console.log("Error, could not delete residence " + ID);
+              });
             };
 
             kuCtrl.deleteStudent = function (ID) {
