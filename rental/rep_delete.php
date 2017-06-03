@@ -9,5 +9,5 @@ $rep_id = $_GET['rep_id'];
 $result = mysqli_query($mysqli, "DELETE FROM users WHERE rep_id=$rep_id");
 
 //redirecting to the display page (index.php in our case)
-header("Location:index.php");
+header("Location:rep_index.php");
 ?>

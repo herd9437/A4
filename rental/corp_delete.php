@@ -9,5 +9,5 @@ $account_number = $_GET['account_number'];
 $result = mysqli_query($mysqli, "DELETE FROM corporation WHERE account_number=$account_number");
 
 //redirecting to the display page (index.php in our case)
-header("Location:index.php");
+header("Location:corp_index.php");
 ?>

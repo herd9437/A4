@@ -9,5 +9,5 @@ $vin = $_GET['vin'];
 $result = mysqli_query($mysqli, "DELETE FROM car WHERE vin=$vin");
 
 //redirecting to the display page (index.php in our case)
-header("Location:index.php");
+header("Location:car_index.php");
 ?>

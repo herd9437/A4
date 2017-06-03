@@ -9,5 +9,5 @@ $maintenance_id = $_GET['maintenance_id'];
 $result = mysqli_query($mysqli, "DELETE FROM maintenance WHERE maintenance_id=$maintenance_id");
 
 //redirecting to the display page (index.php in our case)
-header("Location:index.php");
+header("Location:main_index.php");
 ?>
