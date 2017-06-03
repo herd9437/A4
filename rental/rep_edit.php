@@ -5,47 +5,53 @@ include_once("config.php");
 if(isset($_POST['update']))
 {
 
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
+	$rep_id = mysqli_real_escape_string($mysqli, $_POST['rep_id']);
 
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+	$first_name = mysqli_real_escape_string($mysqli, $_POST['first_name']);
+	$last_name = mysqli_real_escape_string($mysqli, $_POST['last_name']);
+	$phone_number = mysqli_real_escape_string($mysqli, $_POST['phone_number']);
 
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {
+	if(empty($first_name) || empty($last_name) || empty($phone_number)) {
 
-		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+		if(empty($first_name)) {
+			echo "<font color='red'>First Name field is empty.</font><br/>";
 		}
 
-		if(empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+		if(empty($last_name)) {
+			echo "<font color='red'>Last Name field is empty.</font><br/>";
 		}
 
-		if(empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
+		if(empty($phone_number)) {
+			echo "<font color='red'>Phone Number field is empty.</font><br/>";
 		}
+
+		//link to the previous page
+		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else {
-		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+		// if all the fields are filled (not empty)
 
-		//redirectig to the display page. In our case, it is index.php
-		header("Location: index.php");
+		//insert data to database
+		$result = mysqli_query($mysqli, "INSERT INTO representative (first_name, last_name, phone_number) VALUES ('$first_name', '$last_name', '$phone_number')");
+
+		//display success message
+		echo "<font color='green'>Data added successfully.";
+		echo "<br/><a href='res_index.php'>View Result</a>";
 	}
 }
 ?>
 <?php
 //getting id from url
-$id = $_GET['id'];
+$rep_id = $_GET['rep_id'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM representative WHERE rep_id=$rep_id");
 
 while($res = mysqli_fetch_array($result))
 {
-	$name = $res['name'];
-	$age = $res['age'];
-	$email = $res['email'];
+	$first_name = $res['first_name'];
+	$last_name = $res['last_name'];
+	$phone_number = $res['phone_number'];
 }
 ?>
 <html>
