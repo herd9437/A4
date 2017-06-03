@@ -29,7 +29,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM representative"); // using mysqli
 		echo "<td>".$res['first_name']."</td>";
 		echo "<td>".$res['last_name']."</td>";
 		echo "<td>".$res['phone_number']."</td>";
-		echo "<td><a href=\"rep_edit.php?id=$res[rep_id]\">Edit</a> | <a href=\"rep_delete.php?id=$res[rep_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"rep_edit.php?rep_id=$res[rep_id]\">Edit</a> | <a href=\"rep_delete.php?rep_id=$res[rep_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
