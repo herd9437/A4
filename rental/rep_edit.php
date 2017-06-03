@@ -57,79 +57,19 @@ while($res = mysqli_fetch_array($result))
 	<a href="index.php">Home</a>
 	<br/><br/>
 
-	<form name="form1" method="post" action="edit.php">
+	<form name="form1" method="post" action="rep_edit.php">
 		<table border="0">
 			<tr>
-				<td>Rate Period</td>
-				<td><input type="text" name="rate_period" value="<?php echo $rate_period ?>"></td>
+				<td>First Name</td>
+				<td><input type="text" name="first_name" value="<?php echo $first_name ?>"></td>
 			</tr>
 			<tr>
-				<td>Discount</td>
-				<td><input type="text" name="discount" value="<?php echo $discount ?>"></td>
+				<td>Last Name</td>
+				<td><input type="text" name="last_name" value="<?php echo $last_name ?>"></td>
 			</tr>
 			<tr>
-				<td>Estimated Rental Duration</td>
-				<td><input type="text" name="estimated_rental_duration" value="<?php echo $estimated_rental_duration ?>"></td>
-			</tr>
-			<tr>
-				<td>Credit Card Number</td>
-				<td><input type="text" name="credit_card_number" value="<?php echo $credit_card_number ?>"></td>
-			</tr>
-			<tr>
-				<td>Credit Card Type</td>
-				<td><input type="text" name="credit_card_type" value="<?php echo $credit_card_type ?>"></td>
-			</tr>
-			<tr>
-				<td>Base Charge</td>
-				<td><input type="text" name="base_charge" value="<?php echo $base_charge ?>"></td>
-			</tr>
-			<tr>
-				<td>Tax</td>
-				<td><input type="text" name="tax" value="<?php echo $tax ?>"></td>
-			</tr>
-			<tr>
-				<td>Gas Level</td>
-				<td><input type="text" name="gas_level" value="<?php echo $gas_level ?>"></td>
-			</tr>
-			<tr>
-				<td>Date Rented</td>
-				<td><input type="text" name="date_rented" value="<?php echo $date_rented ?>"></td>
-			</tr>
-			<tr>
-				<td>Time Rented</td>
-				<td><input type="text" name="time_rented" value="<?php echo $time_rented ?>"></td>
-			</tr>
-			<tr>
-				<td>Date Returned</td>
-				<td><input type="text" name="date_returned" value="<?php echo $date_returned ?>"></td>
-			</tr>
-			<tr>
-				<td>Time Returned</td>
-				<td><input type="text" name="time_returned" value="<?php echo $time_returned ?>"></td>
-			</tr>
-			<tr>
-				<td>Insurance Charge</td>
-				<td><input type="text" name="insurance_charge" value="<?php echo $insurance_charge ?>"></td>
-			</tr>
-			<tr>
-				<td>Mileage Charge</td>
-				<td><input type="text" name="mileage_charge" value="<?php echo $mileage_charge ?>"></td>
-			</tr>
-			<tr>
-				<td>Start Miles</td>
-				<td><input type="text" name="start_miles" value="<?php echo $start_miles ?>"></td>
-			</tr>
-			<tr>
-				<td>End Miles</td>
-				<td><input type="text" name="end_miles" value="<?php echo $end_miles ?>"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" name="Submit" value="Add"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="credit_card_number" value=<?php echo $_GET['credit_card_number'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
+				<td>Phone Number</td>
+				<td><input type="text" name="phone_number" value="<?php echo $phone_number ?>"></td>
 			</tr>
 		</table>
 	</form>

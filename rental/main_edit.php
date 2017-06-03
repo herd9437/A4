@@ -65,7 +65,7 @@ while($res = mysqli_fetch_array($result))
 	<a href="main_index.php">Maintenance Home</a>
 	<br/><br/>
 
-	<form name="form1" method="post" action="edit.php">
+	<form name="form1" method="post" action="main_edit.php">
 		<table border="0">
 			<tr>
 				<td>Street Address</td>
