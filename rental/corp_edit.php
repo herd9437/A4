@@ -75,7 +75,7 @@ while($res = mysqli_fetch_array($result))
 	<a href="corp_index.php">Corporation Home</a>
 	<br/><br/>
 
-	<form name="form1" method="post" action="edit.php">
+	<form name="form1" method="post" action="corp_edit.php">
 		<table border="0">
 			<tr>
 				<td>Account Number</td>
