@@ -132,10 +132,14 @@
                 <h4 class="modal-title" id="myModalLabel">Activities</h4>
               </div>
               <div class="modal-body">
-                <li ng-repeat="activity in KUCtrl.activityList track by $index">
-                  {{activity}}
-                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteActivity()">DELETE</button>
-                </li>
+                <div ng-repeat="activity in KUCtrl.activityList track by $index">
+                  <div>Activity ID: {{activity.activity_id}}</div>
+                  <div>Name: {{activity.name}}</div>
+                  <div>Description: {{activity.description}}</div>
+                  <div>Start date & time: {{activity.start_date}}, {{activity.start_time}}</div>
+                  <div>End date & time: {{activity.end_date}}, {{activity.end_time}}</div>
+                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteActivity(activity.activity_id)">DELETE</button>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary">ADD</button>
@@ -154,10 +158,15 @@
                 <h4 class="modal-title" id="myModalLabel">Students</h4>
               </div>
               <div class="modal-body">
-                <li ng-repeat="student in KUCtrl.studentList track by $index">
-                  {{student}}
-                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteStudent()">DELETE</button>
-                </li>
+                <div ng-repeat="student in KUCtrl.studentList track by $index">
+                  <div>Studnt name: {{student.name}}</div>
+                  <div>Class staning: {{student.class_standing}}</div>
+                  <div>Major: {{student.major}}</div>
+                  <div>Degree: {{student.degree}}</div>
+                  <div>Phone: {{student.phone_number}}</div>
+                  <div>Email: {{student.email}}</div>
+                  <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteStudent(student.email)">DELETE</button>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary">ADD</button>
@@ -304,7 +313,26 @@
 
 
             kuCtrl.deleteActivity = function (ID) {
+              //Get index
+              var index;
+              index = kuCtrl.activityList.findIndex(x => x.activity_id==ID);
 
+              console.log("deleting activity " + ID);
+              console.log(index);
+
+              //remove activity from array
+              kuCtrl.activityList.splice(index, 1);
+
+              console.log("attempting to delete activity");
+
+              $http({
+                  method: 'GET',
+                  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/delete.php?activity_id=' + ID
+              }).then(function successCallback(response) {
+                  console.log("successfully deleted activity " + ID);
+              }, function errorCallbac(response) {
+                  console.log("Error, could not delete activity " + ID);
+              });
             };
 
             kuCtrl.deleteCompany = function (ID) {
@@ -324,7 +352,7 @@
                   method: 'GET',
                   url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/company/delete.php?comp_name=' + ID
               }).then(function successCallback(response) {
-                  console.log("successfully deleted company" + ID);
+                  console.log("successfully deleted company " + ID);
               }, function errorCallbac(response) {
                   console.log("Error, could not delete company " + ID);
               });
@@ -349,14 +377,33 @@
                   method: 'GET',
                   url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/residence/delete.php?residence_id=' + ID
               }).then(function successCallback(response) {
-                  console.log("successfully deleted residence" + ID);
+                  console.log("successfully deleted residence " + ID);
               }, function errorCallbac(response) {
                   console.log("Error, could not delete residence " + ID);
               });
             };
 
             kuCtrl.deleteStudent = function (ID) {
+              //Get index
+              var index;
+              index = kuCtrl.studentList.findIndex(x => x.email==ID);
 
+              console.log("deleting student " + ID);
+              console.log(index);
+
+              //remove company from array
+              kuCtrl.studentList.splice(index, 1);
+
+              console.log("attempting to delete student");
+
+              $http({
+                  method: 'GET',
+                  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/delete.php?email=' + ID
+              }).then(function successCallback(response) {
+                  console.log("successfully deleted student " + ID);
+              }, function errorCallbac(response) {
+                  console.log("Error, could not delete student " + ID);
+              });
             };
 
             $scope.updateActivityList = function (activityInfo) {
