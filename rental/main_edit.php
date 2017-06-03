@@ -43,10 +43,10 @@ if(empty($street_address) || empty($city) || empty($zip) || empty($cost)) {
 ?>
 <?php
 //getting id from url
-$id = $_GET['id'];
+$maintenance_id = $_GET['maintenance_id'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM maintenance_cost WHERE maintenance_id=$maintenance_id");
 
 while($res = mysqli_fetch_array($result))
 {
@@ -84,7 +84,7 @@ while($res = mysqli_fetch_array($result))
 				<td><input type="text" name="cost" value="<?php echo $cost ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+				<td><input type="hidden" name="maintenance_id" value=<?php echo $_GET['maintenance_id'];?>></td>
 				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
 		</table>

@@ -77,6 +77,10 @@ while($res = mysqli_fetch_array($result))
 				<td>Phone Number</td>
 				<td><input type="text" name="phone_number" value="<?php echo $phone_number ?>"></td>
 			</tr>
+			<tr>
+				<td><input type="hidden" name="rep_id" value=<?php echo $_GET['rep_id'];?>></td>
+				<td><input type="submit" name="update" value="Update"></td>
+			</tr>
 		</table>
 	</form>
 </body>

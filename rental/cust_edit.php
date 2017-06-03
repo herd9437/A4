@@ -104,7 +104,7 @@ while($res = mysqli_fetch_array($result))
 				<td><input type="text" name="phone_number" value="<?php echo $phone_number;?>"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['customer_id'];?>></td>
+				<td><input type="hidden" name="customer_id" value=<?php echo $_GET['customer_id'];?>></td>
 				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
 		</table>

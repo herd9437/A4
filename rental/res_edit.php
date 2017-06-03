@@ -104,10 +104,10 @@ if(isset($_POST['update']))
 ?>
 <?php
 //getting id from url
-$id = $_GET['id'];
+$credit_card_number = $_GET['credit_card_number'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM reservation WHERE credit_card_type=$credit_card_type");
 
 while($res = mysqli_fetch_array($result))
 {
@@ -203,8 +203,9 @@ while($res = mysqli_fetch_array($result))
 			<td><input type="text" name="end_miles"></td>
 		</tr>
 		<tr>
-			<td></td>
-			<td><input type="submit" name="Submit" value="Add"></td>
+		<tr>
+			<td><input type="hidden" name="credit_card_number" value=<?php echo $_GET['credit_card_number'];?>></td>
+			<td><input type="submit" name="update" value="Update"></td>
 		</tr>
 		</table>
 	</form>

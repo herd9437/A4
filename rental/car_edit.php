@@ -122,7 +122,7 @@ while($res = mysqli_fetch_array($result))
 				<td><input type="text" name="vin" value="<?php echo $vin;?>"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+				<td><input type="hidden" name="vin" value=<?php echo $_GET['vin'];?>></td>
 				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
 		</table>

@@ -51,7 +51,7 @@ if(isset($_POST['update']))
 ?>
 <?php
 //getting id from url
-$id = $_GET['id'];
+$account_number = $_GET['account_number'];
 
 //selecting data associated with this particular id
 $result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
@@ -98,7 +98,7 @@ while($res = mysqli_fetch_array($result))
 				<td><input type="text" name="phone_number" value="<?php echo $phone_number;?>"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+				<td><input type="hidden" name="account_number" value=<?php echo $_GET['account_number'];?>></td>
 				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
 		</table>
