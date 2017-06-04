@@ -12,11 +12,16 @@ if(isset($_POST['Submit'])) {
 	$account_number = mysqli_real_escape_string($mysqli, $_POST['account_number']);
 	$street_address = mysqli_real_escape_string($mysqli, $_POST['street_address']);
 	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
 	$zip = mysqli_real_escape_string($mysqli, $_POST['zip']);
 	$phone_number = mysqli_real_escape_string($mysqli, $_POST['phone_number']);
 
 	// checking empty fields
-	if(empty($account_number) || empty($street_address) || empty($city) || empty($zip) || empty($phone_number)) {
+	if(empty($account_number) || empty($street_address) || empty($city) || empty($zip) || empty($state) || empty($phone_number)) {
+
+		if(empty($name)) {
+			echo "<font color='red'>Name field is empty.</font><br/>";
+		}
 
 		if(empty($account_number)) {
 			echo "<font color='red'>Account Number field is empty.</font><br/>";
@@ -28,6 +33,10 @@ if(isset($_POST['Submit'])) {
 
 		if(empty($city)) {
 			echo "<font color='red'>City field is empty.</font><br/>";
+		}
+
+		if(empty($state)) {
+			echo "<font color='red'>State field is empty.</font><br/>";
 		}
 
 		if(empty($zip)) {
