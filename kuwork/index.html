@@ -72,7 +72,6 @@
             <a href="#" ng-click="KUCtrl.retrieveStudents()"> Students</a>
           </li>
         </ul>
-
         <!-- Modal -->
         <div class="modal fade" id="Companies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -235,26 +234,24 @@
 
     		var mode = 'edit';
     		var key = 'id';
-    		var identifier = 'KunzLeigh';
+    		var identifier = 'GeneralMotors';
     		switch(selectedModel) {
     		  case 'company':
     		    key = 'comp_name';
     		    break;
     		  default:
     		    key = 'id';
-    		}
+    		};
     		var data_store = null;
-    		if(mode == 'edit'){
     			$http({
       				method: 'GET',
       				url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/'+selectedModel+'/edit.php?'+key+'='+identifier
     			}).then(function successCallback(response) {
     				data_store = response.data;
     				//console.log(response.data);
-    	//		}, function errorCallback(response) {
-    	//		});
+    			}, function errorCallback(response) {
+    			});
 
-    	//	}
 
     		var fields = [];
 
@@ -272,47 +269,52 @@
 
     		for(j=0; j<tableFieldsLength; j++){
     			var field_name = tableFields[j]["name"];
-    			var placeholder = (mode == 'edit') ? data_store[field_name] : kuCtrl.varToSentence(field_name);
-    			var field_type = tableFields[j]["type"];
-    			fields.push('<input name="'+field_name+'" type="'+field_type+'" placeholder="'+placeholder+'" />');
+			var placeholder = null;
+			if(data_store != null){
+				placeholder = (mode == 'edit') ? data_store[field_name] : kuCtrl.varToSentence(field_name);
+			} 
+			else {
+				placeholder = kuCtrl.varToSentence(field_name);
+			}
+   			var field_type = tableFields[j]["type"];
+    			fields.push("<input name=\""+field_name+"\" type=\""+field_type+"\" placeholder=\""+placeholder+"\" >");
     		}
 
-        vex.dialog.open({
-            message: 'Enter your username and password:',
-            input: fields.join(''),
-            buttons: [
-                $.extend({}, vex.dialog.buttons.YES, { text: 'Login' }),
-                $.extend({}, vex.dialog.buttons.NO, { text: 'Back' })
-            ],
-            callback: function (data) {
-                if (!data) {
-                    console.log('Cancelled')
-                } else {
-
+		console.log(fields.join(''));
+/*
+                vex.dialog.open({
+            	message: 'Enter your data:',
+            	  input: fields.join(''),
+            	buttons: [
+                	$.extend({}, vex.dialog.buttons.YES, { text: 'Save' }),
+                	$.extend({}, vex.dialog.buttons.NO, { text: 'Cancel' })
+            	],
+            	callback: function (data) {
+                	if (!data) {
+                    	console.log('Cancelled')
+			//vex.closeAll();
+                	} else {
             			// Simple GET request example:
             			$http({
-            			  method: 'POST',
-            	  		  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/'+selectedModel+'/'+mode+'.php',
-                      data: { data }
+            				method: 'POST',
+            	  			url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/'+selectedModel+'/'+mode+'.php',
+                      			data: { data }
             			}).then(function successCallback(response) {
-                    console.log(response);
-            			    // this callback will be called asynchronously
-            			    // when the response is available
-            			  }, function errorCallback(response) {
+                    			console.log(response);
+            			  	// this callback will be called asynchronously
+            			  	// when the response is available
+            			}, function errorCallback(response) {
             			    // called asynchronously if an error occurs
             			    // or server returns response with an error status.
-            			  });
-
-                                    }
-                        	    }
-                            });
-            				}, function errorCallback(response) {
             			});
+				vex.closeAll();
 
-            		}
+                        }
+                }
+            	});
 
+*/
             }
-
 
             kuCtrl.deleteActivity = function (ID) {
               //Get index
