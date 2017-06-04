@@ -6,7 +6,7 @@ include("../config.php");
 $email = html_entity_decode($_GET['email']);
 
 //deleting the row from table
-$result = mysqli_query($mysqli, "DELETE FROM student WHERE email=$email");
+$result = mysqli_query($mysqli, "DELETE FROM student WHERE email='$email'");
 
 echo "{'status':'success','message':'Student deleted successfully'}";
 ?>
