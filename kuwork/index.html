@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                   <div>
-                    <select ng-model="currentTable" ng-options="dropdown for dropdown in KUCtrl.dropDownMenu">
+                    <select class="navbar navbar-default" ng-model="currentTable" ng-options="dropdown for dropdown in KUCtrl.dropDownMenu">
                     </select>
                   </div>
               </ul>
@@ -167,6 +167,46 @@
             </div>
           </div>
         </div>
+        <div class="searchResults">
+            <ul class="nav nav-tabs">
+              <li role="presentation" class="active"><a href="#">Search Results</a></li>
+            </ul>
+            <div class="panel panel-default" ng-show="KUCtrl.checkEmpty()">
+              <div class="panel-body" ng-repeat="result in KUCtrl.searchResults">
+                <div ng-if="KUCtrl.companySearch()">
+                  <div> Name: {{result.comp_name}} </div>
+                  <div> Address ID: {{result.address_id}},</div>
+                  <div> Description: {{result.description}}</div>
+                </div>
+                <div ng-if="KUCtrl.activitySearch()">
+                  <div>Activity ID: {{result.activity_id}}</div>
+                  <div>Name: {{result.name}}</div>
+                  <div>Description: {{result.description}}</div>
+                  <div>Start date & time: {{result.start_date}}, {{result.start_time}}</div>
+                  <div>End date & time: {{result.end_date}}, {{result.end_time}}</div>
+                </div>
+                <div ng-if="KUCtrl.residenceSearch()">
+                  <div>Residence ID: {{result.residence_id}}</div>
+                  <div>Email: {{result.landlord_email}}</div>
+                  <div>Phone: {{result.landlord_phone_num}}</div>
+                  <div>Rent: {{result.rent | currency}}</div>
+                </div>
+                <div ng-if="KUCtrl.studentSearch()">
+                  <div>Studnt name: {{result.name}}</div>
+                  <div>Class staning: {{result.class_standing}}</div>
+                  <div>Major: {{result.major}}</div>
+                  <div>Degree: {{result.degree}}</div>
+                  <div>Phone: {{result.phone_number}}</div>
+                  <div>Email: {{result.email}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" ng-show="!KUCtrl.checkEmpty() && KUCtrl.searched">
+              <div class="panel-body">
+                Search results not found!
+              </div>
+            </div>
+        </div>
       </div>
     </div>
 
@@ -184,6 +224,8 @@
             kuCtrl.studentList = [];
             kuCtrl.companyList = [];
             kuCtrl.resienceList = [];
+            kuCtrl.searchResults = null;
+            kuCtrl.searched = false;
 
             kuCtrl.dropDownMenu = [
               "student",
@@ -314,7 +356,48 @@
 
             };
 
+            kuCtrl.companySearch = function () {
+              if ($scope.currentTable == 'company') {
+                return true;
+              }
+              return false;
+            };
+
+            kuCtrl.activitySearch = function () {
+              if ($scope.currentTable == 'activity') {
+                return true;
+              }
+              return false;      
+            };
+
+            kuCtrl.residenceSearch = function () {
+               if ($scope.currentTable == 'residence') {
+                return true;
+              }
+              return false;             
+            };
+
+            kuCtrl.studentSearch = function () {
+              if ($scope.currentTable == 'student') {
+                return true;
+              }
+              return false;              
+            };
+
+            kuCtrl.checkEmpty = function () {
+              if (kuCtrl.searchResults) {
+                if (kuCtrl.searchResults.length < 1) {
+                  return false;
+                }
+                return true;
+              } else {
+                return false;
+              }
+            };
+
             kuCtrl.searchTable = function () {
+              kuCtrl.searchResults = [];
+              kuCtrl.searched = true;
               console.log($scope.currentTable);
 
               console.log($scope.searchQuery);
@@ -327,6 +410,7 @@
                   url: searchURL
               }).then(function successCallback(response) {
                   console.log("successful seach");
+                  $scope.updateSearchResults(response);
               }, function errorCallbac(response) {
                   console.log("Failed to search table " + $scope.currentTable);
               });
@@ -430,6 +514,11 @@
                   console.log("Error, could not delete student " + ID);
               });
             };
+
+            $scope.updateSearchResults = function (searchResults) {
+              kuCtrl.searchResults = searchResults.data;
+              console.log(kuCtrl.searchResults);
+            }
 
             $scope.updateActivityList = function (activityInfo) {
                 kuCtrl.activityList = activityInfo.data;
