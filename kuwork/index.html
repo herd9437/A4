@@ -317,12 +317,12 @@
 
               console.log($scope.searchQuery);
 
-              var searchURL = 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/search.php?table=' 
-                    + $scope.currentTable + '&query=' + $scope.searchQuery;
+              var searchURL = 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/search.php?table='
+                    + $scope.currentTable + '&query=' + encodeURIComponent($scope.searchQuery);
 
               $http({
                   method: 'GET',
-                  url: encodeURIComponent(searchURL)
+                  url: searchURL
               }).then(function successCallback(response) {
                   console.log("successful seach");
               }, function errorCallbac(response) {
