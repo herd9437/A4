@@ -229,8 +229,22 @@
     		return words.join(" ");
 	    }
 
-      kuCtrl.modifyObject = function(selectedModel){
+vex.dialog.prompt({
+    message: 'What planet did the aliens come from?',
+    placeholder: 'Planet name',
+    callback: function (value) {
+        console.log(value)
+    }
+})
 
+      kuCtrl.modifyObject = function(selectedModel){
+vex.dialog.prompt({
+    message: 'What planet did the aliens come from?',
+    placeholder: 'Planet name',
+    callback: function (value) {
+        console.log(value)
+    }
+})
     		var mode = 'edit';
     		var key = 'id';
     		var identifier = 'GeneralMotors';
@@ -280,7 +294,7 @@
     		}
 
 		console.log(fields.join(''));
-/*
+
                 vex.dialog.open({
             	message: 'Enter your data:',
             	  input: fields.join(''),
@@ -312,8 +326,7 @@
                 }
             	});
 
-<<<<<<< HEAD
-*/
+
 
             };
 
