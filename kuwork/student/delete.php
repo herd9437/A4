@@ -3,7 +3,7 @@
 include("../config.php");
 
 //getting id of the data from url
-$email = $_GET['email'];
+$email = html_entity_decode($_GET['email']);
 
 //deleting the row from table
 $result = mysqli_query($mysqli, "DELETE FROM student WHERE email=$email");

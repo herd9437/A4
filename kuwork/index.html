@@ -10,14 +10,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/css/vex.css"/>
         <link rel="stylesheet" href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/css/vex-theme-os.css"/>
- 
+
           <!-- Latest compiled and minified JavaScript -->
           <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
           <script src="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/js/vex.min.js"></script>
           <script src="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/dist/js/vex.combined.min.js"></script>
- 
+
     </head>
     <body>
       <div ng-app="kuWorkApp"><div ng-controller="kuWorkController as KUCtrl">
@@ -263,7 +263,7 @@
 		var tableFieldsLength = 0;
 
 		for(var i=0; i<modelFieldsLength; i++){
-			
+
 			if(kuCtrl.modelFields[i]["table"] == selectedModel){
 				tableFields = kuCtrl.modelFields[i]["fields"];
 				tableFieldsLength = tableFields.length;
@@ -396,9 +396,12 @@
 
               console.log("attempting to delete student");
 
+              var unsanitized_address = 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/delete.php?email=' + ID;
+
+
               $http({
                   method: 'GET',
-                  url: 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/delete.php?email=' + ID
+                  url: unsanitized_address.html();
               }).then(function successCallback(response) {
                   console.log("successfully deleted student " + ID);
               }, function errorCallbac(response) {
