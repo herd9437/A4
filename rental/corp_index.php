@@ -30,6 +30,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM corporation"); // using mysqli_qu
 	//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array
 	while($res = mysqli_fetch_array($result)) {
 		echo "<tr>";
+		echo "<td>".$res['name']."</td>";
 		echo "<td>".$res['account_number']."</td>";
 		echo "<td>".$res['street_address']."</td>";
 		echo "<td>".$res['city']."</td>";
