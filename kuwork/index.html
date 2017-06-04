@@ -229,22 +229,8 @@
     		return words.join(" ");
 	    }
 
-vex.dialog.prompt({
-    message: 'What planet did the aliens come from?',
-    placeholder: 'Planet name',
-    callback: function (value) {
-        console.log(value)
-    }
-})
 
       kuCtrl.modifyObject = function(selectedModel){
-vex.dialog.prompt({
-    message: 'What planet did the aliens come from?',
-    placeholder: 'Planet name',
-    callback: function (value) {
-        console.log(value)
-    }
-})
     		var mode = 'edit';
     		var key = 'id';
     		var identifier = 'GeneralMotors';
@@ -305,7 +291,6 @@ vex.dialog.prompt({
             	callback: function (data) {
                 	if (!data) {
                     	console.log('Cancelled')
-			//vex.closeAll();
                 	} else {
             			// Simple GET request example:
             			$http({
@@ -320,7 +305,6 @@ vex.dialog.prompt({
             			    // called asynchronously if an error occurs
             			    // or server returns response with an error status.
             			});
-				vex.closeAll();
 
                         }
                 }
