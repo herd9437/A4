@@ -3,12 +3,8 @@
 $rep_id = $_GET['rep_id'];
 
 //selecting data associated with this particular id
-SELECT cu.first_name, cu.last_name, cu.street_address, cu.city, cu.state, cu.zip, cu.phone_number,
-r.credit_card_type, r.credit_card_number, cp.name, cp.account_number, ca.make, ca.model, r.mileage_plan, r.insurance_plan, r.rate_period, r.rate,
-r.discount, r.estimated_rental_duration
-customer AS cu JOIN reservation AS r JOIN corporation AS cp JOIN car AS ca
 
-$result = mysqli_query($mysqli, "SELECT * FROM representative WHERE rep_id=$rep_id");
+$result = mysqli_query($mysqli, "SELECT cu.first_name, cu.last_name, cu.street_address, cu.city, cu.state, cu.zip, cu.phone_number, r.credit_card_type, r.credit_card_number, cp.name, cp.account_number, ca.make, ca.model, r.mileage_plan, r.insurance_plan, r.rate_period, r.rate, r.discount, r.estimated_rental_duration FROM customer AS cu JOIN reservation AS r JOIN corporation AS cp JOIN car AS ca");
 
 while($res = mysqli_fetch_array($result))
 {

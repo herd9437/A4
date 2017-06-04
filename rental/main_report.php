@@ -3,10 +3,8 @@
 $rep_id = $_GET['rep_id'];
 
 //selecting data associated with this particular id
-SELECT c.license_number, c.vin, c.make, c.model, c.color, m.procedure_date, m.procedure_name, m.cost, m.garage_name,
-m.street_address, m.city, m.state, m.zip, c.mileage, c.condition FROM car AS c JOIN maintenance_cost AS m WHERE maintenance_id = ;
 
-$result = mysqli_query($mysqli, "SELECT * FROM representative WHERE rep_id=$rep_id");
+$result = mysqli_query($mysqli, "SELECT c.license_number, c.vin, c.make, c.model, c.color, m.procedure_date, m.procedure_name, m.cost, m.garage_name, m.street_address, m.city, m.state, m.zip, c.mileage, c.condition FROM car AS c JOIN maintenance_cost AS m WHERE maintenance_id = ;");
 
 while($res = mysqli_fetch_array($result))
 {
