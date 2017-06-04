@@ -398,12 +398,13 @@
 
               console.log("attempting to delete student");
 
-              var unsanitized_address = 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/delete.php?email=' + ID;
+              var sanitized_address = 'http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/delete.php?email=' + encodeURIComponent(ID);
 
-
+	      //console.log(encodeURIComponent(unsani));
+	      console.log(sanitized_address);
               $http({
                   method: 'GET',
-                  url: encodeURI(unsanitized_address)
+                  url: sanitized_address
               }).then(function successCallback(response) {
                   console.log("successfully deleted student " + ID);
               }, function errorCallbac(response) {

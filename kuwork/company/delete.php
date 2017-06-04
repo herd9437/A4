@@ -6,7 +6,7 @@ include("../config.php");
 $comp_name = $_GET['comp_name'];
 
 //deleting the row from table
-$result = mysqli_query($mysqli, "DELETE FROM company WHERE comp_name=$comp_name");
+$result = mysqli_query($mysqli, "DELETE FROM company WHERE name='$comp_name'");
 
 echo "{'status':'success','message':'Activity deleted successfully'}";
 ?>
