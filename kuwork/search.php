@@ -1,5 +1,6 @@
 <?php
 
+include_once("config.php");
 if(isset($_GET['table'])&&isset($_GET['query'])){
 	//getting residence_id from url
   $query = $_GET['query'];
@@ -55,8 +56,7 @@ if(isset($_GET['table'])&&isset($_GET['query'])){
   }
   else if($table == 'company'){
     //selecting data associated with this particular residence_id
-  	$result = mysqli_query($mysqli, "SELECT * FROM company WHERE comp_name Like \"%$query%\" or description Like \"%$query%\"");
-
+  	$result = mysqli_query($mysqli, "SELECT * FROM company WHERE name Like \"%$query%\" or description Like \"%$query%\"");
     $data = array();
 
     while($res = mysqli_fetch_array($result)) {
