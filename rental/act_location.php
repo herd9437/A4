@@ -3,6 +3,9 @@
 $rep_id = $_GET['rep_id'];
 
 //selecting data associated with this particular id
+SELECT c.make, c.model, c.color, c.licence_number, c.vin, c.mileage, c.condition, c.location
+FROM car AS c JOIN reservation AS r WHERE date_rented date_returned;
+
 $result = mysqli_query($mysqli, "SELECT * FROM representative WHERE rep_id=$rep_id");
 
 while($res = mysqli_fetch_array($result))

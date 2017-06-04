@@ -1,5 +1,12 @@
 CREATE DATABASE car_rentals;
 
+CREATE TABLE IF NOT EXISTS `login` (
+  `user_id` int(11) NOT NULL auto_increment,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  PRIMARY KEY  (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6;
+
 CREATE TABLE car (
   make varchar(255),
   model varchar(255),
@@ -7,6 +14,7 @@ CREATE TABLE car (
   color varchar(255),
   license_number varchar(255),
   state varchar(255),
+  condition varchar(255),
   mileage varchar(255),
   vin varchar(255) NOT NULL UNIQUE,
   PRIMARY KEY (vin)
@@ -42,9 +50,10 @@ CREATE TABLE customer (
   last_name varchar(255),
   street_address varchar(255),
   city varchar(255),
+  state varchar(255),
   zip varchar(10),
   phone_number varchar(15),
-  customer_id int UNIQUE,
+  customer_id int NOT NULL auto_increment,
   PRIMARY KEY (customer_id)
 );
 
@@ -60,9 +69,10 @@ INSERT INTO customer (first_name, last_name, street_address, city, zip, phone_nu
 
 CREATE TABLE reservation (
   rate_period varchar(255),
+  rate varchar(255),
   discount varchar(255),
   estimated_rental_duration varchar(255),
-  credit_card_number varchar(255),
+  credit_card_number varchar(255) UNIQUE,
   credit_card_type varchar(255),
   base_charge varchar(255),
   tax varchar(255),
@@ -100,10 +110,16 @@ INSERT INTO reservation (rate_period, discount, estimated_rental_duration, credi
 VALUES ('spring', '0.00', '2 months', '654839480239847', 'visa', '', '', CURTIME(), CURDATE(), CURTIME(), CURDATE(), '', '', '', 64, 16, 3, 'PR6NSWDBVY');
 
 CREATE TABLE maintenance_cost (
+  garage_name varchar(255),
   street_address varchar(255),
   city varchar(255),
+  state varchar(255),
   zip varchar(10),
+  estimate varchar(255),
   cost varchar(255),
+  procedure_name varchar(255),
+  procedure_date varchar(255),
+  authorization_number varchar(255),
   maintenance_id int UNIQUE,
   PRIMARY KEY (maintenance_id)
 );
@@ -115,9 +131,11 @@ INSERT INTO maintenance_cost (street_address, city, zip, cost, maintenance_id) V
 INSERT INTO maintenance_cost (street_address, city, zip, cost, maintenance_id) VALUES ('928 friendship circle','pontiac','23547','487',5);
 
 CREATE TABLE corporation (
+  name varchar(255),
   account_number varchar(255) NOT NULL UNIQUE,
   street_address varchar(255),
   city varchar(255),
+  state varchar(255),
   zip varchar(10),
   phone_number varchar(63),
   PRIMARY KEY (account_number)
