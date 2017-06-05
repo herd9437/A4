@@ -66,7 +66,7 @@ if(isset($_GET['vin_number'])){
 </head>
 
 <body>
-	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
+	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Home</a>
 	<br/><br/>
 
 	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/vehicle/edit.php" method="post" name="form1">
