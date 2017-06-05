@@ -53,7 +53,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC"); // usin
     echo "<td>".$res['procedure_name']."</td>";
     echo "<td>".$res['procedure_date']."</td>";
     echo "<td>".$res['authorization_number']."</td>";
-		echo "<td><a href=\"main_edit.php?id=$res[maintenance_id]\">Edit</a> | <a href=\"main_delete.php?id=$res[maintenance_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"main_edit.php?maintenance_id=$res[maintenance_id]\">Edit</a> | <a href=\"main_delete.php?maintenance_id=$res[maintenance_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
