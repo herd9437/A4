@@ -37,7 +37,8 @@ if(isset($_POST['update']))
 	} else {
 
 		$result = mysqli_query($mysqli, "UPDATE vehicle SET vin_number='$vin_number',make='$make',model='$model',capacity='$capacity',owner_email='$owner_email' WHERE vin_number=$vin_number");
-		echo "{'status':'success','message':'Vehicle updated successfully.'}";
+		echo "<font color='green'>Data added successfully.";
+		echo '<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">View Result</a>';
 
 	}
 ?>
