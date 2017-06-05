@@ -51,7 +51,7 @@ if(isset($_POST['update']))
 
 		//insert data to database
 		;
-		$result = mysqli_query($mysqli, "INSERT INTO corporation (name, account_number, street_address, city, zip, phone_number) VALUES ( '$name', '$account_number', '$street_address', '$city', '$zip', '$phone_number')");
+		$result = mysqli_query($mysqli, "UPDATE corporation SET name='$name', account_number='$account_number', street_address='$street_address', city='$city', zip='$zip', phone_number='$phone_number' WHERE account_number='$account_number'");
 
 		//display success message
 		echo "<font color='green'>Corporation added successfully.";

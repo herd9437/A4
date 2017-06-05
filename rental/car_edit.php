@@ -56,7 +56,7 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin, car_condition) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin', '$car_condition')");
+		$result = mysqli_query($mysqli, "UPDATE car SET make='$make', model='$model', location='$location', color='$color', license_number='$license_number', state='$state', mileage='$mileage', vin='$vin', car_condition='$car_condition'  WHERE vin='$vin'");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";

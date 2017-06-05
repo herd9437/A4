@@ -64,7 +64,7 @@ if(isset($_POST['update'])){
 	// if all the fields are filled (not empty)
 
 	//insert data to database
-	$result = mysqli_query($mysqli, "INSERT INTO maintenance_cost (street_address, city, zip, cost) VALUES ('$street_address','$city','$zip','$cost')");
+	$result = mysqli_query($mysqli, "UPDATE maintenance_cost SET street_address='$street_address', city'$city', zip='$zip', cost='$cost' WHERE maintenance_id='$maintenance_id' ");
 
 	//display success message
 	echo "<font color='green'>Maintenance added successfully.";

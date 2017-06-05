@@ -49,7 +49,7 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO users(name,age,email) VALUES('$name','$age','$email')");
+		$result = mysqli_query($mysqli, "UPDATE customer SET first_name='$first_namme', last_name='$last_name', street_address='$street_address', city='$city', state='$state', zip='$zip', phone_number='$phone_number' WHERE customer_id='$customer_id'");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";

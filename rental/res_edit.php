@@ -107,9 +107,8 @@ if(isset($_POST['update']))
 		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else {
 		// if all the fields are filled (not empty)
-
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO reservation (rate, gas_charge, final_charge, rate_period, discount, estimated_rental_duration, credit_card_number, credit_card_type, base_charge, tax, gas_level, date_rented, time_rented, date_returned, time_returned, insurance_charge, mileage_charge, start_miles, end_miles, customer_id, car_id) VALUES ('$rate', '$gas_charge', '$final_charge', '$rate_period','$discount','$estimated_rental_duration','$credit_card_type','$credit_card_number','$base_charge','$tax','$gas_level','$date_rented','$time_rented','$date_returned','$time_returned','$insurance_charge','$mileage_charge','$start_miles','$end_miles','$start_miles')");
+		$result = mysqli_query($mysqli, "UPDATE reservation SET rate='$rate', gas_charge='$gas_charge', final_charge='$final_charge', rate_period='$rate_period', discount='$discount', estimated_rental_duration='$estimated_rental_duration', credit_card_number='$credit_card_type', credit_card_type='$credit_card_number', base_charge='$base_charge', tax='$tax', gas_level='$gas_level', date_rented='$date_rented', time_rented='$time_rented', date_returned='$date_returned', time_returned='$time_returned', insurance_charge='$insurance_charge', mileage_charge='$mileage_charge', start_miles='$start_miles', end_miles='$end_miles', customer_id, car_id) WHERE credit_card_number='$credit_card_number'");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";
