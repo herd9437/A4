@@ -10,7 +10,7 @@ if(isset($_POST['update']))
 	$location = mysqli_real_escape_string($mysqli, $_POST['location']);
 	$color = mysqli_real_escape_string($mysqli, $_POST['color']);
 	$license_number = mysqli_real_escape_string($mysqli, $_POST['license_number']);
-	$condition = mysqli_real_escape_string($mysqli, $_POST['condition']);
+	$car_condition = mysqli_real_escape_string($mysqli, $_POST['car_condition']);
 	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
 	$mileage = mysqli_real_escape_string($mysqli, $_POST['mileage']);
 	$vin = mysqli_real_escape_string($mysqli, $_POST['vin']);
@@ -38,8 +38,8 @@ if(isset($_POST['update']))
 			echo "<font color='red'>License Number field is empty.</font><br/>";
 		}
 
-		if(empty($condition)) {
-			echo "<font color='red'>Condition field is empty.</font><br/>";
+		if(empty($car_condition)) {
+			echo "<font color='red'>Car Condition field is empty.</font><br/>";
 		}
 
 		if(empty($state)) {
@@ -56,7 +56,7 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin, condition) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin', '$condition')");
+		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin, car_condition) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin', '$car_condition')");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";
@@ -78,6 +78,7 @@ while($res = mysqli_fetch_array($result))
 	$location = $res['location'];
 	$color = $res['color'];
 	$license_number = $res['license_number'];
+	$car_condition = $res['car_condition'];
 	$state = $res['state'];
 	$mileage = $res['mileage'];
 	$vin = $res['vin'];
@@ -113,6 +114,10 @@ while($res = mysqli_fetch_array($result))
 			<tr>
 				<td>License Number</td>
 				<td><input type="text" name="license_number" value="<?php echo $license_number;?>"></td>
+			</tr>
+			<tr>
+				<td>Car Condition</td>
+				<td><input type="text" name="state" value="<?php echo $car_condition;?>"></td>
 			</tr>
 			<tr>
 				<td>State</td>
