@@ -45,7 +45,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 		echo "<td>".$res['city']."</td>";
 		echo "<td>".$res['zip']."</td>";
 		echo "<td>".$res['phone_number']."</td>";
-		echo "<td><a href=\"cust_edit.php?id=$res[customer_id]\">Edit</a> | <a href=\"cust_delete.php?id=$res[customer_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"cust_edit.php?customer_id=$res[customer_id]\">Edit</a> | <a href=\"cust_delete.php?customer_id=$res[customer_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
