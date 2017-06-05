@@ -80,6 +80,7 @@
                   <div> Address ID: {{company.address_id}},</div>
                   <div> Description: {{company.description}}</div>
                   <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteCompany(company.comp_name)">DELETE</button>
+                  <a href="#"><button class="btn btn-primary" type="button">Update</button></a>
                 </div>
               </div>
               <div class="modal-footer">
@@ -105,6 +106,7 @@
                   <div>Phone: {{residence.landlord_phone_num}}</div>
                   <div>Rent: {{residence.rent | currency}}</div>
                 <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteResidence(residence.residence_id)">DELETE</button>
+                <a href="#"><button class="btn btn-primary" type="button">Update</button></a>
                 </div>
               </div>
               <div class="modal-footer">
@@ -131,6 +133,7 @@
                   <div>Start date & time: {{activity.start_date}}, {{activity.start_time}}</div>
                   <div>End date & time: {{activity.end_date}}, {{activity.end_time}}</div>
                   <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteActivity(activity.activity_id)">DELETE</button>
+                  <a href="#"><button class="btn btn-primary" type="button">Update</button></a>                
                 </div>
               </div>
               <div class="modal-footer">
@@ -146,7 +149,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>               
                 <h4 class="modal-title" id="myModalLabel">Students</h4>
               </div>
               <div class="modal-body">
@@ -158,6 +161,7 @@
                   <div>Phone: {{student.phone_number}}</div>
                   <div>Email: {{student.email}}</div>
                   <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteStudent(student.email)">DELETE</button>
+                  <a href="#"><button class="btn btn-primary" type="button">Update</button></a>
                 </div>
               </div>
               <div class="modal-footer">
