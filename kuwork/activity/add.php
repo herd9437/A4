@@ -9,6 +9,7 @@
 include_once("../config.php");
 
 if(isset($_POST['Submit'])) {
+	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
 	$coordinator_email = mysqli_real_escape_string($mysqli, $_POST['coordinator_email']);
 	$description = mysqli_real_escape_string($mysqli, $_POST['description']);
 	$start_date= mysqli_real_escape_string($mysqli, $_POST['start_date']);
@@ -17,7 +18,10 @@ if(isset($_POST['Submit'])) {
 	$end_time = mysqli_real_escape_string($mysqli, $_POST['end_time']);
 
 	// checking empty fields
-	if(empty($coordinator_email) || empty($description) || empty($start_date) || empty($start_time) || empty($end_date) || empty($end_time)) {
+	if(empty($name) || empty($coordinator_email) || empty($description) || empty($start_date) || empty($start_time) || empty($end_date) || empty($end_time)) {
+		if(empty($name)) {
+			echo "<font color='red'>Name field is empty.</font><br/>";
+		}
 
 		if(empty($coordinator_email)) {
 			echo "<font color='red'>Coordinator Email field is empty.</font><br/>";
@@ -50,7 +54,7 @@ if(isset($_POST['Submit'])) {
 
 		//insert data to database
 		;
-		$result = mysqli_query($mysqli, "INSERT INTO activity (coordinator_email, description, start_date, start_time, end_date, end_time) VALUES ( '$coordinator_email', '$description', '$start_date', '$start_time', '$end_date', '$end_time')");
+		$result = mysqli_query($mysqli, "INSERT INTO activity (name, coordinator_email, description, start_date, start_time, end_date, end_time) VALUES ( '$name', '$coordinator_email', '$description', '$start_date', '$start_time', '$end_date', '$end_time')");
 
 		//display success message
 		echo "<font color='green'>Corporation added successfully.";

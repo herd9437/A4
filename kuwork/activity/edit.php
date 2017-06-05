@@ -16,7 +16,11 @@ if(isset($_POST['update']))
 	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
 
 	// checking empty fields
-	if(empty($coordinator_email) || empty($description) || empty($start_time) || empty($start_date) || empty($end_time) || empty($end_date)) {
+	if(empty($name) || empty($coordinator_email) || empty($description) || empty($start_time) || empty($start_date) || empty($end_time) || empty($end_date)) {
+
+		if(empty($name)) {
+			echo "<font color='red'>Name field is empty.</font><br/>";
+		}
 
 		if(empty($coordinator_email)) {
 			echo "<font color='red'>Coordinator Email field is empty.</font>";
@@ -45,7 +49,7 @@ if(isset($_POST['update']))
 	} else {
 
 		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE activity SET coordinator_email='$coordinator_email',description='$description',start_time='$start_time',start_date='$start_date',end_time='$end_time',end_date='$end_date',address_id='$address_id' WHERE activity_id=$activity_id");
+		$result = mysqli_query($mysqli, "UPDATE activity SET name='$name', coordinator_email='$coordinator_email',description='$description',start_time='$start_time',start_date='$start_date',end_time='$end_time',end_date='$end_date',address_id='$address_id' WHERE activity_id=$activity_id");
 		//display success message
 		echo "<font color='green'>Data added successfully.";
 		echo '<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">View Result</a>';
