@@ -16,7 +16,7 @@ if(isset($_POST['update'])){
 
 
 	// checking empty fields
-	if(empty($garage_name) || empty($street_address) || empty($city) || empty($state) || empty($zip) || empty($estimate)) || empty($cost) || empty($procedure_name) || empty($procedure_date) || empty($authorization_number))  {
+	if(empty($garage_name) || empty($street_address) || empty($city) || empty($state) || empty($zip) || empty($estimate) || empty($cost) || empty($procedure_name) || empty($procedure_date) || empty($authorization_number))  {
 
 		if(empty($garage_name)) {
 			echo "<font color='red'>Garage Name field is empty.</font><br/>";
@@ -139,7 +139,7 @@ while($res = mysqli_fetch_array($result))
 				<td><input type="text" name="authorization_number" value="<?php echo $authorization_number ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="maintenance_id" value=<?php echo $_GET['maintenance_id'];?>></td>
+				<td><input type="hidden" name="maintenance_id" value="<?php echo $_GET['maintenance_id'] ?>"></td>
 				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
 		</table>
