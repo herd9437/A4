@@ -64,7 +64,7 @@ if(isset($_POST['update']))
 $account_number = $_GET['account_number'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM WHERE account_number=$account_number");
+$result = mysqli_query($mysqli, "SELECT * FROM corporation WHERE account_number=$account_number");
 
 while($res = mysqli_fetch_array($result))
 {
