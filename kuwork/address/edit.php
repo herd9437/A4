@@ -36,7 +36,8 @@ if(isset($_POST['update']))
 	} else {
 
 		$result = mysqli_query($mysqli, "UPDATE address SET street='$street',city='$city',state='$state',zip_code='$zip_code' WHERE address_id=$address_id");
-		echo "{'status':'success','message':'Address successfully created.'}";
+		echo "<font color='green'>Data added successfully.";
+		echo '<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">View Result</a>';
 
 	}
 }

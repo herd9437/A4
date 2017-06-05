@@ -43,7 +43,9 @@ if(isset($_POST['update']))
 	} else {
 
 		$result = mysqli_query($mysqli, "UPDATE residence landlord_email='$landlord_email',landlord_phone_num='$landlord_phone_num',rent='$rent',address_id='$address_id',residence_reviews='$residence_reviews',residence_image='$residence_image'");
-		echo "{'status':'success','message':'Residence successfully created.'}";
+		echo "<font color='green'>Data added successfully.";
+		echo '<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">View Result</a>';
+
 	}
 }
 

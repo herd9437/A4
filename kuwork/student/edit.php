@@ -46,8 +46,9 @@ if(isset($_POST['update']))
 		//updating the table
 		$result = mysqli_query($mysqli, "UPDATE student SET phone_number='$phone_number',name='$name',degree='$degree',major='$major',class_standing='$class_standing',company_name='$company_name',residence_id='$residence_id' WHERE email=$email");
 
-		//redirectig to the display page. In our case, it is index.php
-		echo "{'status':'success','message':'Student updated successfully'}";
+		echo "<font color='green'>Data added successfully.";
+		echo '<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">View Result</a>';
+
 	}
 }
 
