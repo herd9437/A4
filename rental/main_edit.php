@@ -64,7 +64,7 @@ if(isset($_POST['update'])){
 	// if all the fields are filled (not empty)
 
 	//insert data to database
-	$result = mysqli_query($mysqli, "UPDATE maintenance_cost SET street_address='$street_address', city'$city', zip='$zip', cost='$cost' WHERE maintenance_id='$maintenance_id' ");
+	$result = mysqli_query($mysqli, "UPDATE maintenance_cost SET garage_name='$garage_name', street_address='$street_address', city='$city', state='$state', zip='$zip', estimate='$estimate,' cost='$cost', procedure_name='$procedure_name', procedure_date='$procedure_date', authorization_number='$authorization_number' WHERE maintenance_id='$maintenance_id' ");
 
 	//display success message
 	echo "<font color='green'>Maintenance added successfully.";
@@ -81,10 +81,15 @@ $result = mysqli_query($mysqli, "SELECT * FROM maintenance_cost WHERE maintenanc
 
 while($res = mysqli_fetch_array($result))
 {
+	$garage_name = $res['garage_name'];
 	$street_address = $res['street_address'];
 	$city = $res['city'];
 	$zip = $res['zip'];
+	$estimate = $res['estimate'];
 	$cost = $res['cost'];
+	$procedure_name = $res['procedure_name'];
+	$procedure_date = $res['procedure_date'];
+	$authorization_number = $res['authorization_number'];
 }
 ?>
 <html>

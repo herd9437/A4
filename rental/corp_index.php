@@ -47,7 +47,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM corporation"); // using mysqli_qu
 		echo "<td>".$res['state']."</td>";
 		echo "<td>".$res['zip']."</td>";
 		echo "<td>".$res['phone_number']."</td>";
-		echo "<td><a href=\"corp_edit.php?id=$res[account_number]\">Edit</a> | <a href=\"corp_delete.php?id=$res[account_number]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"corp_edit.php?account_number=$res[account_number]\">Edit</a> | <a href=\"corp_delete.php?account_number=$res[account_number]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
