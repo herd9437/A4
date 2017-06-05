@@ -29,11 +29,11 @@ include_once("../config.php");
 
 		//insert data to database
 		$result = mysqli_query($mysqli, "INSERT INTO company(comp_name,description,address_id) VALUES('$comp_name','$description','$address_id')");
-		echo "{'status':'success','message':'Company successfully created.'}";
 
 		//display success message
-//		echo "<font color='green'>Data added successfully.";
-//		echo "<br/><a href='index.php'>View Result</a>";
+		echo "<font color='green'>Company added successfully.";
+		echo "<br/><a href='http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html'>Go Home</a>";
+
 	}
 //}
 ?>

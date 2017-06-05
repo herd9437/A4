@@ -10,29 +10,29 @@ include_once("../config.php");
 
 	// checking empty fields
 	if(empty($street) || empty($city) || empty($state) || empty($zip_code)) {
-		$errors = array();
 
 		if(empty($street)) {
-			array_push($errors,"{'status':'error','message':'Street field is empty.'}");
+			echo "<font color='red'> Street field is empty.</font>";
 		}
 
 		if(empty($city)) {
-			array_push($errors,"{'status':'error','message':'City field is empty.'}");
+			echo "<font color='red'> City field is empty.</font>";
 		}
 
 		if(empty($state)) {
-			array_push($errors,"{'status':'error','message':'State field is empty.'}");
+			echo "<font color='red'> State field is empty.</font>";
 		}
 
 		if(empty($zip_code)) {
-			array_push($errors,"{'status':'error','message':'Zip Code field is empty.'}");
+			echo "<font color='red'> Zip Code field is empty.</font>";
 		}
 
-		echo '[' . implode(',', $errors) . ']';
 	} else {
 
 		$result = mysqli_query($mysqli, "INSERT INTO Address (street,city,state,zip_code) VALUES('$street','$city','$state','$zip_code')");
-		echo "{'status':'success','message':'Address successfully created.'}";
+		//display success message
+		echo "<font color='green'>Address added successfully.";
+		echo "<br/><a href='http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html'>Go Home</a>";
 
 	}
 ?>
