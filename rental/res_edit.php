@@ -120,7 +120,7 @@ if(isset($_POST['update']))
 		echo "<font color='green'>Data added successfully.";
 		echo "<br/><a href='res_index.php'>View Result</a>";
 	}
-}
+
 
 //getting id from url
 $credit_card_number = $_GET['credit_card_number'];
