@@ -22,7 +22,7 @@ if(isset($_POST['Submit'])) {
 
 
 	// checking empty fields
-	if(empty($garage_name) || empty($street_address) || empty($city) || empty($state) || empty($zip) || empty($estimate)) || empty($cost) || empty($procedure_name) || empty($procedure_date) || empty($authorization_number))  {
+	if(empty($garage_name) || empty($street_address) || empty($city) || empty($state) || empty($zip) || empty($estimate) || empty($cost) || empty($procedure_name) || empty($procedure_date) || empty($authorization_number))  {
 
 		if(empty($garage_name)) {
 			echo "<font color='red'>Garage Name field is empty.</font><br/>";
