@@ -78,6 +78,7 @@ $maintenance_id = $_GET['maintenance_id'];
 
 //selecting data associated with this particular id
 $result = mysqli_query($mysqli, "SELECT * FROM maintenance_cost WHERE maintenance_id=$maintenance_id");
+echo $result;
 
 while($res = mysqli_fetch_array($result))
 {

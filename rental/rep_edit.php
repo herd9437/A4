@@ -32,7 +32,8 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "UPDATE representative SET first_name='$first_name', last_name='$last_name', phone_number='$phone_number') WHERE rep_id='$rep_id'");
+		$result = mysqli_query($mysqli, "UPDATE representative SET first_name='$first_name', last_name='$last_name', phone_number='$phone_number' WHERE rep_id='$rep_id'");
+		echo $result;
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";

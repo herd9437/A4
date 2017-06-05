@@ -36,10 +36,40 @@ if(isset($_GET['comp_name'])){
 
 	while($res = mysqli_fetch_array($result))
 	{
-		echo "{";
-		echo "\"comp_name\":\"".$res['name']."\",";
-		echo "\"description\":\"".$res['description']."\"";
-		echo "}";
+		$comp_name = $res['name'];
+		$description = $res['description';
+		$address_id = $res['address_id';
 	}
 }
 ?>
+<html>
+<head>
+	<title>Add Company</title>
+</head>
+
+<body>
+	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
+	<br/><br/>
+
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/company/edit.php" method="post" name="form1">
+		<table>
+			<tr>
+				<td>Company Name</td>
+				<td><input type="text" name="comp_name" value="<?php echo $comp_name ?>"></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><input type="text" name="description" value="<?php echo $description ?>"></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><input type="text" name="address_id" value="<?php echo $address_id ?>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" name="Update" value="Add"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

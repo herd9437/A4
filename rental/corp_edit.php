@@ -50,8 +50,8 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		;
 		$result = mysqli_query($mysqli, "UPDATE corporation SET name='$name', account_number='$account_number', street_address='$street_address', city='$city', zip='$zip', phone_number='$phone_number' WHERE account_number='$account_number'");
+		echo $result;
 
 		//display success message
 		echo "<font color='green'>Corporation added successfully.";

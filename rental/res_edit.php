@@ -112,9 +112,13 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 		//insert data to database
 		$result = mysqli_query($mysqli, "UPDATE reservation SET rate='$rate', gas_charge='$gas_charge', final_charge='$final_charge', rate_period='$rate_period', discount='$discount' WHERE credit_card_number='$credit_card_number'");
+		echo $result;
 		$result = mysqli_query($mysqli, "UPDATE reservation SET estimated_rental_duration='$estimated_rental_duration', credit_card_number='$credit_card_type', credit_card_type='$credit_card_number' WHERE credit_card_number='$credit_card_number'");
+		echo $result;
 		$result = mysqli_query($mysqli, "UPDATE reservation SET base_charge='$base_charge', tax='$tax', gas_level='$gas_level', date_rented='$date_rented', time_rented='$time_rented', date_returned='$date_returned' WHERE credit_card_number='$credit_card_number'");
+		echo $result;
 		$result = mysqli_query($mysqli, "UPDATE reservation SET time_returned='$time_returned', insurance_charge='$insurance_charge', mileage_charge='$mileage_charge', start_miles='$start_miles', end_miles='$end_miles' WHERE credit_card_number='$credit_card_number'");
+		echo $result;
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";
