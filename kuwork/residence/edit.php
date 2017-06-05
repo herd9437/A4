@@ -17,27 +17,27 @@ if(isset($_POST['update']))
 	if(empty($lanlord_email) || empty($landlord_phone_num) || empty($rent) || empty($address_id) || empty($residence_reviews) || empty($residence_image)) {
 
 		if(empty($lanlord_email)) {
-			echo "<font color='red'>Landlord Email field is empty</font>");
+			echo "<font color='red'>Landlord Email field is empty</font>";
 		}
 
 		if(empty($landlord_phone_num)) {
-			echo "<font color='red'>Landlord Phone Number field is empty</font>");
+			echo "<font color='red'>Landlord Phone Number field is empty</font>";
 		}
 
 		if(empty($rent)) {
-			echo "<font color='red'>Rent field is empty</font>");
+			echo "<font color='red'>Rent field is empty</font>";
 		}
 
 		if(empty($address_id)) {
-			echo "<font color='red'>Address Id field is empty</font>");
+			echo "<font color='red'>Address Id field is empty</font>";
 		}
 
 		if(empty($residence_reviews)) {
-			echo "<font color='red'>Residence Review field is empty</font>");
+			echo "<font color='red'>Residence Review field is empty</font>";
 		}
 
 		if(empty($residence_image)) {
-			echo "<font color='red'>Residence Image field is empty</font>");
+			echo "<font color='red'>Residence Image field is empty</font>";
 		}
 
 	} else {
