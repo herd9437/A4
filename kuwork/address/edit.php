@@ -35,7 +35,7 @@ if(isset($_POST['update']))
 		echo '[' . implode(',', $errors) . ']';
 	} else {
 
-		$result = mysqli_query($mysqli, "INSERT INTO Address (street,city,state,zip_code) VALUES('$street','$city','$state','$zip_code')");
+		$result = mysqli_query($mysqli, "UPDATE address SET street='$street',city='$city',state='$state',zip_code='$zip_code' WHERE address_id=$address_id");
 		echo "{'status':'success','message':'Address successfully created.'}";
 
 	}

@@ -36,7 +36,7 @@ if(isset($_POST['update']))
 
 	} else {
 
-		$result = mysqli_query($mysqli, "INSERT INTO vehicle(vin_number,make,model,capacity,owner_email) VALUES('$vin_number','$make','$model','$capacity','$owner_email')");
+		$result = mysqli_query($mysqli, "UPDATE vehicle SET vin_number='$vin_number',make='$make',model='$model',capacity='$capacity',owner_email='$owner_email' WHERE vin_number=$vin_number");
 		echo "{'status':'success','message':'Vehicle updated successfully.'}";
 
 	}

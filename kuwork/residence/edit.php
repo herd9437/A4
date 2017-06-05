@@ -6,9 +6,15 @@ if(isset($_POST['update']))
 {
 
 	$residence_id = mysqli_real_escape_string($mysqli, $_POST['residence_id']);
+	$landlord_email = mysqli_real_escape_string($landlord_email, $_POST['age']);
+	$landlord_phone_num = mysqli_real_escape_string($landlord_phone_num, $_POST['email']);
+	$rent = mysqli_real_escape_string($mysqli, $_POST['rent']);
+	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
+	$residence_reviews = mysqli_real_escape_string($mysqli, $_POST['residence_reviews']);
+	$residence_image = mysqli_real_escape_string($mysqli, $_POST['residence_image']);
 
+	// checking empty fields
 	if(empty($lanlord_email) || empty($landlord_phone_num) || empty($rent) || empty($address_id) || empty($residence_reviews) || empty($residence_image)) {
-		$errors = array();
 
 		if(empty($lanlord_email)) {
 			echo "<font color='red'>Landlord Email field is empty</font>");
@@ -34,10 +40,9 @@ if(isset($_POST['update']))
 			echo "<font color='red'>Residence Image field is empty</font>");
 		}
 
-		echo '[' . implode(',', $errors) . ']';
 	} else {
 
-		$result = mysqli_query($mysqli, "INSERT INTO residence(landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES($landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
+		$result = mysqli_query($mysqli, "UPDATE residence landlord_email='$landlord_email',landlord_phone_num='$landlord_phone_num',rent='$rent',address_id='$address_id',residence_reviews='$residence_reviews',residence_image='$residence_image'");
 		echo "{'status':'success','message':'Residence successfully created.'}";
 	}
 }

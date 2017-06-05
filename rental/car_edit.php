@@ -69,7 +69,7 @@ if(isset($_POST['update']))
 $vin = $_GET['vin'];
 
 //selecting data associated with this particular id
-$result = mysqli_query($mysqli, "SELECT * FROM car WHERE vin=$vin");
+$result = mysqli_query($mysqli, "SELECT * FROM car WHERE vin='$vin'");
 
 while($res = mysqli_fetch_array($result))
 {
