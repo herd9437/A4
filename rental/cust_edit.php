@@ -63,6 +63,7 @@ $customer_id = $_GET['customer_id'];
 
 //selecting data associated with this particular id
 $result = mysqli_query($mysqli, "SELECT * FROM customer WHERE customer_id=$customer_id");
+echo $result;
 
 while($res = mysqli_fetch_array($result))
 {
