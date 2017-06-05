@@ -72,6 +72,7 @@ while($res = mysqli_fetch_array($result))
 	$account_number = $res['account_number'];
 	$street_address = $res['street_address'];
 	$city = $res['city'];
+	$state = $res['state'];
 	$zip = $res['zip'];
 	$age = $res['age'];
 	$phone_number = $res['phone_number'];
