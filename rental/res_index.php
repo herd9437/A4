@@ -71,7 +71,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM reservation"); // using mysqli_qu
 		echo "<td>".$res['final_charge']."</td>";
 		echo "<td>".$res['start_miles']."</td>";
 		echo "<td>".$res['end_miles']."</td>";
-		echo "<td><a href=\"res_edit.php?id=$res[credit_card_number]\">Edit</a> | <a href=\"res_delete.php?id=$res[credit_card_number]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"res_edit.php?credit_card_number=$res[credit_card_number]\">Edit</a> | <a href=\"res_delete.php?credit_card_number=$res[credit_card_number]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>

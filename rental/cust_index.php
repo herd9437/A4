@@ -23,7 +23,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 </head>
 
 <body>
-<a href="add.html">Add New Customer</a><br/><br/>
+<a href="cust_add.html">Add New Customer</a><br/><br/>
 
 	<table width='80%' border=0>
 
