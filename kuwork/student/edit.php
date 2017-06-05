@@ -109,7 +109,7 @@ if(isset($_GET['email'])){
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="update" name="Update" value="Add"></td>
+				<td><input type="submit" name="Update" value="Add"></td>
 			</tr>
 		</table>
 	</form>
