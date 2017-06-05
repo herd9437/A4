@@ -49,12 +49,47 @@ if(isset($_GET['address_id'])){
 
 	while($res = mysqli_fetch_array($result))
 	{
-		echo "{";
-		echo "\"street\":\"".$res['street']."\",";
-		echo "\"city\":\"".$res['city']."\",";
-		echo "\"state\":\"".$res['state']."\",";
-		echo "\"zip_code\":\"".$res['zip_code']."\"";
-		echo "}";
+		$street = $res['street'].;
+		$city = $res['city'].;
+		$state = $res['state'].;
+		$zip_code = $res['zip_code'];
 	}
 }
 ?>
+
+
+<html>
+<head>
+	<title>Add Activity</title>
+</head>
+
+<body>
+	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
+	<br/><br/>
+
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/add.php" method="post" name="form1">
+		<table>
+			<tr>
+				<td>Street Address</td>
+				<td><input type="text" name="street" value="<?php echo $street ?>"></td>
+			</tr>
+			<tr>
+				<td>City</td>
+				<td><input type="text" name="city" value="<?php echo $city ?>"></td>
+			</tr>
+			<tr>
+				<td>State</td>
+				<td><input type="text" name="state" value="<?php echo $state ?>"></td>
+			</tr>
+			<tr>
+				<td>Zip Code</td>
+				<td><input type="text" name="zip_code" value="<?php echo $zip_code ?>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="update" name="Update" value="Add"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -60,16 +60,58 @@ if(isset($_GET['email'])){
 
 	while($res = mysqli_fetch_array($result))
 	{
-		echo "{";
-		echo "\"email\":\"".$res['email']."\",";
-		echo "\"phone_number\":\"".$res['phone_number']."\",";
-		echo "\"name\":\"".$res['name']."\",";
-		echo "\"degree\":\"".$res['degree']."\",";
-		echo "\"major\":\"".$res['major']."\",";
-		echo "\"class_standing\":\"".$res['class_standing']."\",";
-		echo "\"company_name\":\"".$res['company_name']."\",";
-		echo "\"residence_id\":\"".$res['residence_id']."\",";
-		echo "}";
+		$email = $res['email'];
+		$phone_number = $res['phone_number'];
+		$name = $res['name'];
+		$degree = $res['degree'];
+		$major = $res['major'];
+		$class_standing = $res['class_standing'];
+		$company_name = $res['company_name'];
+		$residence_id = $res['residence_id'];
 	}
 }
 ?>
+
+<html>
+<head>
+	<title>Add Activity</title>
+</head>
+
+<body>
+	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
+	<br/><br/>
+
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/edit.php" method="post" name="form1">
+		<table>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" name="email" value="<?php echo $email ?>"></td>
+			</tr>
+			<tr>
+				<td>Phone Number</td>
+				<td><input type="text" name="phone_number" value="<?php echo $phone_number ?>"></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" value="<?php echo $name?>"></td>
+			</tr>
+			<tr>
+				<td>Degree</td>
+				<td><input type="text" name="degree" value="<?php echo $degree ?>"></td>
+			</tr>
+			<tr>
+				<td>Major/td>
+				<td><input type="text" name="major" value="<?php echo $major ?>"></td>
+			</tr>
+			<tr>
+				<td>Class Standing</td>
+				<td><input type="text" name="class_standing" value="<?php echo $class_standing?>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="update" name="Update" value="Add"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

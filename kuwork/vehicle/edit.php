@@ -51,13 +51,51 @@ if(isset($_GET['vin_number'])){
 
 	while($res = mysqli_fetch_array($result))
 	{
-		echo "{";
-		echo "\"vin_number\":\"".$res['vin_number']."\",";
-		echo "\"make\":\"".$res['make']."\",";
-		echo "\"model\":\"".$res['model']."\",";
-		echo "\"capacity\":\"".$res['capacity']."\",";
-		echo "\"owner_email\":\"".$res['owner_email']."\",";
-		echo "}";
+		$vin_number = $res['vin_number'];
+		$make = $res['make'];
+		$model = $res['model'];
+		$capacity = $res['capacity'];
+		$owner_email = $res['owner_email'];
 	}
 }
 ?>
+
+<html>
+<head>
+	<title>Add Activity</title>
+</head>
+
+<body>
+	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
+	<br/><br/>
+
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/vehicle/edit.php" method="post" name="form1">
+		<table>
+			<tr>
+				<td>Vin</td>
+				<td><input type="text" name="vin_number" value="<?php echo $vin_number ?>"></td>
+			</tr>
+			<tr>
+				<td>Make</td>
+				<td><input type="text" name="make" value="<?php echo $make ?>"></td>
+			</tr>
+			<tr>
+				<td>Model</td>
+				<td><input type="text" name="model" value="<?php echo $model ?>"></td>
+			</tr>
+			<tr>
+				<td>Capacity</td>
+				<td><input type="text" name="capacity" value="<?php echo $capacity ?>"></td>
+			</tr>
+			<tr>
+				<td>Owner Email</td>
+				<td><input type="text" name="owner_email" value="<?php echo $owner_email ?>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="update" name="Update" value="Add"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

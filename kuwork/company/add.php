@@ -15,13 +15,15 @@ include_once("../config.php");
 
 	// checking empty fields
 	if(empty($comp_name) || empty($description)) {
-		$errors = array();
 
 		if(empty($comp_name)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
 
-		echo '[' . implode(',', $errors) . ']';
+		if(empty($description)) {
+			echo "<font color='red'>Name field is empty.</font><br/>";
+		}
+
 	} else {
 		// if all the fields are filled (not empty)
 

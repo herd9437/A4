@@ -1,4 +1,4 @@
-<html>
+
 <head>
 	<title>Add Activity</title>
 </head>
@@ -7,22 +7,22 @@
 	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
 	<br/><br/>
 
-	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/add.php" method="post" name="form1">
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/edit.php" method="post" name="form1">
 		<table>
 			<tr>
-				<td>Coordinator Email</td>
-				<td><input type="text" name="coordinator_email"></td>
+				<td>Email</td>
+				<td><input type="text" name="email" value="<?php echo $email ?>"></td>
 			</tr>
 			<tr>
-				<td>Description</td>
-				<td><input type="text" name="description"></td>
+				<td>Phone Number</td>
+				<td><input type="text" name="phone_number" value="<?php echo $phone_number ?>"></td>
 			</tr>
 			<tr>
-				<td>Start Date</td>
-				<td><input type="text" name="start_date"></td>
+				<td>Name</td>
+				<td><input type="text" name="name" value="<?php echo $name?>"></td>
 			</tr>
 			<tr>
-				<td>Start Time</td>
+				<td>Degree</td>
 				<td><input type="text" name="start_time"></td>
 			</tr>
 			<tr>
