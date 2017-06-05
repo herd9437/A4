@@ -67,7 +67,7 @@ if(isset($_GET['address_id'])){
 	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Home</a>
 	<br/><br/>
 
-	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/add.php" method="post" name="form1">
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/address/edit.php" method="post" name="form1">
 		<table>
 			<tr>
 				<td>Street Address</td>

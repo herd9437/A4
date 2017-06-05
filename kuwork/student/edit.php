@@ -81,7 +81,7 @@ if(isset($_GET['email'])){
 	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Home</a>
 	<br/><br/>
 
-	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/student/edit.php" method="post" name="form1">
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/vehicle/edit.php" method="post" name="form1">
 		<table>
 			<tr>
 				<td>Email</td>

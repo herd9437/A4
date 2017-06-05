@@ -81,7 +81,7 @@ if(isset($_GET['activity_id'])){
 	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
 	<br/><br/>
 
-	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/add.php" method="post" name="form1">
+	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/edit.php" method="post" name="form1">
 		<table>
 			<tr>
 				<td>Coordinator Email</td>
