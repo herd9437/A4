@@ -33,7 +33,7 @@ if(isset($_GET['table'])&&isset($_GET['query'])){
   }
   else if($table == 'residence'){
     //selecting data associated with this particular residence_id
-  	$result = mysqli_query($mysqli, "SELECT * FROM residence WHERE lanlord_email Like \"%$query%\" or lanlord_phone_num Like \"%$query%\" or rent Like \"%$query%\"");
+  	$result = mysqli_query($mysqli, "SELECT * FROM residence WHERE landlord_email Like \"%$query%\" or landlord_phone_num Like \"%$query%\" or rent Like \"%$query%\"");
 
     $data = array();
 
@@ -73,7 +73,7 @@ if(isset($_GET['table'])&&isset($_GET['query'])){
 
   }else if($table == 'student'){
     //selecting data associated with this particular residence_id
-  	$result = mysqli_query($mysqli, "SELECT * FROM student WHERE email Like \"%$query%\" or phone_number Like \"%$query%\" or name Like \"%$query%\" or degree Like \"%$query%\" or major Like \"%$query%\" or class_standing Like \"%$query%\" or company_name Like \"%$query%\"");
+  	$result = mysqli_query($mysqli, "SELECT * FROM student WHERE email Like \"$query\" or phone_number Like \"%$query%\" or first_name Like \"%$query%\" or last_name like \"$query\" or degree Like \"%$query%\" or major Like \"%$query%\" or class_standing Like \"%$query%\"");
 
     $data = array();
 
