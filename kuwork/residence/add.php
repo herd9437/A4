@@ -40,7 +40,7 @@ include_once("../config.php");
 
 	} else {
 
-		$result = mysqli_query($mysqli, "INSERT INTO residence(landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES($landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
+		$result = mysqli_query($mysqli, "INSERT INTO residence(landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES('$landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
 		//display success message
 		echo "<font color='green'>Residence added successfully.";
 		echo "<br/><a href='http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html'>Go Home</a>";
