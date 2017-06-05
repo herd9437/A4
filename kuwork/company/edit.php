@@ -48,7 +48,7 @@ if(isset($_GET['comp_name'])){
 </head>
 
 <body>
-	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Activity Home</a>
+	<a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html">Home</a>
 	<br/><br/>
 
 	<form action="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/company/edit.php" method="post" name="form1">
