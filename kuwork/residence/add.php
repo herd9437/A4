@@ -4,13 +4,8 @@ include_once("../config.php");
 
 //if(isset($_POST['Submit'])) {
 	$residence_id = mysqli_real_escape_string($mysqli, $_POST['residence_id']);
-<<<<<<< HEAD
 	$landlord_email = mysqli_real_escape_string($mysqli, $_POST['landlord_email']);
 	$landlord_phone_num = mysqli_real_escape_string($mysqli, $_POST['landlord_phone_num']);
-=======
-	$landlord_email = mysqli_real_escape_string($landlord_email, $_POST['landlord_email']);
-	$landlord_phone_num = mysqli_real_escape_string($landlord_phone_num, $_POST['landlord_phone_num']);
->>>>>>> 82403784047061a586372aedbba0c6d7f6a2d9fb
 	$rent = mysqli_real_escape_string($mysqli, $_POST['rent']);
 	$address_id = mysqli_real_escape_string($mysqli, $_POST['address_id']);
 	$residence_reviews = mysqli_real_escape_string($mysqli, $_POST['residence_reviews']);
