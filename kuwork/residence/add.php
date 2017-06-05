@@ -13,37 +13,37 @@ include_once("../config.php");
 
 	// checking empty fields
 	if(empty($lanlord_email) || empty($landlord_phone_num) || empty($rent) || empty($address_id) || empty($residence_reviews) || empty($residence_image)) {
-		$errors = array();
 
 		if(empty($lanlord_email)) {
-			array_push($errors,"{'status':'error','message':'Landlord Email field is empty.'}");
+			echo "<font color='red'>Landlord Email field is empty.</font>";
 		}
 
 		if(empty($landlord_phone_num)) {
-			array_push($errors,"{'status':'error','message':'Landlord Phone Number field is empty.'}");
+			echo "<font color='red'>Landlord Phone Number field is empty.</font>";
 		}
 
 		if(empty($rent)) {
-			array_push($errors,"{'status':'error','message':'Rent field is empty.'}");
+			echo "<font color='red'>Rent field is empty.</font>";
 		}
 
 		if(empty($address_id)) {
-			array_push($errors,"{'status':'error','message':'Address Id field is empty.'}");
+			echo "<font color='red'>Address Id field is empty.</font>";
 		}
 
 		if(empty($residence_reviews)) {
-			array_push($errors,"{'status':'error','message':'Residence Review field is empty.'}");
+			echo "<font color='red'>Residence Review field is empty.</font>";
 		}
 
 		if(empty($residence_image)) {
-			array_push($errors,"{'status':'error','message':'Residence Image field is empty.'}");
+			echo "<font color='red'>Residence Image field is empty.</font>";
 		}
 
-		echo '[' . implode(',', $errors) . ']';
 	} else {
 
 		$result = mysqli_query($mysqli, "INSERT INTO residence(landlord_email,landlord_phone_num,rent,address_id,residence_reviews,residence_image) VALUES($landlord_email','$landlord_phone_num','$rent','$address_id','$residence_reviews','$residence_image')");
-		echo "{'status':'success','message':'Residence successfully created.'}";
+		//display success message
+		echo "<font color='green'>Residence added successfully.";
+		echo "<br/><a href='http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html'>Go Home</a>";
 
 	}
 //}
