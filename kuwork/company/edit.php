@@ -2,7 +2,7 @@
 // including the database connection file
 include_once("../config.php");
 
-if(isset($_POST['update']))
+if(isset($_POST['Update']))
 {
 
 	$comp_name = mysqli_real_escape_string($mysqli, $_POST['comp_name']);
@@ -38,8 +38,8 @@ if(isset($_GET['comp_name'])){
 	while($res = mysqli_fetch_array($result))
 	{
 		$comp_name = $res['name'];
-		$description = $res['description';
-		$address_id = $res['address_id';
+		$description = $res['description'];
+		$address_id = $res['address_id'];
 	}
 }
 ?>

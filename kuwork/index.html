@@ -80,7 +80,7 @@
                   <div> Address ID: {{company.address_id}},</div>
                   <div> Description: {{company.description}}</div>
                   <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteCompany(company.comp_name)">DELETE</button>
-                  <a href=""><button class="btn btn-primary" type="button">Update</button></a>
+                  <a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/company/edit.php?comp_name={{company.comp_name}}"><button class="btn btn-primary" type="button">Update</button></a>
                 </div>
               </div>
               <div class="modal-footer">
@@ -106,7 +106,7 @@
                   <div>Phone: {{residence.landlord_phone_num}}</div>
                   <div>Rent: {{residence.rent | currency}}</div>
                 <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteResidence(residence.residence_id)">DELETE</button>
-                <a href="#"><button class="btn btn-primary" type="button">Update</button></a>
+                <a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/residence/edit.php?residence_id={{residence.residence_id}}"><button class="btn btn-primary" type="button">Update</button></a>
                 </div>
               </div>
               <div class="modal-footer">
@@ -133,7 +133,7 @@
                   <div>Start date & time: {{activity.start_date}}, {{activity.start_time}}</div>
                   <div>End date & time: {{activity.end_date}}, {{activity.end_time}}</div>
                   <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteActivity(activity.activity_id)">DELETE</button>
-                  <a href="#"><button class="btn btn-primary" type="button">Update</button></a>                
+                  <a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/edit.php?activity_id={{activity.activity_id}}"><button class="btn btn-primary" type="button">Update</button></a>                
                 </div>
               </div>
               <div class="modal-footer">
@@ -161,7 +161,7 @@
                   <div>Phone: {{student.phone_number}}</div>
                   <div>Email: {{student.email}}</div>
                   <button type="button" class="btn btn-primary" ng-click="KUCtrl.deleteStudent(student.email)">DELETE</button>
-                  <a href="#"><button class="btn btn-primary" type="button">Update</button></a>
+                  <a href="http://webtech.kettering.edu/~vecc0396/cs461/kuwork/activity/edit.php?email={{student.email}}"><button class="btn btn-primary" type="button">Update</button></a>
                 </div>
               </div>
               <div class="modal-footer">
