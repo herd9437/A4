@@ -28,8 +28,7 @@ include_once("../config.php");
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO company(comp_name,description,address_id) VALUES('$comp_name','$description','$address_id')");
-		echo $result;
+		$result = mysqli_query($mysqli, "INSERT INTO company(name,description,address_id) VALUES('$comp_name','$description','$address_id')");
 		//display success message
 		echo "<font color='green'>Company added successfully.";
 		echo "<br/><a href='http://webtech.kettering.edu/~vecc0396/cs461/kuwork/index.html'>Go Home</a>";
