@@ -38,8 +38,8 @@ if(isset($_GET['comp_name'])){
 	while($res = mysqli_fetch_array($result))
 	{
 		$comp_name = $res['name'];
-		$description = $res['description';
-		$address_id = $res['address_id';
+		$description = $res['description'];
+		$address_id = $res['address_id'];
 	}
 }
 ?>
@@ -68,7 +68,7 @@ if(isset($_GET['comp_name'])){
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="Update" value="Add"></td>
+				<td><input type="submit" name="update" value="Add"></td>
 			</tr>
 		</table>
 	</form>
