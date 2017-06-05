@@ -12,11 +12,11 @@ if(isset($_POST['update']))
 	if(empty($name) || empty($age) || empty($email)) {
 
 		if(empty($comp_name)) {
-			echo "<font color='red'>Company Name field is empty.</font>");
+			echo "<font color='red'>Company Name field is empty.</font>";
 		}
 
 		if(empty($description)) {
-			echo "<font color='red'>Description field is empty.</font>");
+			echo "<font color='red'>Description field is empty.</font>";
 		}
 
 	} else {
