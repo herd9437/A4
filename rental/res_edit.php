@@ -25,7 +25,10 @@ if(isset($_POST['update']))
 	$start_miles = mysqli_real_escape_string($mysqli, $_POST['start_miles']);
 
 	// checking empty fields
-	if(empty($final_charge) || empty($gas_charge) || empty($rate) || empty($rate_period) || empty($discount) || empty($estimated_rental_duration) || empty($credit_card_type) || empty($credit_card_number) || empty($base_charge) || empty($tax) || empty($gas_level) || empty($date_rented) || empty($time_rented) || empty($date_returned) || empty($time_returned) || empty($insurance_charge) || empty($mileage_charge) || empty($start_miles) || empty($end_miles) || empty($start_miles)) {
+	$alpha = (empty($final_charge) || empty($gas_charge) || empty($rate) || empty($rate_period) || empty($discount) || empty($estimated_rental_duration) || empty($credit_card_type) || empty($credit_card_number));
+	$beta = (empty($base_charge) || empty($tax) || empty($gas_level) || empty($date_rented) || empty($time_rented) || empty($date_returned) || empty($time_returned) || empty($insurance_charge));
+	$gamma = (empty($mileage_charge) || empty($start_miles) || empty($end_miles) || empty($start_miles));
+	if( $alpha || $beta || $gamma ) {
 
 		if(empty($rate)) {
 			echo "<font color='red'>Rate field is empty.</font><br/>";
@@ -131,7 +134,7 @@ while($res = mysqli_fetch_array($result))
 	$rate_period = $res['rate_period'];
 	$discount = $res['discount'];
 	$estimated_rental_duration = $res['estimated_rental_duration'];
-	$credit_card_number = $res['ncredit_card_number];
+	$credit_card_number = $res['credit_card_number'];
 	$credit_card_type = $res['credit_card_type'];
 	$base_charge = $res['base_charge'];
 	$tax = $res['tax'];
