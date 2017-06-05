@@ -13,6 +13,7 @@ if(isset($_POST['Submit'])) {
 	$last_name = mysqli_real_escape_string($mysqli, $_POST['last_name']);
 	$street_address = mysqli_real_escape_string($mysqli, $_POST['street_address']);
 	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
 	$zip = mysqli_real_escape_string($mysqli, $_POST['zip']);
 	$phone_number = mysqli_real_escape_string($mysqli, $_POST['phone_number']);
 
@@ -33,6 +34,10 @@ if(isset($_POST['Submit'])) {
 
 		if(empty($city)) {
 			echo "<font color='red'>City field is empty.</font><br/>";
+		}
+
+		if(empty($state)) {
+			echo "<font color='red'>State field is empty.</font><br/>";
 		}
 
 		if(empty($zip)) {

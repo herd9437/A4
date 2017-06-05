@@ -5,14 +5,20 @@ include_once("config.php");
 if(isset($_POST['update']))
 {
 
+	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
 	$account_number = mysqli_real_escape_string($mysqli, $_POST['account_number']);
 	$street_address = mysqli_real_escape_string($mysqli, $_POST['street_address']);
 	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
 	$zip = mysqli_real_escape_string($mysqli, $_POST['zip']);
 	$phone_number = mysqli_real_escape_string($mysqli, $_POST['phone_number']);
 
 	// checking empty fields
-	if(empty($account_number) || empty($street_address) || empty($city) || empty($zip) || empty($phone_number)) {
+	if(empty($account_number) || empty($street_address) || empty($city) || empty($state) || empty($zip) || empty($phone_number)) {
+
+		if(empty($name)) {
+			echo "<font color='red'>Name field is empty.</font><br/>";
+		}
 
 		if(empty($account_number)) {
 			echo "<font color='red'>Account Number field is empty.</font><br/>";
@@ -24,6 +30,10 @@ if(isset($_POST['update']))
 
 		if(empty($city)) {
 			echo "<font color='red'>City field is empty.</font><br/>";
+		}
+
+		if(empty($state)) {
+			echo "<font color='red'>State field is empty.</font><br/>";
 		}
 
 		if(empty($zip)) {
@@ -41,7 +51,7 @@ if(isset($_POST['update']))
 
 		//insert data to database
 		;
-		$result = mysqli_query($mysqli, "INSERT INTO corporation (account_number, street_address, city, zip, phone_number) VALUES ( '$account_number', '$street_address', '$city', '$zip', '$phone_number')");
+		$result = mysqli_query($mysqli, "INSERT INTO corporation (name, account_number, street_address, city, zip, phone_number) VALUES ( '$name', '$account_number', '$street_address', '$city', '$zip', '$phone_number')");
 
 		//display success message
 		echo "<font color='green'>Corporation added successfully.";
@@ -58,6 +68,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
 
 while($res = mysqli_fetch_array($result))
 {
+	$name = $res['name'];
 	$account_number = $res['account_number'];
 	$street_address = $res['street_address'];
 	$city = $res['city'];
@@ -78,6 +89,10 @@ while($res = mysqli_fetch_array($result))
 	<form name="form1" method="post" action="corp_edit.php">
 		<table border="0">
 			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
+			</tr>
+			<tr>
 				<td>Account Number</td>
 				<td><input type="text" name="account_number" value="<?php echo $account_number;?>"></td>
 			</tr>
@@ -88,6 +103,10 @@ while($res = mysqli_fetch_array($result))
 			<tr>
 				<td>City</td>
 				<td><input type="text" name="city" value="<?php echo $city;?>"></td>
+			</tr>
+			<tr>
+				<td>State</td>
+				<td><input type="text" name="state" value="<?php echo $state;?>"></td>
 			</tr>
 			<tr>
 				<td>Zip</td>

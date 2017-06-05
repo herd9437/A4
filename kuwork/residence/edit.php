@@ -11,27 +11,27 @@ if(isset($_POST['update']))
 		$errors = array();
 
 		if(empty($lanlord_email)) {
-			array_push($errors,"{'status':'error','message':'Landlord Email field is empty.'}");
+			echo "<font color='red'>Landlord Email field is empty</font>");
 		}
 
 		if(empty($landlord_phone_num)) {
-			array_push($errors,"{'status':'error','message':'Landlord Phone Number field is empty.'}");
+			echo "<font color='red'>Landlord Phone Number field is empty</font>");
 		}
 
 		if(empty($rent)) {
-			array_push($errors,"{'status':'error','message':'Rent field is empty.'}");
+			echo "<font color='red'>Rent field is empty</font>");
 		}
 
 		if(empty($address_id)) {
-			array_push($errors,"{'status':'error','message':'Address Id field is empty.'}");
+			echo "<font color='red'>Address Id field is empty</font>");
 		}
 
 		if(empty($residence_reviews)) {
-			array_push($errors,"{'status':'error','message':'Residence Review field is empty.'}");
+			echo "<font color='red'>Residence Review field is empty</font>");
 		}
 
 		if(empty($residence_image)) {
-			array_push($errors,"{'status':'error','message':'Residence Image field is empty.'}");
+			echo "<font color='red'>Residence Image field is empty</font>");
 		}
 
 		echo '[' . implode(',', $errors) . ']';

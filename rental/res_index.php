@@ -18,6 +18,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM reservation"); // using mysqli_qu
 	<table width='80%' border=0>
 
 	<tr bgcolor='#CCCCCC'>
+		<td>Rate</td>
 		<td>Rate Period</td>
 		<td>Discount</td>
 		<td>Estimated Rental Duration</td>
@@ -26,12 +27,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM reservation"); // using mysqli_qu
 		<td>Base Charge</td>
 		<td>Tax</td>
 		<td>Gas Level</td>
+		<td>Gas Charge</td>
 		<td>Date Rented</td>
 		<td>Time Rented</td>
 		<td>Date Returned</td>
 		<td>Time Rented</td>
 		<td>Insurance Charge</td>
 		<td>Mileage Charge</td>
+		<td>Final Charge</td>
 		<td>Start Miles</td>
 		<td>End Miles</td>
 	</tr>
@@ -39,6 +42,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM reservation"); // using mysqli_qu
 	//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array
 	while($res = mysqli_fetch_array($result)) {
 		echo "<tr>";
+		echo "<td>".$res['rate']."</td>";
 		echo "<td>".$res['rate_period']."</td>";
 		echo "<td>".$res['discount']."</td>";
 		echo "<td>".$res['estimated_rental_duration']."</td>";
@@ -47,12 +51,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM reservation"); // using mysqli_qu
 		echo "<td>".$res['base_charge']."</td>";
 		echo "<td>".$res['tax']."</td>";
 		echo "<td>".$res['gas_level']."</td>";
+		echo "<td>".$res['gas_charge']."</td>";
 		echo "<td>".$res['date_rented']."</td>";
 		echo "<td>".$res['time_rented']."</td>";
 		echo "<td>".$res['date_returned']."</td>";
 		echo "<td>".$res['time_returned']."</td>";
 		echo "<td>".$res['insurance_charge']."</td>";
 		echo "<td>".$res['mileage_charge']."</td>";
+		echo "<td>".$res['final_charge']."</td>";
 		echo "<td>".$res['start_miles']."</td>";
 		echo "<td>".$res['end_miles']."</td>";
 		echo "<td><a href=\"res_edit.php?id=$res[credit_card_number]\">Edit</a> | <a href=\"res_delete.php?id=$res[credit_card_number]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";

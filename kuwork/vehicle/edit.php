@@ -13,29 +13,27 @@ if(isset($_POST['update']))
 
 	// checking empty fields
 	if(empty($vin_number) || empty($make) || empty($model) || empty($capacity) || empty($owner_email)) {
-		$errors = array();
 
 		if(empty($vin_number)) {
-			array_push($errors,"{'status':'error','message':'Vin Number field is empty.'}");
+			echo "<font color='red'>Vin Number field is empty.</font>");
 		}
 
 		if(empty($make)) {
-			array_push($errors,"{'status':'error','message':'Make field is empty.'}");
+			echo "<font color='red'>Make field is empty.</font>");
 		}
 
 		if(empty($model)) {
-			array_push($errors,"{'status':'error','message':'Model field is empty.'}");
+			echo "<font color='red'>Model field is empty.</font>");
 		}
 
 		if(empty($capacity)) {
-			array_push($errors,"{'status':'error','message':'Capacity field is empty.'}");
+			echo "<font color='red'>Capacity field is empty.</font>");
 		}
 
 		if(empty($owner_email)) {
-			array_push($errors,"{'status':'error','message':'Owner Email field is empty.'}");
+			echo "<font color='red'>Owner Email field is empty.</font>");
 		}
 
-		echo '[' . implode(',', $errors) . ']';
 	} else {
 
 		$result = mysqli_query($mysqli, "INSERT INTO vehicle(vin_number,make,model,capacity,owner_email) VALUES('$vin_number','$make','$model','$capacity','$owner_email')");

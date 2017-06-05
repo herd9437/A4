@@ -10,17 +10,15 @@ if(isset($_POST['update']))
 
 	// checking empty fields
 	if(empty($name) || empty($age) || empty($email)) {
-		$errors = array();
 
 		if(empty($comp_name)) {
-			array_push($errors,"{'status':'error','message':'Company Name field is empty.'}");
+			echo "<font color='red'>Company Name field is empty.</font>");
 		}
 
 		if(empty($description)) {
-			array_push($errors,"{'status':'error','message':'Description field is empty.'}");
+			echo "<font color='red'>Description field is empty.</font>");
 		}
 
-		echo '[' . implode(',', $errors) . ']';
 	} else {
 		//updating the table
 		$result = mysqli_query($mysqli, "UPDATE company SET comp_name='$comp_name',description='$description', WHERE address_id=$address_id");

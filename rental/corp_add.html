@@ -10,6 +10,10 @@
 	<form action="corp_add.php" method="post" name="form1">
 		<table>
 			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
+			</tr>
+			<tr>
 				<td>Account Number</td>
 				<td><input type="text" name="account_number"></td>
 			</tr>
@@ -20,6 +24,10 @@
 			<tr>
 				<td>City</td>
 				<td><input type="text" name="City"></td>
+			</tr>
+			<tr>
+				<td>State</td>
+				<td><input type="text" name="state" value="<?php echo $state;?>"></td>
 			</tr>
 			<tr>
 				<td>Zip</td>

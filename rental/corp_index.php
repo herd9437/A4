@@ -18,9 +18,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM corporation"); // using mysqli_qu
 	<table width='80%' border=0>
 
 	<tr bgcolor='#CCCCCC'>
+		<td>Name</td>
 		<td>Account Number</td>
 		<td>Street Address</td>
 		<td>City</td>
+		<td>State</td>
 		<td>Zip</td>
 		<td>Phone Number</td>
 	</tr>
@@ -28,12 +30,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM corporation"); // using mysqli_qu
 	//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array
 	while($res = mysqli_fetch_array($result)) {
 		echo "<tr>";
+		echo "<td>".$res['name']."</td>";
 		echo "<td>".$res['account_number']."</td>";
 		echo "<td>".$res['street_address']."</td>";
 		echo "<td>".$res['city']."</td>";
+		echo "<td>".$res['state']."</td>";
 		echo "<td>".$res['zip']."</td>";
 		echo "<td>".$res['phone_number']."</td>";
-		echo "<td><a href=\"corp_edit.php?id=$res[id]\">Edit</a> | <a href=\"corp_delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"corp_edit.php?id=$res[account_number]\">Edit</a> | <a href=\"corp_delete.php?id=$res[account_number]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>

@@ -17,33 +17,31 @@ if(isset($_POST['update']))
 
 	// checking empty fields
 	if(empty($email) || empty($name) || empty($degree) || empty($major)) {
-		$errors = array();
 
 		if(empty($email)) {
-			array_push($errors,"{'status':'error','message':'Email field is empty.'}");
+			echo "<font color='red'>Email field is empty.</font>");
 		}
 
 		if(empty($name)) {
-			array_push($errors,"{'status':'error','message':'Name field is empty.'}");
+			echo "<font color='red'>Name field is empty.</font>");
 		}
 
 		if(empty($degree)) {
-			array_push($errors,"{'status':'error','message':'Degree field is empty.'}");
+			echo "<font color='red'>Degree field is empty.</font>");
 		}
 
 		if(empty($major)) {
-			array_push($errors,"{'status':'error','message':'Major field is empty.'}");
+			echo "<font color='red'>Major field is empty.</font>");
 		}
 
 		if(empty($class_standing)) {
-			array_push($errors,"{'status':'error','message':'Class Standing field is empty.'}");
+			echo "<font color='red'>Class Standing field is empty.</font>");
 		}
 
 		if(empty($company_name)) {
-			array_push($errors,"{'status':'error','message':'Company Name field is empty.'}");
+			echo "<font color='red'>Company Name field is empty.</font>");
 		}
 
-		echo '[' . implode(',', $errors) . ']';
 	} else {
 		//updating the table
 		$result = mysqli_query($mysqli, "UPDATE student SET phone_number='$phone_number',name='$name',degree='$degree',major='$major',class_standing='$class_standing',company_name='$company_name',residence_id='$residence_id' WHERE email=$email");

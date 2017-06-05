@@ -10,6 +10,7 @@ if(isset($_POST['update']))
 	$location = mysqli_real_escape_string($mysqli, $_POST['location']);
 	$color = mysqli_real_escape_string($mysqli, $_POST['color']);
 	$license_number = mysqli_real_escape_string($mysqli, $_POST['license_number']);
+	$condition = mysqli_real_escape_string($mysqli, $_POST['condition']);
 	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
 	$mileage = mysqli_real_escape_string($mysqli, $_POST['mileage']);
 	$vin = mysqli_real_escape_string($mysqli, $_POST['vin']);
@@ -37,6 +38,10 @@ if(isset($_POST['update']))
 			echo "<font color='red'>License Number field is empty.</font><br/>";
 		}
 
+		if(empty($condition)) {
+			echo "<font color='red'>Condition field is empty.</font><br/>";
+		}
+
 		if(empty($state)) {
 			echo "<font color='red'>State field is empty.</font><br/>";
 		}
@@ -51,11 +56,11 @@ if(isset($_POST['update']))
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin')");
+		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin, condition) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin', '$condition')");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";
-		echo "<br/><a href='index.php'>View Result</a>";
+		echo "<br/><a href='car_index.php'>View Result</a>";
 	}
 }
 ?>

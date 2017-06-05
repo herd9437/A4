@@ -8,11 +8,12 @@ if(isset($_POST['update']))
 	$last_name = mysqli_real_escape_string($mysqli, $_POST['last_name']);
 	$street_address = mysqli_real_escape_string($mysqli, $_POST['street_address']);
 	$city = mysqli_real_escape_string($mysqli, $_POST['city']);
+	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
 	$zip = mysqli_real_escape_string($mysqli, $_POST['zip']);
 	$phone_number = mysqli_real_escape_string($mysqli, $_POST['phone_number']);
 
 	// checking empty fields
-	if(empty($first_name) || empty($last_name) || empty($street_address) || empty($city) || empty($zip) || empty($phone_number)) {
+	if(empty($first_name) || empty($last_name) || empty($street_address) || empty($city) || empty($state) || empty($zip) || empty($phone_number)) {
 
 		if(empty($first_name)) {
 			echo "<font color='red'>First Name field is empty.</font><br/>";
@@ -28,6 +29,10 @@ if(isset($_POST['update']))
 
 		if(empty($city)) {
 			echo "<font color='red'>City field is empty.</font><br/>";
+		}
+
+		if(empty($state)) {
+			echo "<font color='red'>State field is empty.</font><br/>";
 		}
 
 		if(empty($zip)) {
@@ -65,6 +70,7 @@ while($res = mysqli_fetch_array($result))
 	$last_name = $res['last_name'];
 	$street_address = $res['street_address'];
 	$city = $res['city'];
+	$state = $res['state'];
 	$zip = $res['zip'];
 }
 ?>
@@ -94,6 +100,10 @@ while($res = mysqli_fetch_array($result))
 			<tr>
 				<td>City</td>
 				<td><input type="text" name="city" value="<?php echo $city;?>"></td>
+			</tr>
+			<tr>
+				<td>State</td>
+				<td><input type="text" name="state"></td>
 			</tr>
 			<tr>
 				<td>Zip</td>
