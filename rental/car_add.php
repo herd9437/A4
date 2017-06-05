@@ -15,12 +15,12 @@ if(isset($_POST['Submit'])) {
 	$color = mysqli_real_escape_string($mysqli, $_POST['color']);
 	$license_number = mysqli_real_escape_string($mysqli, $_POST['license_number']);
 	$state = mysqli_real_escape_string($mysqli, $_POST['state']);
-	$condition = mysqli_real_escape_string($mysqli, $_POST['condition']);
+	$car_condition = mysqli_real_escape_string($mysqli, $_POST['car_condition']);
 	$mileage = mysqli_real_escape_string($mysqli, $_POST['mileage']);
 	$vin = mysqli_real_escape_string($mysqli, $_POST['vin']);
 
 	// checking empty fields
-	if(empty($make) || empty($model) || empty($location) || empty($color) || empty($license_number) || empty($condition) || empty($state) || empty($mileage) || empty($vin)) {
+	if(empty($make) || empty($model) || empty($location) || empty($color) || empty($license_number) || empty($car_condition) || empty($state) || empty($mileage) || empty($vin)) {
 
 		if(empty($make)) {
 			echo "<font color='red'>Make field is empty.</font><br/>";
@@ -42,8 +42,8 @@ if(isset($_POST['Submit'])) {
 			echo "<font color='red'>License Number field is empty.</font><br/>";
 		}
 
-		if(empty($condition)) {
-			echo "<font color='red'>Condition field is empty.</font><br/>";
+		if(empty($car_condition)) {
+			echo "<font color='red'>car_condition field is empty.</font><br/>";
 		}
 
 		if(empty($state)) {
@@ -60,7 +60,7 @@ if(isset($_POST['Submit'])) {
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin, condition) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin', '$condition')");
+		$result = mysqli_query($mysqli, "INSERT INTO car (make, model, location, color, license_number, state, mileage, vin, car_condition) VALUES ( '$make', '$model', '$location', '$color', '$license_number', '$state', '$mileage', '$vin', '$car_condition')");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";

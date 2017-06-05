@@ -77,6 +77,7 @@ if(isset($_POST['Submit'])) {
 		echo "<br/><a href='main_index.php'>View Result</a>";
 	}
 }
+
 ?>
 </body>
 </html>
