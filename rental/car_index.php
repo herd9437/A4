@@ -48,7 +48,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM car"); // using mysqli_query inst
 		echo "<td>".$res['state']."</td>";
 		echo "<td>".$res['mileage']."</td>";
 		echo "<td>".$res['vin']."</td>";
-		echo "<td><a href=\"car_edit.php?id=$res[id]\">Edit</a> | <a href=\"car_delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"car_edit.php?vin=$res[vin]\">Edit</a> | <a href=\"car_delete.php?vin=$res[vin]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
