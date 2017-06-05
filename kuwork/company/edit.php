@@ -68,7 +68,7 @@ if(isset($_GET['comp_name'])){
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="Update" value="Add"></td>
+				<td><input type="submit" name="update" value="Add"></td>
 			</tr>
 		</table>
 	</form>
