@@ -2,7 +2,6 @@
   <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/index.php">Home</a></li>
   <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/customer_index.php">Customer</a></li>
   <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/guest_index.php">Guest</a></li>
- -->
 </ul>
 <?php
 //including the database connection file
@@ -21,9 +20,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 <body>
 <a href="customer_add.html">Add New Guests</a><br/><br/>
 
-	<table width='80%' border=0>
+	<table width='100%' border=5>
 
-	<tr bgcolor='#CCCCCC'>
+	<tr bgcolor='#008000'>
 		<td>Guest Name</td>
 		<td>Room Desired</td>
 		<td>Number People</td>
