@@ -9,5 +9,5 @@ $vin = $_GET['cust_name'];
 $result = mysqli_query($mysqli, "DELETE FROM customer WHERE cust_name='$cust_name'");
 
 //redirecting to the display page (index.php in our case)
-header("Location:index.php");
+header("Location:customer_index.php");
 ?>

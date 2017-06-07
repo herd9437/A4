@@ -3,11 +3,11 @@
 include("config.php");
 
 //getting id of the data from url
-$rep_id = $_GET['rep_id'];
+$confirmation_num = $_GET['confirmation_num'];
 
 //deleting the row from table
-$result = mysqli_query($mysqli, "DELETE FROM representative WHERE rep_id=$rep_id");
+$result = mysqli_query($mysqli, "DELETE FROM guest WHERE confirmation_num=$confirmation_num");
 
 //redirecting to the display page (index.php in our case)
-header("Location:rep_index.php");
+header("Location:guest_index.php");
 ?>
