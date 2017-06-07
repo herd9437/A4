@@ -18,9 +18,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 </head>
 
 <body>
-<a href="customer_add.html">Add New Guests</a><br/><br/>
 
-	<table width='100%' border=1>
+	<table width='100%' border=0>
 
 	<tr bgcolor='#00FFFF'>
 		<td>Guest Name</td>
@@ -45,5 +44,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 	}
 	?>
 	</table>
+
+<a href="customer_add.html">Add New Guests</a><br/><br/>
+
+
 </body>
 </html>
