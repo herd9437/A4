@@ -19,7 +19,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 
 <body>
 
-	<table width='100%' border=0>
+	<table width='100%' border=1>
 
 	<tr bgcolor='#DAF7A6 '>
 		<td>Guest Name</td>

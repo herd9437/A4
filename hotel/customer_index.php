@@ -18,7 +18,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 </head>
 
 <body>
-	<table width='100%' border=0>
+	<table width='100%' border=1>
 
 	<tr bgcolor='#DAF7A6'>
 		<td>Customer Name</td>
