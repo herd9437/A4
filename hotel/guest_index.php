@@ -2,6 +2,7 @@
   <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/index.php">Home</a></li>
   <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/customer_index.php">Customer</a></li>
   <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/guest_index.php">Guest</a></li>
+ -->
 </ul>
 <?php
 //including the database connection file
@@ -9,37 +10,39 @@ include_once("config.php");
 
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
-$result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query instead
+$result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query instead
 ?>
 
 <html>
 <head>
-	<title>Customer Index</title>
+	<title>Guest Index</title>
 </head>
 
 <body>
-<a href="customer_add.html">Add New Customers</a><br/><br/>
+<a href="customer_add.html">Add New Guests</a><br/><br/>
 
 	<table width='80%' border=0>
 
 	<tr bgcolor='#CCCCCC'>
-		<td>Customer Name</td>
-		<td>Address</td>
-		<td>Credit Card Type</td>
-		<td>Credit Card Number</td>
-		<td>Telephone</td>
+		<td>Guest Name</td>
+		<td>Room Desired</td>
+		<td>Number People</td>
+		<td>Arrival Time</td>
+		<td>Expected Departure Date</td>
+		<td>Confirmation Number</td>
 
 	</tr>
 	<?php
 	//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array
 	while($res = mysqli_fetch_array($result)) {
 		echo "<tr>";
-		echo "<td>".$res['cust_name']."</td>";
-		echo "<td>".$res['address']."</td>";
-		echo "<td>".$res['cc_type']."</td>";
-		echo "<td>".$res['cc_num']."</td>";
-		echo "<td>".$res['telephone']."</td>";
-		echo "<td><a href=\"customer_delete.php?vin=$res[vin]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td>".$res['guest_name']."</td>";
+		echo "<td>".$res['room_desired']."</td>";
+		echo "<td>".$res['num_people']."</td>";
+		echo "<td>".$res['arrival_time']."</td>";
+		echo "<td>".$res['expected_departure']."</td>";
+		echo "<td>".$res['confirmation_num']."</td>";
+		echo "<td><a href=\"guest_delete.php?vin=$res[vin]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>
