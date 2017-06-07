@@ -40,7 +40,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 		echo "<td>".$res['arrival_time']."</td>";
 		echo "<td>".$res['expected_departure']."</td>";
 		echo "<td>".$res['confirmation_num']."</td>";
-		echo "<td><a href=\"guest_delete.php?confirmation_num=$res[confirmation_num]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"guest_delete.php?confirmation_num=$res[confirmation_num]\" /td>";
 	}
 	?>
 	</table>
