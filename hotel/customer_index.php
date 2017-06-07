@@ -20,9 +20,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 <body>
 <a href="customer_add.html">Add New Customers</a><br/><br/>
 
-	<table width='80%' border=0>
+	<table width='80%' border=0 sortable>
 
-	<tr bgcolor='#CCCCCC'>
+	<tr bgcolor='#DAF7A6'>
 		<td>Customer Name</td>
 		<td>Address</td>
 		<td>Credit Card Type</td>
