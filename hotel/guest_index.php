@@ -45,7 +45,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 	?>
 	</table>
 
-<a href="customer_add.html">Add Guests</a><br/><br/>
+<a href="customer_add.html">New Guest</a><br/><br/>
 
 
 </body>

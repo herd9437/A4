@@ -18,9 +18,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 </head>
 
 <body>
-<a href="customer_add.html">Add New Customers</a><br/><br/>
-
-	<table width='80%' border=0 sortable>
+	<table width='100%' border=0>
 
 	<tr bgcolor='#DAF7A6'>
 		<td>Customer Name</td>
@@ -43,5 +41,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 	}
 	?>
 	</table>
+
+<a href="customer_add.html">New Customer</a><br/><br/>
+
 </body>
 </html>
