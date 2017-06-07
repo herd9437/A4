@@ -21,7 +21,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 
 	<table width='100%' border=0>
 
-	<tr bgcolor='#00FFFF'>
+	<tr bgcolor='#DAF7A6 '>
 		<td>Guest Name</td>
 		<td>Room Desired</td>
 		<td>Number People</td>
@@ -45,7 +45,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 	?>
 	</table>
 
-<a href="customer_add.html">Add New Guests</a><br/><br/>
+<a href="customer_add.html">Add Guests</a><br/><br/>
 
 
 </body>
