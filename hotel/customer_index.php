@@ -1,12 +1,8 @@
 <ul>
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/index.php">Home</a></li>
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/customer_index.php">Customer</a></li>
+  <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/index.php">Home</a></li>
+  <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/customer_index.php">Customer</a></li>
 <!-- 
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/corp_index.php">Corporations</a></li>
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/cust_index.php">Customers</a></li>
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/main_index.php">Maintenance</a></li>
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/rep_index.php">Representatives</a></li>
-  <li><a href="http://webtech.kettering.edu/~vecc0396/cs461/rental/res_index.php">Reservations</a></li>
+  <li><a href="http://webtech.kettering.edu/~herd9437/A4/hotel/guest_index.php">Guest</a></li>
  -->
 </ul>
 <?php
@@ -20,7 +16,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 
 <html>
 <head>
-	<title>Car Index</title>
+	<title>Customer Index</title>
 </head>
 
 <body>
@@ -45,7 +41,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM customer"); // using mysqli_query
 		echo "<td>".$res['cc_type']."</td>";
 		echo "<td>".$res['cc_num']."</td>";
 		echo "<td>".$res['telephone']."</td>";
-		echo "<td><a href=\"customer_edit.php?vin=$res[vin]\">Edit</a> | <a href=\"customer_delete.php?vin=$res[vin]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+		echo "<td><a href=\"customer_delete.php?vin=$res[vin]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 	}
 	?>
 	</table>

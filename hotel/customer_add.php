@@ -32,7 +32,7 @@ if(isset($_POST['Submit'])) {
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";
-		echo "<br/><a href='hotel_index.php'>View Result</a>";
+		echo "<br/><a href='customer_index.php'>View Result</a>";
 	}
 }
 ?>
