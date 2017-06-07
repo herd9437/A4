@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>New Car</title>
+	<title>New Customer</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@ if(isset($_POST['Submit'])) {
 		// if all the fields are filled (not empty)
 
 		//insert data to database
-		$result = mysqli_query($mysqli, "INSERT INTO car (cust_name, address, cc_type, telephone) VALUES ( '$cust_name', '$address', '$cc_type', '$cc_num', '$telephone')");
+		$result = mysqli_query($mysqli, "INSERT INTO customer (cust_name, address, cc_type, telephone) VALUES ( '$cust_name', '$address', '$cc_type', '$cc_num', '$telephone')");
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";
