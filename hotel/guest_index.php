@@ -20,9 +20,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM guest"); // using mysqli_query in
 <body>
 <a href="customer_add.html">Add New Guests</a><br/><br/>
 
-	<table width='100%' border=5>
+	<table width='100%' border=1>
 
-	<tr bgcolor='#008000'>
+	<tr bgcolor='#00FFFF'>
 		<td>Guest Name</td>
 		<td>Room Desired</td>
 		<td>Number People</td>
